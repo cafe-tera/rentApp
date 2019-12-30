@@ -1,8 +1,12 @@
+//--------------------------------------------------------------------------------------------------------------------
+// flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/src/pages/home_page.dart';
+import 'package:splashscreen/splashscreen.dart';
+
+// local imports
 import 'package:rent_app/src/pages/login_page.dart';
 import 'package:rent_app/src/routes/routes.dart';
-import 'package:splashscreen/splashscreen.dart';
+//--------------------------------------------------------------------------------------------------------------------
 
 
 void main(){

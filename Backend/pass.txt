@@ -1,6 +1,0 @@
-MongoAtlas:
-
-user: admin
-pass: hlIWOStlmhZg4vpI
-
-mongodb+srv://admin:<password>@cafe-gnsby.mongodb.net/cafe

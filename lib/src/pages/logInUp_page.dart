@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/src/pages/home_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-
 class LogInUpPage extends StatefulWidget {
   LogInUpPage({Key key}) : super(key: key);
   static final String routeName = 'logInUp';
@@ -22,6 +21,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: _crearAppBar(size),
       body: SafeArea(
         child: _cardForm(context, size),
@@ -46,9 +46,9 @@ class _LogInUpPageState extends State<LogInUpPage> {
 
   Widget _cardForm(BuildContext context, Size size) {
     if (isLogin) {
-      return _loginForm(context, size);
+      return SingleChildScrollView(child: _loginForm(context, size));
     } else {
-      return _registerForm(context, size);
+      return SingleChildScrollView(child: _registerForm(context, size));
     }
   }
 
@@ -65,29 +65,32 @@ class _LogInUpPageState extends State<LogInUpPage> {
             boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.black26,
-                blurRadius: 3.0,
-                spreadRadius: 5.0,
+                blurRadius: 2.0,
+                spreadRadius: 2.5,
               )
             ]),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Text('Inicio de sesión',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                  )),
-              SizedBox(
-                height: 50.0,
+        child: Column(
+          children: <Widget>[
+            Text('Inicio de sesión',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                )),
+            SizedBox(
+              height: size.height * 0.4,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: size.height * 0.06,),
+                    _crearEmail(),
+                    _crearPassword(),
+                  ],
+                ),
               ),
-              _crearEmail(),
-              _crearPassword(),
-              SizedBox(height: 40.0),
-              _crearBotones(context),
-              SizedBox(height: 15.0),
-              Text('¿Olvido la contraseña?'),
-            ],
-          ),
+            ),
+            _crearBotones(context),
+            Text('¿Olvido la contraseña?'),
+          ],
         ),
       ),
     );
@@ -106,33 +109,33 @@ class _LogInUpPageState extends State<LogInUpPage> {
             boxShadow: <BoxShadow>[
               BoxShadow(
                 color: Colors.black26,
-                blurRadius: 3.0,
-                spreadRadius: 5.0,
+                blurRadius: 2.0,
+                spreadRadius: 2.5,
               )
             ]),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Text('Registro',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                  )),
-              SizedBox(
-                height: 50.0,
+        child: Column(children: <Widget>[
+          Text('Registro',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              )),
+          SizedBox(
+            height: size.height * 0.4,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  _crearNombre(),
+                  _crearApellido(),
+                  _crearCelular(),
+                  _crearEmail(),
+                  _crearPassword(),
+                ],
               ),
-              _crearNombre(),
-              _crearApellido(),
-              _crearCelular(),
-              _crearEmail(),
-              _crearPassword(),
-              SizedBox(height: 40.0),
-              _crearBotones(context),
-              SizedBox(height: 15.0),
-              Text('¿Olvido la contraseña?'),
-            ],
+            ),
           ),
-        ),
+          _crearBotones(context),
+          Text('¿Olvido la contraseña?'),
+        ]),
       ),
     );
   }

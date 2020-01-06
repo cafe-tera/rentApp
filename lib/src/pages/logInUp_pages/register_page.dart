@@ -1,75 +1,58 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/src/pages/login_page.dart';
 
 // local imports
+import 'package:rent_app/src/bloc/LogInUp_bloc/logInUp_bloc.dart';
+import 'package:rent_app/src/pages/home_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class RegisterPage extends StatelessWidget {
-  static final String routeName = 'register';
-  const RegisterPage({Key key}) : super(key: key);
+
+  final LogInUpBloc _logInUpBloc = LogInUpBloc();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[800],
-        title: Text('Register Page'),
-      ),
-      body: Stack(
-        children: <Widget>[
-          // _crearImagen(context),
-          _registerForm(context),
-        ],
-    ),
-    );
-  }
-
-  Widget _registerForm(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          SafeArea(
-            child: Container(
-              height: size.height * 0.05,
+    return Center(
+      heightFactor: 1.1,
+      child: Container(
+        width: size.width * 0.9,
+        height: size.height * 0.62,
+        padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5.0),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 2.0,
+                spreadRadius: 2.5
+              )
+            ]),
+        child: Column(children: <Widget>[
+          Text('Registro',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              )),
+          SizedBox(
+            height: size.height * 0.4,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  _crearNombre(),
+                  _crearApellido(),
+                  _crearCelular(),
+                  _crearEmail(),
+                  _crearPassword(),
+                ],
+              ),
             ),
           ),
-          Container(
-            // color: Colors.blue,
-            width: size.width * 0.9,
-            margin: EdgeInsets.symmetric(vertical: 10.0),
-            padding: EdgeInsets.symmetric(vertical: 30.0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5.0),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 3.0,
-                    spreadRadius: 5.0,
-                  )
-                ]),
-
-            child: Column(
-              children: <Widget>[
-
-                Text( 'Registro', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold )),
-                SizedBox(height: 40.0,),
-                _crearNombre(),
-                _crearApellido(),
-                _crearCelular(),
-                _crearEmail(),
-                _crearPassword(),
-                _crearBotonContinuar(context),
-                
-              ],
-            ),
-          ),
-          SizedBox(height: 100.0)
-        ],
+          _crearBotones(context),
+          Text('¿Olvido la contraseña?'),
+        ]),
       ),
     );
   }
@@ -147,24 +130,24 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  // Widget _crearImagen(BuildContext context) {
-  //   final size = MediaQuery.of(context).size;
+  Widget _crearBotones(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _crearBotonVolver(context),
+        SizedBox(height: 30.0),
+        _crearBotonConfirmar(context),
+      ],
+    );
+  }
 
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(
-  //         vertical: size.height * 0.05, horizontal: size.width * 0.15),
-  //     // color: Colors.black,
-  //     child: Image(
-  //       image: AssetImage('assets/rentApp.png'),
-  //     ),
-  //   );
-  // }
-
-  Widget _crearBotonContinuar(BuildContext context) {
+  _crearBotonVolver(BuildContext context) {
     return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Text('Continuar'),
+        child: Text(
+          'Volver',
+        ),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
@@ -173,10 +156,28 @@ class RegisterPage extends StatelessWidget {
       color: Colors.blue[800],
       textColor: Colors.white,
       onPressed: () {
-        Navigator.pushNamed(context, LoginPage.routeName);
+        _logInUpBloc.login();
       },
     );
   }
 
-
+  _crearBotonConfirmar(BuildContext context) {
+    return RaisedButton(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: Text(
+          'Confirmar',
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      elevation: 0.0,
+      color: Colors.blue[800],
+      textColor: Colors.white,
+      onPressed: () {
+        Navigator.pushNamed(context, HomePage.routeName);
+      },
+    );
+  }
 }

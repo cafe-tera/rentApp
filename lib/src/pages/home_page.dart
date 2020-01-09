@@ -28,31 +28,11 @@ class HomePage extends StatelessWidget {
       future: domiciliosProvider.cargarData(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        return Column(
-          children: <Widget>[
-
-            SizedBox(height: 25.0,),
-
-            Expanded(
-                flex: 1,
-                child: Text('Lista de Domicilios',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold))
-            ),
-
-            Expanded(
-              flex: 12,
-              child: Container(
-                color: Colors.black26,
-                child: ListView(
-                  children: _listaItems( snapshot.data, context ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 30.0,),
-
-          ],
+        return Container(
+          color: Colors.black,
+          child: ListView(
+            children: _listaItems( snapshot.data, context ),
+          ),
         );
       },
     );
@@ -61,39 +41,40 @@ class HomePage extends StatelessWidget {
   List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
     final List<Widget> items = [];
 
-    // Titulo Seccion
-    // items
-    //   ..add(Container(
-    //       padding: EdgeInsets.symmetric(vertical: 20.0),
-    //       alignment: Alignment.center,
-    //       child: Text('Lista de Domicilios',
-    //           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold))));
-
-    // Lista de Domicilios
-    // La lista de domicilios es leida desde un JSON
     data.forEach((item) {
       final widgetTemp = Card(
         elevation: 10.0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: FadeInImage(
-                image: NetworkImage(item['Imagen']),
-                placeholder: AssetImage('assets/jar-loading.gif'),
-                fadeInDuration: Duration(milliseconds: 200),
-              ),
-              title: Text(item['Tipo']),
-              subtitle: Text(item['Texto']),
-              onTap: () {},
-            )
-          ],
-        ),
+        child: ListTile(
+          leading: FadeInImage(
+            image: NetworkImage(item['Imagen']),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fadeInDuration: Duration(milliseconds: 200),
+          ),
+          // trailing: _estado(data),
+          title: Text(item['Tipo']),
+          subtitle: Text(item['Texto']),
+          onTap: () {},
+        )  
       );
 
-      items..add(widgetTemp)..add(Divider());
+      items..add(widgetTemp);
     });
 
     return items;
   }
+
+  // Icon _estado(item) {
+  //   if(item['Estado'].toString() == "green"){
+  //     return Icon(Icons.assistant_photo, color: Colors.green,);
+  //   }
+  //   else if(item['Estado'].toString() == "yellow"){
+  //     return Icon(Icons.assistant_photo, color: Colors.yellow,);
+  //   }
+  //   else {
+  //     return Icon(Icons.assistant_photo, color: Colors.red,);
+  //   }
+  // }
+
+
 }

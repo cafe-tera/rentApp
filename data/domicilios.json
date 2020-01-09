@@ -2,32 +2,38 @@
     "domicilios": [{
             "Tipo": "Casa",
             "Texto": "Casa amueblada",
-            "Imagen": "https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282"
+            "Imagen": "https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282",
+            "Estado": "green"
         },
         {
             "Tipo": "Departamento",
             "Texto": "Departamento vacio",
-            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg"
+            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
+            "Estado": "red"
         },
         {
             "Tipo": "Rancho",
             "Texto": "ranchito pa relajarse",
-            "Imagen": "https://q-cf.bstatic.com/images/hotel/max1024x768/114/114084793.jpg"
+            "Imagen": "https://q-cf.bstatic.com/images/hotel/max1024x768/114/114084793.jpg",
+            "Estado": "yellow"
         },
         {
             "Tipo": "Casa",
             "Texto": "Casa amueblada",
-            "Imagen": "https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282"
+            "Imagen": "https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282",
+            "Estado": "green"
         },
         {
             "Tipo": "Departamento",
             "Texto": "Departamento vacio",
-            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg"
+            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
+            "Estado": "green"
         },
         {
             "Tipo": "Rancho",
             "Texto": "ranchito pa relajarse",
-            "Imagen": "https://q-cf.bstatic.com/images/hotel/max1024x768/114/114084793.jpg"
+            "Imagen": "https://q-cf.bstatic.com/images/hotel/max1024x768/114/114084793.jpg",
+            "Estado": "green"
         }
 
 

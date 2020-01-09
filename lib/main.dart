@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 // local imports
-import 'package:rent_app/src/pages/logInUp_pages/logInUp_page.dart';
+import 'package:rent_app/src/pages/logInUp_page.dart';
 import 'package:rent_app/src/routes/routes.dart';
 //--------------------------------------------------------------------------------------------------------------------
 

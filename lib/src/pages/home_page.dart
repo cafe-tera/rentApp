@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/providers/domicilios_provider.dart';
+import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
             placeholder: AssetImage('assets/jar-loading.gif'),
             fadeInDuration: Duration(milliseconds: 200),
           ),
-          // trailing: _estado(data),
+          trailing: _estado(item),
           title: Text(item['Tipo']),
           subtitle: Text(item['Texto']),
           onTap: () {},
@@ -64,17 +65,9 @@ class HomePage extends StatelessWidget {
     return items;
   }
 
-  // Icon _estado(item) {
-  //   if(item['Estado'].toString() == "green"){
-  //     return Icon(Icons.assistant_photo, color: Colors.green,);
-  //   }
-  //   else if(item['Estado'].toString() == "yellow"){
-  //     return Icon(Icons.assistant_photo, color: Colors.yellow,);
-  //   }
-  //   else {
-  //     return Icon(Icons.assistant_photo, color: Colors.red,);
-  //   }
-  // }
+  Icon _estado(item) {
+    return Icon(Icons.assistant_photo, color: getEstado(item['Estado']));
+  }
 
 
 }

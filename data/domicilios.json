@@ -27,7 +27,7 @@
             "Tipo": "Departamento",
             "Texto": "Departamento vacio",
             "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
-            "Estado": "green"
+            "Estado": "yellow"
         },
         {
             "Tipo": "Rancho",

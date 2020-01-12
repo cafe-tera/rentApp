@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // local imports
@@ -21,7 +20,6 @@ class MapaPage extends StatefulWidget {
 class _MapaPageState extends State<MapaPage> {
 
   GoogleMapController mapController;
-  Position _currentPosition;
 
   final LatLng _center = const LatLng(-33.282158, -70.382323);
 

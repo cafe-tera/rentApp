@@ -1,15 +1,19 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/config_page.dart';
 
 // local imports
-import 'package:rent_app/src/pages/contactos_page.dart';
-import 'package:rent_app/src/pages/home_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
-import 'package:rent_app/src/pages/mapa_page.dart';
-import 'package:rent_app/src/pages/mis_domicilios_page.dart';
-import 'package:rent_app/src/pages/buscar_domicilios_page.dart';
-import 'package:rent_app/src/pages/chat_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mapa_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_domicilios_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/chat_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -23,6 +27,10 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
         HomePage.routeName               :   (BuildContext context) => HomePage(),
         ContactosPage.routeName          :   (BuildContext context) => ContactosPage(),
         MapaPage.routeName               :   (BuildContext context) => MapaPage(),
+        PerfilPage.routeName             :   (BuildContext context) => PerfilPage(),
+        NotificacionesPage.routeName     :   (BuildContext context) => NotificacionesPage(),
+        TiendaPage.routeName             :   (BuildContext context) => TiendaPage(),
+        ConfigPage.routeName             :   (BuildContext context) => ConfigPage(),
   
   };
   

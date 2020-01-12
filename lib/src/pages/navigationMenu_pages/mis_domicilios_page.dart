@@ -30,7 +30,7 @@ class MisDomiciliosPage extends StatelessWidget {
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return Container(
-          color: Colors.black,
+          // color: Colors.black,
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 15),
             children: _listaItems(snapshot.data, context),
@@ -48,9 +48,10 @@ class MisDomiciliosPage extends StatelessWidget {
         height: 75.0,
         child: Card(
             // clipBehavior: Clip.antiAlias,
-            elevation: 10.0,
+            elevation: 5.0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
+
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

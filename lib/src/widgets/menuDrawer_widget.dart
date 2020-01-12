@@ -8,7 +8,7 @@ import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
-import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -50,7 +50,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.storage, color: Colors.indigo,),
             title: Text('Home'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, MisDomiciliosPage.routeName);
+              Navigator.pushReplacementNamed(context, HomePage.routeName);
             },
           ),
 

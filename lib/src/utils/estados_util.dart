@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 
 final _estado = <String, Color>{
-  'green'     : Colors.green,
-  'red'       : Colors.red,
-  'yellow'    : Colors.yellow,
+  'green'     : Colors.green[700],
+  'red'       : Colors.red[700],
+  'yellow'    : Colors.yellow[700],
 };
 
 

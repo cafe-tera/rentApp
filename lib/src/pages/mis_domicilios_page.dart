@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/main.dart';
 
 // local imports
 import 'package:rent_app/src/providers/domicilios_provider.dart';
@@ -10,7 +11,7 @@ import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class MisDomiciliosPage extends StatelessWidget {
-  const MisDomiciliosPage({ Key key}) : super(key: key);
+  const MisDomiciliosPage({Key key}) : super(key: key);
   static final String routeName = 'misDomicilios';
 
   @override
@@ -32,7 +33,8 @@ class MisDomiciliosPage extends StatelessWidget {
         return Container(
           color: Colors.black,
           child: ListView(
-            children: _listaItems( snapshot.data, context ),
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            children: _listaItems(snapshot.data, context),
           ),
         );
       },
@@ -43,20 +45,38 @@ class MisDomiciliosPage extends StatelessWidget {
     final List<Widget> items = [];
 
     data.forEach((item) {
-      final widgetTemp = Card(
-        elevation: 10.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-        child: ListTile(
-          leading: FadeInImage(
-            image: NetworkImage(item['Imagen']),
-            placeholder: AssetImage('assets/jar-loading.gif'),
-            fadeInDuration: Duration(milliseconds: 200),
-          ),
-          trailing: _estado(item),
-          title: Text(item['Tipo']),
-          subtitle: Text(item['Texto']),
-          onTap: () {},
-        )  
+      final widgetTemp = Container(
+        height: 75.0,
+        child: Card(
+            // clipBehavior: Clip.antiAlias,
+            elevation: 10.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 20,
+                  child: _imagenDomicilio(item),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 30,
+                  child: _contenidoDomicilio(item),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: _estadoDomicilio(item),
+                ),
+              ],
+            )),
       );
 
       items..add(widgetTemp);
@@ -65,9 +85,75 @@ class MisDomiciliosPage extends StatelessWidget {
     return items;
   }
 
-  Icon _estado(item) {
-    return Icon(Icons.assistant_photo, color: getEstado(item['Estado']));
+  Widget _imagenDomicilio(item) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: FadeInImage(
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+          image: NetworkImage(
+            item['Imagen'],
+          ),
+          placeholder: AssetImage('assets/jar-loading.gif'),
+          fadeInDuration: Duration(milliseconds: 200),
+        ),
+      ),
+    );
   }
 
+  Widget _estadoDomicilio(item) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(2.0),
+        color: getEstado(item['Estado']),
+      ),
+    );
+  }
 
+  Widget _contenidoDomicilio(item) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 4,
+            child: Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  item['Tipo'],
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+          ),
+          Expanded(
+            flex: 7,
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: Text(item['Texto']),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Container(
+              child: Row(
+                children: <Widget>[
+
+                  FlatButton(
+                    child: Text('editar...', style: TextStyle(color: Colors.indigo),),
+                    onPressed: (){},
+                  ),
+
+                  FlatButton(
+                    child: Text('ver...', style: TextStyle(color: Colors.indigo),),
+                    onPressed: (){},
+                  ),
+
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

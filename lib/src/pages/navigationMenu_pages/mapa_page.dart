@@ -52,7 +52,7 @@ class _MapaPageState extends State<MapaPage> {
         onPressed: _getLocation,
         label: Text('Ir a mi Ubicacion!'),
         icon: Icon(Icons.location_on),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
       ),
     );
   }

@@ -129,7 +129,10 @@ class MisDomiciliosPage extends StatelessWidget {
             flex: 7,
             child: Container(
               alignment: Alignment.topLeft,
-              child: Text(item['Texto']),
+              child: Text(
+                item['Texto'],
+                style: TextStyle(fontSize: 12, color: Colors.black54),
+              ),
             ),
           ),
           Expanded(

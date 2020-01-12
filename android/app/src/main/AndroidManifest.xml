@@ -9,6 +9,12 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="rent_app"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Google Maps -->
+        <meta-data 
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDmnAiUGfjEyZ9CyzITrKFvVc7YSycHNBs"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -26,5 +32,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        
     </application>
 </manifest>

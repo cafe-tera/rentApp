@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/main.dart';
 
 // local imports
 import 'package:rent_app/src/providers/domicilios_provider.dart';

@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/pages/home_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
+import 'package:rent_app/src/pages/mis_domicilios_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -36,13 +36,13 @@ class MenuWidget extends StatelessWidget {
 
 
           ListTile(
-            leading: Icon( Icons.pages, color: Colors.blue[800],),
+            leading: Icon( Icons.pages, color: Colors.indigo,),
             title: Text('Home'),
-            onTap: () => Navigator.pushReplacementNamed(context, HomePage.routeName),
+            onTap: () => Navigator.pushReplacementNamed(context, MisDomiciliosPage.routeName),
           ),
 
           ListTile(
-            leading: Icon( Icons.search, color: Colors.blue[800],),
+            leading: Icon( Icons.search, color: Colors.indigo,),
             title: Text('Buscar Domicilio'),
             onTap: (){},
           ),
@@ -50,13 +50,13 @@ class MenuWidget extends StatelessWidget {
           Divider(),
 
           ListTile(
-            leading: Icon( Icons.people, color: Colors.blue[800],),
+            leading: Icon( Icons.people, color: Colors.indigo,),
             title: Text('Mi Perfil'),
             onTap: (){},
           ),
 
                     ListTile(
-            leading: Icon( Icons.home, color: Colors.blue[800],),
+            leading: Icon( Icons.home, color: Colors.indigo,),
             title: Text('Mis Domicilios'),
             onTap: (){},
           ),
@@ -65,13 +65,13 @@ class MenuWidget extends StatelessWidget {
           Divider(),
 
           ListTile(
-            leading: Icon( Icons.settings, color: Colors.blue[800],),
+            leading: Icon( Icons.settings, color: Colors.indigo,),
             title: Text('Configuraciones'),
             onTap: (){},
           ),
 
           ListTile(
-            leading: Icon( Icons.exit_to_app, color: Colors.blue[800],),
+            leading: Icon( Icons.exit_to_app, color: Colors.indigo,),
             title: Text('Cerrar Sesión'),
             onTap: (){
               Navigator.pushReplacementNamed(context, LogInUpPage.routeName);
@@ -79,7 +79,7 @@ class MenuWidget extends StatelessWidget {
           ),
           
           ListTile(
-            leading: Icon(Icons.help, color: Colors.blue[800],),
+            leading: Icon(Icons.help, color: Colors.indigo,),
             title: Text('Help and Feedback')
           ),
               

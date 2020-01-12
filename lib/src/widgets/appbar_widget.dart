@@ -21,7 +21,7 @@ class AppbarWidget extends StatelessWidget with PreferredSizeWidget{
         centerTitle: true,
         actions: actions,
         elevation: 0.0,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.indigo,
     );
   }
   @override

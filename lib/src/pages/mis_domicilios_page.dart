@@ -88,7 +88,7 @@ class MisDomiciliosPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(5.0),
         child: FadeInImage(
           fit: BoxFit.cover,
           alignment: Alignment.center,

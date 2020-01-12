@@ -24,7 +24,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   rxdart: ^0.23.1
-  splashscreen: 
+  splashscreen: ^1.2.0
+  google_maps_flutter: ^0.5.21+15             #Geolocator plugin
+
 
 dev_dependencies:
   flutter_test:

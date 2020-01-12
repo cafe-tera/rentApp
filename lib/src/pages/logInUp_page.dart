@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/pages/home_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class LogInUpPage extends StatefulWidget {
@@ -84,12 +84,12 @@ class _LogInUpPageState extends State<LogInUpPage> {
                     SizedBox(height: size.height * 0.06,),
                     _crearEmail(),
                     _crearPassword(),
+                    _crearOlvidoContrasena(),
                   ],
                 ),
               ),
             ),
             _crearBotones(context),
-            Text('¿Olvido la contraseña?'),
           ],
         ),
       ),
@@ -134,7 +134,6 @@ class _LogInUpPageState extends State<LogInUpPage> {
             ),
           ),
           _crearBotones(context),
-          Text('¿Olvido la contraseña?'),
         ]),
       ),
     );
@@ -287,7 +286,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
     );
   }
 
-  _crearBotonVolver(BuildContext context) {
+  Widget _crearBotonVolver(BuildContext context) {
     return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -309,7 +308,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
     );
   }
 
-  _crearBotonConfirmar(BuildContext context) {
+  Widget _crearBotonConfirmar(BuildContext context) {
     return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -326,6 +325,13 @@ class _LogInUpPageState extends State<LogInUpPage> {
       onPressed: () {
         Navigator.pushNamed(context, HomePage.routeName);
       },
+    );
+  }
+
+  Widget _crearOlvidoContrasena() {
+    return FlatButton(
+      child: Text('¿Olvidó su contraseña?'),
+      onPressed: (){},
     );
   }
 }

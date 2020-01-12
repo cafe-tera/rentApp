@@ -3,8 +3,12 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/pages/home_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/config_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -34,44 +38,50 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
 
-
           ListTile(
-            leading: Icon( Icons.pages, color: Colors.blue[800],),
-            title: Text('Home'),
-            onTap: () => Navigator.pushReplacementNamed(context, HomePage.routeName),
-          ),
-
-          ListTile(
-            leading: Icon( Icons.search, color: Colors.blue[800],),
-            title: Text('Buscar Domicilio'),
-            onTap: (){},
-          ),
-
-          Divider(),
-
-          ListTile(
-            leading: Icon( Icons.people, color: Colors.blue[800],),
+            leading: Icon( Icons.people, color: Colors.indigo,),
             title: Text('Mi Perfil'),
-            onTap: (){},
+            onTap: (){
+              Navigator.pushReplacementNamed(context, PerfilPage.routeName);
+            },
           ),
 
-                    ListTile(
-            leading: Icon( Icons.home, color: Colors.blue[800],),
-            title: Text('Mis Domicilios'),
-            onTap: (){},
+          ListTile(
+            leading: Icon( Icons.storage, color: Colors.indigo,),
+            title: Text('Home'),
+            onTap: (){
+              Navigator.pushReplacementNamed(context, MisDomiciliosPage.routeName);
+            },
           ),
-          
-          // SizedBox(height: size.height * 0.05,),
+
+          ListTile(
+            leading: Icon( Icons.notifications, color: Colors.indigo,),
+            title: Text('Notificaciones'),
+            onTap: (){
+              Navigator.pushReplacementNamed(context, NotificacionesPage.routeName);
+            },
+          ),
+
+          ListTile(
+            leading: Icon( Icons.store, color: Colors.indigo,),
+            title: Text('Tienda'),
+            onTap: (){
+              Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+            },
+          ),
+
           Divider(),
 
           ListTile(
-            leading: Icon( Icons.settings, color: Colors.blue[800],),
+            leading: Icon( Icons.settings, color: Colors.indigo,),
             title: Text('Configuraciones'),
-            onTap: (){},
+            onTap: (){
+              Navigator.pushReplacementNamed(context, ConfigPage.routeName);
+            },
           ),
 
           ListTile(
-            leading: Icon( Icons.exit_to_app, color: Colors.blue[800],),
+            leading: Icon( Icons.exit_to_app, color: Colors.indigo,),
             title: Text('Cerrar Sesión'),
             onTap: (){
               Navigator.pushReplacementNamed(context, LogInUpPage.routeName);
@@ -79,7 +89,7 @@ class MenuWidget extends StatelessWidget {
           ),
           
           ListTile(
-            leading: Icon(Icons.help, color: Colors.blue[800],),
+            leading: Icon(Icons.help, color: Colors.indigo,),
             title: Text('Help and Feedback')
           ),
               

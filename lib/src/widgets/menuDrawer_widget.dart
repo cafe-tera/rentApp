@@ -8,6 +8,7 @@ import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -42,6 +43,14 @@ class MenuWidget extends StatelessWidget {
             title: Text('Mi Perfil'),
             onTap: (){
               Navigator.pushReplacementNamed(context, PerfilPage.routeName);
+            },
+          ),
+
+          ListTile(
+            leading: Icon( Icons.storage, color: Colors.indigo,),
+            title: Text('Home'),
+            onTap: (){
+              Navigator.pushReplacementNamed(context, MisDomiciliosPage.routeName);
             },
           ),
 

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 // local imports
+import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/providers/domicilios_provider.dart';
 import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
@@ -21,6 +22,13 @@ class MisDomiciliosPage extends StatelessWidget {
       ),
       drawer: MenuWidget(),
       body: _lista(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigo,
+        child: Icon(Icons.add, ),
+        onPressed: (){
+          Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+        },
+      ),
     );
   }
 
@@ -82,6 +90,15 @@ class MisDomiciliosPage extends StatelessWidget {
       items..add(widgetTemp);
     });
 
+    // items..add(
+    //   RaisedButton(
+    //     color: Colors.indigo,
+    //     child: Text('Agregar casilla', style: TextStyle(color: Colors.white),),
+    //     onPressed: (){
+    //       Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+    //     },
+    //   )
+    // );
     return items;
   }
 

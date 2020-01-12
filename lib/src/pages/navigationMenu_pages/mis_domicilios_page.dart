@@ -10,10 +10,15 @@ import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-class MisDomiciliosPage extends StatelessWidget {
+class MisDomiciliosPage extends StatefulWidget {
   const MisDomiciliosPage({Key key}) : super(key: key);
   static final String routeName = 'misDomicilios';
 
+  @override
+  _MisDomiciliosPageState createState() => _MisDomiciliosPageState();
+}
+
+class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,17 +27,22 @@ class MisDomiciliosPage extends StatelessWidget {
       ),
       drawer: MenuWidget(),
       body: _lista(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo,
-        child: Icon(Icons.add, ),
-        onPressed: (){
-          Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   backgroundColor: Colors.indigo,
+      //   label: Text('Agregar casillas'),
+      //   icon: Icon(Icons.add, ),
+      //   onPressed: (){
+      //     Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+      //   },
+      // ),
     );
   }
 
   Widget _lista() {
+
+    FixedExtentScrollController fixedExtentScrollController =
+    new FixedExtentScrollController();
+
     return FutureBuilder(
       future: domiciliosProvider.cargarData(),
       initialData: [],
@@ -50,6 +60,7 @@ class MisDomiciliosPage extends StatelessWidget {
 
   List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
     final List<Widget> items = [];
+    // items..add(Divider());
 
     data.forEach((item) {
       final widgetTemp = Container(
@@ -90,15 +101,33 @@ class MisDomiciliosPage extends StatelessWidget {
       items..add(widgetTemp);
     });
 
-    // items..add(
-    //   RaisedButton(
-    //     color: Colors.indigo,
-    //     child: Text('Agregar casilla', style: TextStyle(color: Colors.white),),
-    //     onPressed: (){
-    //       Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-    //     },
-    //   )
-    // );
+    items..add(Divider());
+    items..add(
+
+      Container(
+        height: 45,
+        child: RaisedButton(
+          color: Colors.blueGrey,
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+
+              Icon(Icons.add, color: Colors.white, size: 22,),
+              Text('Agregar Domicilio', style: TextStyle(color: Colors.white, fontSize: 16),),
+              Column()
+
+            ],
+          ),
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+          },
+        ),
+      )
+    );
+    items..add(Divider());
     return items;
   }
 

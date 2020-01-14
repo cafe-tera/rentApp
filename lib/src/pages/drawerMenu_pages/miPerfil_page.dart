@@ -18,7 +18,6 @@ class PerfilPage extends StatelessWidget {
       appBar: AppbarWidget(
         title: Text('Perfil Page'),
       ),
-      drawer: MenuWidget(),
     );
   }
 }

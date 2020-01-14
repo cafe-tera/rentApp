@@ -18,7 +18,6 @@ class TiendaPage extends StatelessWidget {
       appBar: AppbarWidget(
         title: Text('Tienda Page'),
       ),
-      drawer: MenuWidget(),
     );
   }
 }

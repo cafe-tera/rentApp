@@ -18,7 +18,6 @@ class ConfigPage extends StatelessWidget {
       appBar: AppbarWidget(
         title: Text('Config Page'),
       ),
-      drawer: MenuWidget(),
     );
   }
 }

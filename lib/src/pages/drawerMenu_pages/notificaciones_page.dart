@@ -18,7 +18,6 @@ class NotificacionesPage extends StatelessWidget {
       appBar: AppbarWidget(
         title: Text('Notificaciones Page'),
       ),
-      drawer: MenuWidget(),
     );
   }
 }

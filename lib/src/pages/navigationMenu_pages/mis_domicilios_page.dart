@@ -142,7 +142,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
           image: NetworkImage(
             item['Imagen'],
           ),
-          placeholder: AssetImage('assets/jar-loading.gif'),
+          placeholder: AssetImage('assets/Alternate-Preloader.gif',),
           fadeInDuration: Duration(milliseconds: 200),
         ),
       ),

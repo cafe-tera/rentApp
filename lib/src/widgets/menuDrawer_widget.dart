@@ -42,7 +42,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.people, color: Colors.indigo,),
             title: Text('Mi Perfil'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, PerfilPage.routeName);
+              Navigator.pushNamed(context, PerfilPage.routeName);
             },
           ),
 
@@ -50,7 +50,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.storage, color: Colors.indigo,),
             title: Text('Home'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, HomePage.routeName);
+              Navigator.pushNamed(context, HomePage.routeName);
             },
           ),
 
@@ -58,7 +58,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.notifications, color: Colors.indigo,),
             title: Text('Notificaciones'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, NotificacionesPage.routeName);
+              Navigator.pushNamed(context, NotificacionesPage.routeName);
             },
           ),
 
@@ -66,7 +66,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.store, color: Colors.indigo,),
             title: Text('Tienda'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+              Navigator.pushNamed(context, TiendaPage.routeName);
             },
           ),
 
@@ -76,7 +76,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.settings, color: Colors.indigo,),
             title: Text('Configuraciones'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, ConfigPage.routeName);
+              Navigator.pushNamed(context, ConfigPage.routeName);
             },
           ),
 
@@ -84,7 +84,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.exit_to_app, color: Colors.indigo,),
             title: Text('Cerrar Sesión'),
             onTap: (){
-              Navigator.pushReplacementNamed(context, LogInUpPage.routeName);
+              Navigator.pushNamed(context, LogInUpPage.routeName);
             },
           ),
           

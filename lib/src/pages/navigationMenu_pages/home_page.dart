@@ -8,32 +8,9 @@ import 'package:rent_app/src/pages/navigationMenu_pages/chat_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mapa_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
+import 'package:rent_app/src/utils/destination_util.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-
-//----------------------------------------------------------------------------
-//      Clase para manejar los elementos del bottom navigation bar
-//----------------------------------------------------------------------------
-class Destination {
-  const Destination(this.index,this.title, this.icon);
-  final int index;
-  final String title;
-  final IconData icon;
-  final Color color = Colors.indigo;
-}
-
-const List<Destination> allDestinations = <Destination>[
-  Destination(0, 'Contactos', Icons.contacts),
-  Destination(1, 'Chat', Icons.message),
-  Destination(2, 'Mis Domicilios', Icons.home),
-  Destination(3, 'Buscar', Icons.find_in_page),
-  Destination(4, 'Mapa', Icons.location_on)
-];
-
-
-//----------------------------------------------------------------------------
-//      Todas las paginas del bottom menu pertenecen al home
-//----------------------------------------------------------------------------
 class HomePage extends StatefulWidget {
  static final String routeName = 'homePage';
  @override

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
-import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -179,6 +178,7 @@ class _PerfilPageState extends State<PerfilPage> {
               style: TextStyle(color: Colors.white, fontSize: 11),
             ),
             onPressed: () {
+              Navigator.pushReplacementNamed(context, HomePage.routeName);
             },
           ),
         ),

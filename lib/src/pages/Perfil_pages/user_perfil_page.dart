@@ -36,7 +36,7 @@ class _PerfilPageState extends State<PerfilPage> {
         ),
         body: Container(
           height: size.height,
-          color: Color(colors.fondoBlanco),
+          color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -95,6 +95,7 @@ class _PerfilPageState extends State<PerfilPage> {
       ),
       padding: EdgeInsets.all(0.1),
       child: Container(
+        // color: Colors.white,
         padding: EdgeInsets.all(2.5),
         width: 150,
         child: ClipRRect(
@@ -178,6 +179,7 @@ class _PerfilPageState extends State<PerfilPage> {
               style: TextStyle(color: Colors.white, fontSize: 11),
             ),
             onPressed: () {
+              Navigator.pushReplacementNamed(context, HomePage.routeName);
             },
           ),
         ),

@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -45,14 +46,14 @@ class _MapaPageState extends State<MapaPage> {
             target: _center,
             zoom: 7.0,
           ),
-          myLocationEnabled: false,
+          myLocationEnabled: true,
           markers: _markers.values.toSet(),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _getLocation,
         label: Text('Ir a mi Ubicacion!'),
         icon: Icon(Icons.location_on),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Color(colors.azulGeneral),
       ),
     );
   }

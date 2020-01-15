@@ -1,6 +1,9 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+
+// local imports
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class AppbarWidget extends StatelessWidget with PreferredSizeWidget{
@@ -19,9 +22,9 @@ class AppbarWidget extends StatelessWidget with PreferredSizeWidget{
     return AppBar(
         title: title,
         centerTitle: true,
-        actions: actions,
-        elevation: 0.0,
-        backgroundColor: Colors.indigo,
+        // actions: actions,
+        // elevation: 0.0,
+        backgroundColor: Color(colors.azulGeneral),
     );
   }
   @override

@@ -8,6 +8,7 @@ import 'package:rent_app/src/providers/domicilios_provider.dart';
 import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class MisDomiciliosPage extends StatefulWidget {
@@ -27,28 +28,16 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
       ),
       drawer: MenuWidget(),
       body: _lista(),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   backgroundColor: Colors.indigo,
-      //   label: Text('Agregar casillas'),
-      //   icon: Icon(Icons.add, ),
-      //   onPressed: (){
-      //     Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-      //   },
-      // ),
     );
   }
 
   Widget _lista() {
-
-    FixedExtentScrollController fixedExtentScrollController =
-    new FixedExtentScrollController();
 
     return FutureBuilder(
       future: domiciliosProvider.cargarData(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return Container(
-          // color: Colors.black,
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 15),
             children: _listaItems(snapshot.data, context),
@@ -107,7 +96,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
       Container(
         height: 45,
         child: RaisedButton(
-          color: Colors.blueGrey,
+          color: Color(colors.agregarDomicilio),
           shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
           ),
@@ -115,8 +104,8 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
 
-              Icon(Icons.add, color: Colors.white, size: 22,),
-              Text('Agregar Domicilio', style: TextStyle(color: Colors.white, fontSize: 16),),
+              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
+              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
               Column()
 
             ],
@@ -142,7 +131,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
           image: NetworkImage(
             item['Imagen'],
           ),
-          placeholder: AssetImage('assets/jar-loading.gif'),
+          placeholder: AssetImage('assets/Alternate-Preloader.gif',),
           fadeInDuration: Duration(milliseconds: 200),
         ),
       ),
@@ -177,7 +166,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
               alignment: Alignment.topLeft,
               child: Text(
                 item['Texto'],
-                style: TextStyle(fontSize: 12, color: Colors.black54),
+                style: TextStyle(fontSize: 12, color: Color(colors.textoDomInfo)),
               ),
             ),
           ),
@@ -188,12 +177,12 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
                 children: <Widget>[
 
                   FlatButton(
-                    child: Text('editar...', style: TextStyle(color: Colors.indigo),),
+                    child: Text('editar...', style: TextStyle(color: Color(colors.botonEditar)),),
                     onPressed: (){},
                   ),
 
                   FlatButton(
-                    child: Text('ver...', style: TextStyle(color: Colors.indigo),),
+                    child: Text('ver...', style: TextStyle(color: Color(colors.botonVer)),),
                     onPressed: (){},
                   ),
 

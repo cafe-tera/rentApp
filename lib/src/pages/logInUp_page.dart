@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class LogInUpPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(colors.fondoBlanco),
       appBar: _crearAppBar(size),
       body: SafeArea(
         child: _cardForm(context, size),
@@ -144,7 +145,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
         decoration: InputDecoration(
-          icon: Icon(Icons.accessibility, color: Colors.blue[800]),
+          icon: Icon(Icons.accessibility, color: Color(colors.azulGeneral)),
           labelText: 'Nombres',
         ),
       ),
@@ -156,7 +157,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
         decoration: InputDecoration(
-          icon: Icon(Icons.local_library, color: Colors.blue[800]),
+          icon: Icon(Icons.local_library, color: Color(colors.azulGeneral)),
           labelText: 'Apellidos',
         ),
       ),
@@ -168,7 +169,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
         decoration: InputDecoration(
-          icon: Icon(Icons.phone, color: Colors.blue[800]),
+          icon: Icon(Icons.phone, color: Color(colors.azulGeneral)),
           hintText: '+56 9 58379397',
           labelText: 'Celular',
         ),
@@ -182,7 +183,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
       child: TextField(
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          icon: Icon(Icons.alternate_email, color: Colors.blue[800]),
+          icon: Icon(Icons.alternate_email, color: Color(colors.azulGeneral)),
           hintText: 'ejemplo@ejemplo.cl',
           labelText: 'Correo electrónico',
         ),
@@ -197,7 +198,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
         child: TextField(
           obscureText: true,
           decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline, color: Colors.blue[800]),
+              icon: Icon(Icons.lock_outline, color: Color(colors.azulGeneral)),
               labelText: 'Contraseña'),
         ),
       );
@@ -209,13 +210,13 @@ class _LogInUpPageState extends State<LogInUpPage> {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  icon: Icon(Icons.lock_outline, color: Colors.blue[800]),
+                  icon: Icon(Icons.lock_outline, color: Color(colors.azulGeneral)),
                   labelText: 'Contraseña'),
             ),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  icon: Icon(Icons.lock, color: Colors.blue[800]),
+                  icon: Icon(Icons.lock, color: Color(colors.azulGeneral)),
                   labelText: 'Confirmar contraseña'),
             ),
           ],
@@ -258,7 +259,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
         borderRadius: BorderRadius.circular(5.0),
       ),
       elevation: 0.0,
-      color: Colors.blue[800],
+      color: Color(colors.azulGeneral),
       textColor: Colors.white,
       onPressed: () {
         Navigator.pushNamed(context, HomePage.routeName);
@@ -276,7 +277,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
         borderRadius: BorderRadius.circular(5.0),
       ),
       elevation: 0.0,
-      color: Colors.blue[800],
+      color: Color(colors.azulGeneral),
       textColor: Colors.white,
       onPressed: () {
         setState(() {
@@ -298,7 +299,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
         borderRadius: BorderRadius.circular(5.0),
       ),
       elevation: 0.0,
-      color: Colors.blue[800],
+      color: Color(colors.azulGeneral),
       textColor: Colors.white,
       onPressed: () {
         setState(() {
@@ -320,7 +321,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
         borderRadius: BorderRadius.circular(5.0),
       ),
       elevation: 0.0,
-      color: Colors.blue[800],
+      color: Color(colors.azulGeneral),
       textColor: Colors.white,
       onPressed: () {
         Navigator.pushNamed(context, HomePage.routeName);

@@ -9,6 +9,7 @@ import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -28,7 +29,7 @@ class MenuWidget extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: Container(
                 decoration: BoxDecoration(
-                color: Colors.black12,
+                color: Color(colors.fondoLogo),
                   image: DecorationImage(
                     image: AssetImage('assets/rentApp.png'),
                     // fit: BoxFit.cover,
@@ -39,7 +40,7 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.people, color: Colors.indigo,),
+            leading: Icon( Icons.people, color: Color(colors.iconos),),
             title: Text('Mi Perfil'),
             onTap: (){
               Navigator.pushNamed(context, PerfilPage.routeName);
@@ -47,7 +48,7 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.storage, color: Colors.indigo,),
+            leading: Icon( Icons.storage, color: Color(colors.iconos),),
             title: Text('Home'),
             onTap: (){
               Navigator.pushNamed(context, HomePage.routeName);
@@ -55,7 +56,7 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.notifications, color: Colors.indigo,),
+            leading: Icon( Icons.notifications, color: Color(colors.iconos),),
             title: Text('Notificaciones'),
             onTap: (){
               Navigator.pushNamed(context, NotificacionesPage.routeName);
@@ -63,7 +64,7 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.store, color: Colors.indigo,),
+            leading: Icon( Icons.store, color: Color(colors.iconos),),
             title: Text('Tienda'),
             onTap: (){
               Navigator.pushNamed(context, TiendaPage.routeName);
@@ -73,7 +74,7 @@ class MenuWidget extends StatelessWidget {
           Divider(),
 
           ListTile(
-            leading: Icon( Icons.settings, color: Colors.indigo,),
+            leading: Icon( Icons.settings, color: Color(colors.iconos),),
             title: Text('Configuraciones'),
             onTap: (){
               Navigator.pushNamed(context, ConfigPage.routeName);
@@ -81,7 +82,7 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.exit_to_app, color: Colors.indigo,),
+            leading: Icon( Icons.exit_to_app, color: Color(colors.iconos),),
             title: Text('Cerrar Sesión'),
             onTap: (){
               Navigator.pushNamed(context, LogInUpPage.routeName);
@@ -89,7 +90,7 @@ class MenuWidget extends StatelessWidget {
           ),
           
           ListTile(
-            leading: Icon(Icons.help, color: Colors.indigo,),
+            leading: Icon(Icons.help, color: Color(colors.iconos),),
             title: Text('Help and Feedback')
           ),
               

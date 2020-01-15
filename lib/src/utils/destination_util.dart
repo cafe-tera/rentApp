@@ -1,6 +1,8 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+
+// local imports
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -12,7 +14,6 @@ class Destination {
   final int index;
   final String title;
   final IconData icon;
-  final Color color = Colors.indigo;
 }
 
 const List<Destination> allDestinations = <Destination>[

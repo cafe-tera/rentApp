@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
-import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class PerfilPage extends StatefulWidget {
@@ -26,7 +26,7 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Perfil Page'),
-          backgroundColor: Colors.blue[800],
+          backgroundColor: Color(colors.azulGeneral),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.more_vert),
@@ -36,7 +36,7 @@ class _PerfilPageState extends State<PerfilPage> {
         ),
         body: Container(
           height: size.height,
-          color: Colors.white,
+          color: Color(colors.fondoBlanco),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -90,12 +90,11 @@ class _PerfilPageState extends State<PerfilPage> {
     return Container(
       margin: EdgeInsets.all(3.0),
       decoration: BoxDecoration(
-        color: Colors.blue[800],
+        color: Color(colors.azulGeneral),
         borderRadius: BorderRadius.circular(15.0)
       ),
       padding: EdgeInsets.all(0.1),
       child: Container(
-        // color: Colors.white,
         padding: EdgeInsets.all(2.5),
         width: 150,
         child: ClipRRect(
@@ -155,7 +154,7 @@ class _PerfilPageState extends State<PerfilPage> {
           width: 85,
           height: 30,
           child: RaisedButton(
-            color: Colors.blue[800],
+            color: Color(colors.azulGeneral),
             child: Center(
                 child: Text(
               'Historial',
@@ -173,7 +172,7 @@ class _PerfilPageState extends State<PerfilPage> {
           width: 85,
           height: 30,
           child: RaisedButton(
-            color: Colors.blue[800],
+            color: Color(colors.azulGeneral),
             child: Text(
               'Mensaje',
               style: TextStyle(color: Colors.white, fontSize: 11),
@@ -219,7 +218,7 @@ class _PerfilPageState extends State<PerfilPage> {
     return Container(
       width: size.width * 0.9,
       child: RaisedButton(
-        color: Colors.blue[800],
+        color: Color(colors.azulGeneral),
         child: Text(
                 'Agregar Comentario',
                 style: TextStyle(color: Colors.white, fontSize: 11),

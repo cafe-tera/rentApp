@@ -9,6 +9,7 @@ import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mapa_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
 import 'package:rent_app/src/utils/destination_util.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class HomePage extends StatefulWidget {
@@ -40,7 +41,7 @@ final List<Widget> _children = [
        items: allDestinations.map((Destination destination) {
           return BottomNavigationBarItem(
             icon: Icon(destination.icon),
-            backgroundColor: destination.color,
+            backgroundColor: Color(colors.azulGeneral),
             title: Text(destination.title)
           );
         }).toList(),

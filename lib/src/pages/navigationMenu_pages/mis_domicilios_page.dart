@@ -40,28 +40,27 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
         return Container(
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            children: _listaItems(snapshot.data, context),
+            children: _listaDomicilios(snapshot.data, context),
           ),
         );
       },
     );
   }
 
-  List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
-    final List<Widget> items = [];
-    // items..add(Divider());
+  List<Widget> _listaDomicilios(List<dynamic> data, BuildContext context) {
+    final List<Widget> domicilios = [];
 
-    data.forEach((item) {
-      final widgetTemp = Container(
+    data.forEach((domicilio) {
+      final widgetTemp = InkWell(
+      onTap: (){},
+      child: Container(
         height: 75.0,
         child: Card(
-            // clipBehavior: Clip.antiAlias,
             elevation: 5.0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
 
             child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Expanded(
                   flex: 1,
@@ -69,7 +68,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
                 ),
                 Expanded(
                   flex: 20,
-                  child: _imagenDomicilio(item),
+                  child: _imagenDomicilio(domicilio),
                 ),
                 Expanded(
                   flex: 1,
@@ -77,21 +76,21 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
                 ),
                 Expanded(
                   flex: 30,
-                  child: _contenidoDomicilio(item),
+                  child: _contenidoDomicilio(domicilio),
                 ),
                 Expanded(
                   flex: 2,
-                  child: _estadoDomicilio(item),
+                  child: _estadoDomicilio(domicilio),
                 ),
               ],
             )),
-      );
+      ));
 
-      items..add(widgetTemp);
+      domicilios..add(widgetTemp);
     });
 
-    items..add(Divider());
-    items..add(
+    domicilios..add(Divider());
+    domicilios..add(
 
       Container(
         height: 45,
@@ -116,8 +115,8 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
         ),
       )
     );
-    items..add(Divider());
-    return items;
+    domicilios..add(Divider());
+    return domicilios;
   }
 
   Widget _imagenDomicilio(item) {

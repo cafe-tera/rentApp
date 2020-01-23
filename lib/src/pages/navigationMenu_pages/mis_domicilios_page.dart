@@ -90,31 +90,7 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
     });
 
     domicilios..add(Divider());
-    domicilios..add(
-
-      Container(
-        height: 45,
-        child: RaisedButton(
-          color: Color(colors.agregarDomicilio),
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-
-              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
-              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
-              Column()
-
-            ],
-          ),
-          onPressed: (){
-            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-          },
-        ),
-      )
-    );
+    domicilios..add(_agregarDomBoton());
     domicilios..add(Divider());
     return domicilios;
   }
@@ -192,5 +168,30 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
         ],
       ),
     );
+  }
+
+  Widget _agregarDomBoton() {
+    return Container(
+        height: 45,
+        child: RaisedButton(
+          color: Color(colors.agregarDomicilio),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+
+              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
+              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
+              Column()
+
+            ],
+          ),
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+          },
+        ),
+      );
   }
 }

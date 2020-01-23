@@ -62,7 +62,14 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
 
                 child: InkWell(
                   onTap: (){
-                    Navigator.of(context).pushNamed(DomicilioPerfilPage.routeName);
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => DomicilioPerfilPage(
+                          domiciliosData: domicilio,
+                        )
+                      ),
+                    );
                   },
                   child: Row(
                     children: <Widget>[

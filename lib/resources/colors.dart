@@ -26,6 +26,6 @@ const int textoBlanco = 0xFFFFFFFF;
 const int textoDomTitulo = 0xFFFFFFFF;
 const int textoDomInfo = 0x8A000000;
 const int botonEditar = 0xFF1B4491;
-const int botonVer = 0xFF1B4491;
+const int botonVer = 0xFFFFFFFF;
 
 

@@ -1,18 +1,25 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/providers/contactos_provider.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 
-class ContactosPage extends StatelessWidget {
+class ContactosPage extends StatefulWidget {
   const ContactosPage({ Key key,}) : super(key: key);
   static final String routeName = 'contactos';
 
+  @override
+  _ContactosPageState createState() => _ContactosPageState();
+}
+
+class _ContactosPageState extends State<ContactosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,10 +109,18 @@ class ContactosPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
 
           _encabezado(item),
-          // _botones(item)
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              _perfilboton(),
+              _mensajeBoton(),
+            ],
+          ),
 
         ],
       ),
@@ -113,16 +128,90 @@ class ContactosPage extends StatelessWidget {
   }
 
   Widget _encabezado(item) {
+    double ratingBarSize = 12.0;
+    int starCount = 5;
+    double rating  = item['Puntos'];
+
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
 
         Text(
           item['Nombres']+' '+item['Apellidos'],
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        // _rattingBar(rattingBarSize, ratting, starCount),
+
+        _rattingBar(ratingBarSize, rating, starCount),
 
       ],
+    );
+  }
+
+  Widget _rattingBar(double ratingBarSize, double rating, int starCount) {
+
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Center(
+            child: StarRating(
+              size: ratingBarSize,
+              rating: rating,
+              color: Colors.orange,
+              borderColor: Colors.grey,
+              starCount: starCount,
+              onRatingChanged: (rating) => setState(
+                () {
+                  rating = rating;
+                },
+              ),
+            ),
+          ),
+          
+        ],
+      ),
+    );
+
+  }
+
+  Widget _perfilboton() {
+    return Container(
+      height: 23,
+      width: 75,
+      child: RaisedButton(
+        color: Color(colors.azulGeneral),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+
+            Icon(Icons.person_pin, size: 10,color: Color(colors.fondoBlanco),),
+            Text('Perfil', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 8),),
+
+          ],
+        ),
+        onPressed: (){},
+      ),
+    );
+  }
+
+  Widget _mensajeBoton() {
+    return Container(
+      height: 23,
+      width: 75,
+      child: RaisedButton(
+            
+        color: Color(colors.azulGeneral),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+
+            Icon(Icons.message, size: 10,color: Color(colors.fondoBlanco),),
+            Text('Mensaje', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 8),),
+
+          ],
+        ),
+        onPressed: (){},
+      ),
     );
   }
 }

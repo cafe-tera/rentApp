@@ -50,7 +50,9 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              _encabezado(size, widget.domiciliosData)
+              _encabezado(size, widget.domiciliosData),
+              SizedBox(height: 20,),
+              _cuerpo(size, widget.domiciliosData),
             ],
           ),
           
@@ -59,15 +61,15 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     );
   }
 
-  Widget _encabezado(var size, data){
+  Widget _encabezado(var size, domData){
     return Container(
       child: Row(
         children: <Widget>[
-          _imagenDomicilio(data),
+          _imagenDomicilio(domData),
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
-              //_typeBar(),
+              Text(domData['Tipo']),
               SizedBox(height: 20,),
               _rattingBar()
           ],)
@@ -76,7 +78,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     );
   }
 
-  Widget _imagenDomicilio(domImage) {
+  Widget _imagenDomicilio(domData) {
     return Container(
       margin: EdgeInsets.all(3.0),
       decoration: BoxDecoration(
@@ -93,10 +95,10 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
             fit: BoxFit.cover,
             alignment: Alignment.center,
             image: NetworkImage(
-              domImage['Imagen']
+              domData['Imagen']
             ),
-          placeholder: AssetImage('assets/Alternate-Preloader.gif',),
-          fadeInDuration: Duration(milliseconds: 200),
+            placeholder: AssetImage('assets/Alternate-Preloader.gif',),
+            fadeInDuration: Duration(milliseconds: 200),
           ),
         ),
       ),
@@ -104,8 +106,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
   }
 
   Widget _rattingBar() {
-    double rating = 3.5;
-    int starCount = 5;
+    final int starCount = 5;
+    double ratting = 3.5;
     return Container(
       color: Colors.white,
       child: Column(
@@ -113,20 +115,20 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
           Center(
             child: StarRating(
               size: 25.0,
-              rating: rating,
+              rating: ratting,
               color: Colors.orange,
               borderColor: Colors.grey,
               starCount: starCount,
-              onRatingChanged: (rating) => setState(
+              onRatingChanged: (ratting) => setState(
                 () {
-                  rating = rating;
+                  ratting = ratting;
                 },
               ),
             ),
           ),
           Center(
             child: Text(
-              "Your rating is: $rating",
+              "Your rating is: $ratting",
               style: new TextStyle(fontSize: 10.0),
             ),
           ),
@@ -134,6 +136,87 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       ),
     );
   }
+
+  Widget _cuerpo(var size, domData){
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          _informacion(size, domData),
+          SizedBox(height: 20,),
+          _btnAlbumMapa(size, domData)
+        ],
+      )
+    );
+  }
+
+  Widget _informacion(var size, domData){
+    return Container(
+      height: size.height * 0.2,
+      width: size.width * 0.9,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 2.0,
+            spreadRadius: 2.5)
+        ]
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Text(domData['Texto'])
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _btnAlbumMapa(var size, domData){
+    return Row(
+      children: <Widget>[
+        SizedBox(
+          width: size.width * 0.05,
+        ),
+        Container(
+          width: size.width * 0.4,
+          height: 30,
+          child: RaisedButton(
+            color: Color(colors.azulGeneral),
+            child: Text(
+              'Album',
+              style: TextStyle(
+                color: Colors.white, 
+                fontSize: 11
+              )
+            ),
+            onPressed: (){},
+          ),
+        ),
+        SizedBox(
+          width: size.width * 0.05,
+        ),
+        Container(
+          width: size.width * 0.4,
+          height: 30,
+          child: RaisedButton(
+            color: Color(colors.azulGeneral),
+            child: Text(
+              'Ver en Mapa',
+              style: TextStyle(
+                color: Colors.white, 
+                fontSize: 11
+              )
+            ),
+            onPressed: (){},
+          ),
+        )
+      ],
+    );
+  }
+
 
   Icon _favoritedIconDefault = new Icon(
     Icons.favorite_border,

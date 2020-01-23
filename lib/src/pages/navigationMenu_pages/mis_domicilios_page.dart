@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 // local imports
+import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/providers/domicilios_provider.dart';
 import 'package:rent_app/src/utils/estados_util.dart';
@@ -51,70 +52,51 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
     final List<Widget> domicilios = [];
 
     data.forEach((domicilio) {
-      final widgetTemp = InkWell(
-      onTap: (){},
-      child: Container(
+      final widgetTemp = Container(
         height: 75.0,
-        child: Card(
-            elevation: 5.0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+        child: Material(
+            child: Card(
+                elevation: 5.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
 
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                Expanded(
-                  flex: 20,
-                  child: _imagenDomicilio(domicilio),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                Expanded(
-                  flex: 30,
-                  child: _contenidoDomicilio(domicilio),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: _estadoDomicilio(domicilio),
-                ),
-              ],
-            )),
-      ));
+                child: InkWell(
+                  onTap: (){
+                    Navigator.of(context).pushNamed(DomicilioPerfilPage.routeName);
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 20,
+                        child: _imagenDomicilio(domicilio),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 30,
+                        child: _contenidoDomicilio(domicilio),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: _estadoDomicilio(domicilio),
+                      ),
+                    ],
+                  ),
+                )),
+        ),
+      );
 
       domicilios..add(widgetTemp);
     });
 
     domicilios..add(Divider());
-    domicilios..add(
-
-      Container(
-        height: 45,
-        child: RaisedButton(
-          color: Color(colors.agregarDomicilio),
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-
-              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
-              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
-              Column()
-
-            ],
-          ),
-          onPressed: (){
-            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-          },
-        ),
-      )
-    );
+    domicilios..add(_agregarDomBoton());
     domicilios..add(Divider());
     return domicilios;
   }
@@ -169,28 +151,56 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
               ),
             ),
           ),
+          // Expanded(
+          //   flex: 3,
+          //   child: Container(
+          //     width: 150,
+          //     child: RaisedButton(
+          //       color: Color(colors.azulGeneral),
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //         children: <Widget>[
+
+          //           Icon(Icons.assistant_photo, color: Color(colors.botonVer), size: 10,),
+          //           Text('ver detalle', style: TextStyle(color: Color(colors.botonVer), fontSize: 10),),
+          //         ],
+          //       ),
+          //       onPressed: (){},
+          //     ),
+
+          //   ),
+          // ),
           Expanded(
-            flex: 4,
-            child: Container(
-              child: Row(
-                children: <Widget>[
-
-                  FlatButton(
-                    child: Text('editar...', style: TextStyle(color: Color(colors.botonEditar)),),
-                    onPressed: (){},
-                  ),
-
-                  FlatButton(
-                    child: Text('ver...', style: TextStyle(color: Color(colors.botonVer)),),
-                    onPressed: (){},
-                  ),
-
-                ],
-              ),
-            ),
-          )
+            flex: 1,
+            child: Divider(),
+          ),
         ],
       ),
     );
+  }
+
+  Widget _agregarDomBoton() {
+    return Container(
+        height: 45,
+        child: RaisedButton(
+          color: Color(colors.agregarDomicilio),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+
+              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
+              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
+              Column()
+
+            ],
+          ),
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+          },
+        ),
+      );
   }
 }

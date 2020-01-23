@@ -43,15 +43,7 @@ class MenuWidget extends StatelessWidget {
             leading: Icon( Icons.people, color: Color(colors.iconos),),
             title: Text('Mi Perfil'),
             onTap: (){
-              Navigator.pushNamed(context, PerfilPage.routeName);
-            },
-          ),
-
-          ListTile(
-            leading: Icon( Icons.storage, color: Color(colors.iconos),),
-            title: Text('Home'),
-            onTap: (){
-              Navigator.pushNamed(context, HomePage.routeName);
+              Navigator.pushNamed(context, MiPerfilPage.routeName);
             },
           ),
 

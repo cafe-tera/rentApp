@@ -53,6 +53,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
               _encabezado(size, widget.domiciliosData),
               SizedBox(height: 20,),
               _cuerpo(size, widget.domiciliosData),
+              SizedBox(height: 20,),
+              _comentarios(size)
             ],
           ),
           
@@ -65,13 +67,19 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     return Container(
       child: Row(
         children: <Widget>[
+          SizedBox(width: 20,),
           _imagenDomicilio(domData),
+          SizedBox(width: 40,),
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
-              Text(domData['Tipo']),
+              Text(
+                domData['Tipo'],
+                style: TextStyle(fontSize: 14),
+              ),
               SizedBox(height: 20,),
-              _rattingBar()
+              _rattingBar(),
+              SizedBox(height: 20,),
           ],)
         ],
       ),
@@ -144,7 +152,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
         children: <Widget>[
           _informacion(size, domData),
           SizedBox(height: 20,),
-          _btnAlbumMapa(size, domData)
+          _btnAlbumMapa(size, domData),
+          SizedBox(height: 20,),
         ],
       )
     );
@@ -217,6 +226,62 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     );
   }
 
+  Widget _comentarios(var size) {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+
+          _cajaComentarios(size),
+          _btnAgregarComentario(size),
+
+        ],
+      ),
+    );
+  }
+
+  Widget _cajaComentarios(var size) {
+    return Container(
+      height: size.height * 0.2,
+      width: size.width * 0.9,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 2.0,
+                spreadRadius: 2.5,
+              )
+        ]
+      
+      ),
+      child: SingleChildScrollView(
+        child:Column(
+          children: <Widget>[
+
+          Text('Soy un comentario mal hecho')
+
+          ],
+        )
+
+      ),
+    );
+  }
+
+  Widget _btnAgregarComentario(var size) {
+    return Container(
+      width: size.width * 0.9,
+      child: RaisedButton(
+        color: Color(colors.azulGeneral),
+        child: Text(
+                'Agregar Comentario',
+                style: TextStyle(color: Colors.white, fontSize: 11),
+        ),
+        onPressed: (){},
+      ),
+    );
+  }
 
   Icon _favoritedIconDefault = new Icon(
     Icons.favorite_border,

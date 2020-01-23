@@ -34,23 +34,7 @@ class _MiPerfilPageState extends State<MiPerfilPage> {
             )
           ],
         ),
-        body: Container(
-          height: size.height,
-          color: Color(colors.fondoBlanco),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-
-                _encabezado(size),
-                SizedBox(height: 20,), //imagen de perfil, ratingbar, botones
-                _comentarios(size),
-                SizedBox(height: 20,),
-                _domicilios(size),
-
-              ],
-            ),
-          ),
-        ));
+    );
   }
 
 

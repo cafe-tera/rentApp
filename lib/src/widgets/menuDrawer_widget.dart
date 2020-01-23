@@ -48,14 +48,6 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
-            leading: Icon( Icons.storage, color: Color(colors.iconos),),
-            title: Text('Home'),
-            onTap: (){
-              Navigator.pushNamed(context, HomePage.routeName);
-            },
-          ),
-
-          ListTile(
             leading: Icon( Icons.notifications, color: Color(colors.iconos),),
             title: Text('Notificaciones'),
             onTap: (){

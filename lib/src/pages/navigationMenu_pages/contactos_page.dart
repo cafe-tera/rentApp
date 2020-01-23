@@ -2,6 +2,7 @@
 // flutter imports
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
+import 'package:rent_app/src/pages/Perfil_pages/user_perfil_page.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
@@ -189,7 +190,9 @@ class _ContactosPageState extends State<ContactosPage> {
 
           ],
         ),
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).pushNamed(PerfilPage.routeName);
+        },
       ),
     );
   }

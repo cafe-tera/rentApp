@@ -55,6 +55,9 @@ class _PerfilPageState extends State<PerfilPage> {
 
 
   Widget _encabezado(var size) {
+    double ratingBarSize = 25.0;
+    int starCount = 5;
+    double rating = 3.5;
     return Container(
       child: Row(
         children: <Widget>[
@@ -62,7 +65,7 @@ class _PerfilPageState extends State<PerfilPage> {
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
-              _rattingBar(),
+              _ratingBar(ratingBarSize,rating, starCount),
               SizedBox(height: 20,),
               _actionButtoms(),
             ],
@@ -115,16 +118,14 @@ class _PerfilPageState extends State<PerfilPage> {
     );
   }
 
-  Widget _rattingBar() {
-    double rating = 3.5;
-    int starCount = 5;
+  Widget _ratingBar(double ratingBarSize, double rating, int starCount) {
     return Container(
       color: Colors.white,
       child: Column(
         children: <Widget>[
           Center(
             child: StarRating(
-              size: 25.0,
+              size: ratingBarSize,
               rating: rating,
               color: Colors.orange,
               borderColor: Colors.grey,

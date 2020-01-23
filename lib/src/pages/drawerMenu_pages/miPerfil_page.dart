@@ -8,24 +8,24 @@ import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-class PerfilPage extends StatefulWidget {
-  const PerfilPage({
+class MiPerfilPage extends StatefulWidget {
+  const MiPerfilPage({
     Key key,
   }) : super(key: key);
-  static final String routeName = 'perfil';
+  static final String routeName = 'mi_perfil';
 
   @override
-  _PerfilPageState createState() => _PerfilPageState();
+  _MiPerfilPageState createState() => _MiPerfilPageState();
 }
 
-class _PerfilPageState extends State<PerfilPage> {
+class _MiPerfilPageState extends State<MiPerfilPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Perfil Page'),
+          title: Text('Mi Perfil Page'),
           backgroundColor: Color(colors.azulGeneral),
           actions: <Widget>[
             IconButton(

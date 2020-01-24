@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
-//import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 

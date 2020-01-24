@@ -14,7 +14,7 @@ class _NotificacionesProvider{
 
   Future<List<dynamic>> cargarData() async {
     
-    final resp = await rootBundle.loadString('data/noficiaciones.json');
+    final resp = await rootBundle.loadString('data/notificaciones.json');
 
     Map dataMap = json.decode( resp );
     items = dataMap['notificaciones'];

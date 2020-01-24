@@ -185,7 +185,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     return Row(
       children: <Widget>[
         SizedBox(
-          width: size.width * 0.05,
+          width: size.width * 0.075,
         ),
         Container(
           width: size.width * 0.4,

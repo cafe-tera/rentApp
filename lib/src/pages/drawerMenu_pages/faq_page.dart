@@ -4,25 +4,24 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/notificaciones_provider.dart';
+import 'package:rent_app/src/providers/faq_provider.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-
-class NotificacionesPage extends StatefulWidget {
-  const NotificacionesPage({ Key key,}) : super(key: key);
-  static final String routeName = 'notificaciones';
+class FaqPage extends StatefulWidget{
+  const FaqPage({ Key key, }) : super(key: key);
+  static final String routeName = 'faq';
 
   @override
-  _NotificacionesPageState createState() => _NotificacionesPageState();
+  _FaqPageState createState() => _FaqPageState();
 }
 
-class _NotificacionesPageState extends State<NotificacionesPage>{
+class _FaqPageState extends State<FaqPage>{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Notificaciones Page'),
+        title: Text('FAQ'),
       ),
     );
   }

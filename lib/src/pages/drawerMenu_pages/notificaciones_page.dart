@@ -84,18 +84,20 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
         children: <Widget>[
           Expanded(
             child: Container(
+              padding: EdgeInsets.only(left: 10.0, top: 10.0),
               alignment: Alignment.topLeft,
               child: Text(
                 item['Titulo'],
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  ),
+                ),
               ),
             ),
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.only(right:10.0, top: 10.0),
               alignment: Alignment.topRight,
               child: Text(
                 item['Timestamp'],
@@ -109,9 +111,11 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
 
   Widget _textoNotificacion(item){
     return Container(
-      child: Text(
-        item['Texto'],
-      ),
+      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+      child: 
+        Text(
+          item['Texto'],
+        ),
     );
   }
 }

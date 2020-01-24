@@ -1,6 +1,6 @@
 {
     "faq": [{
-            "Pregunta":   "¿Cómo publico un domicilio",
+            "Pregunta":   "¿Cómo publico un domicilio?",
             "Respuesta":    "En la ventana 'Mis Domicilios' tienes que seleccionar 'Agregar Domicilio', rellenar el formulario y listo! nuestro equipo revisará que tu publicación cumpla con lo requerido. "
         },
         {
@@ -9,7 +9,7 @@
         },
         {
             "Pregunta": "¿Qué pasa si tengo algun problema con la aplicación?",
-            "Respuesta":    "Puedes escribirnos a rentapp@correofalso.cl explicandonos tu problema, ojalá con capturas de pantalla, y te responderemos a la brebedad ;)"
+            "Respuesta":    "Puedes escribirnos a rentapp@correofalso.cl explicandonos tu problema, ojalá con capturas de pantalla, y te responderemos a la brevedad ;)"
         }
     ]
 }

@@ -15,7 +15,10 @@ import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
-import 'package:rent_app/src/pages/navigationMenu_pages/buscar_domicilios_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_page.dart';
+
+import 'package:rent_app/src/pages/buscar_pages/buscar_domicilio_page.dart';
+import 'package:rent_app/src/pages/buscar_pages/buscar_roomate_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -24,7 +27,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
         MisDomiciliosPage.routeName      :   (BuildContext context) => MisDomiciliosPage(),
         LogInUpPage.routeName            :   (BuildContext context) => LogInUpPage(),
-        BuscarDomiciliosPage.routeName   :   (BuildContext context) => BuscarDomiciliosPage(),
+        BuscarPage.routeName             :   (BuildContext context) => BuscarPage(),
         ChatPage.routeName               :   (BuildContext context) => ChatPage(),
         HomePage.routeName               :   (BuildContext context) => HomePage(),
         ContactosPage.routeName          :   (BuildContext context) => ContactosPage(),
@@ -35,6 +38,10 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
         TiendaPage.routeName             :   (BuildContext context) => TiendaPage(),
         ConfigPage.routeName             :   (BuildContext context) => ConfigPage(),
         DomicilioPerfilPage.routeName    :   (BuildContext context) => DomicilioPerfilPage(),
+
+        BuscarDomicilioPage.routeName    :   (BuildContext context) => BuscarDomicilioPage(),
+        BuscarRoomatePage.routeName      :   (BuildContext context) => BuscarRoomatePage(),
+        
   
   };
   

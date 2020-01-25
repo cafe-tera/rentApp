@@ -28,4 +28,6 @@ const int textoDomInfo = 0x8A000000;
 const int botonEditar = 0xFF1B4491;
 const int botonVer = 0xFFFFFFFF;
 
+const int buscarDomicilio = 0xFF607D8B;
+
 

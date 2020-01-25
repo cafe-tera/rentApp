@@ -8,18 +8,18 @@ import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
-class BuscarDomiciliosPage extends StatelessWidget {
-  const BuscarDomiciliosPage({ Key key}) : super(key: key);
+class BuscarRoomatePage extends StatelessWidget {
+  const BuscarRoomatePage({ Key key}) : super(key: key);
 
-  static final String routeName = 'buscarDomicilios';
+  static final String routeName = 'buscar_roomate';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Buscar Domicilios'),
+        title: Text('Buscar Roomate'),
       ),
-      drawer: MenuWidget(),
     );
   }
+  
 }

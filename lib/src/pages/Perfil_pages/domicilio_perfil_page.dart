@@ -7,15 +7,12 @@ import 'package:flutter_rating/flutter_rating.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-bool _liked = false;
-
 class DomicilioPerfilPage extends StatefulWidget {
-  //const DomicilioPerfilPage({ Key key,}) : super(key: key);
   static final String routeName = 'perfildomicilio';
 
   final domiciliosData;
   
-  DomicilioPerfilPage({this.domiciliosData});
+  DomicilioPerfilPage({this.domiciliosData}); //To receive data from parent page
 
   @override
   _DomicilioPerfilPageState createState() => _DomicilioPerfilPageState();
@@ -35,10 +32,10 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
           IconButton(
             onPressed: (){
               setState((){
-                _favoriteStateChange(_liked);
+                _favoriteStateChange(widget.domiciliosData['Favorito']);
               });
             },
-            icon: _favoritedIconDefault
+            icon: Icon( (widget.domiciliosData['Favorito'])? Icons.favorite : Icons.favorite_border ),//_favoritedIconDefault
           )
         ],
       ),  
@@ -273,8 +270,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       child: RaisedButton(
         color: Color(colors.azulGeneral),
         child: Text(
-                'Agregar Comentario',
-                style: TextStyle(color: Colors.white, fontSize: 11),
+          'Agregar Comentario',
+          style: TextStyle(color: Colors.white, fontSize: 11),
         ),
         onPressed: (){},
       ),
@@ -283,8 +280,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
 
   Icon _favoritedIconDefault = new Icon(
     Icons.favorite_border,
-    color: Colors.white,
-    semanticLabel: 'Añadir a favoritos'
+    color: Colors.white,    
   );
     
   _favoriteStateChange(_liked){
@@ -292,7 +288,6 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       _favoritedIconDefault = new Icon(
         Icons.favorite_border,
         color: Colors.white,
-        //semanticLabel: 'Añadir a favoritos'
       );
       _liked = false;
     }
@@ -300,7 +295,6 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       _favoritedIconDefault = new Icon(
         Icons.favorite,
         color: Colors.white,
-        //semanticLabel: 'Añadir a favoritos'
       );
       _liked = true;
     }

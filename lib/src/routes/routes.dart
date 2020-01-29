@@ -17,6 +17,7 @@ import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_domicilios_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/faq_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/domiciliosFavoritos_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -37,6 +38,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
         ConfigPage.routeName             :   (BuildContext context) => ConfigPage(),
         DomicilioPerfilPage.routeName    :   (BuildContext context) => DomicilioPerfilPage(),
         FaqPage.routeName                :   (BuildContext context) => FaqPage(),
+        MisDomiciliosFavoritosPage.routename       :   (BuildContext context) => MisDomiciliosFavoritosPage(),
   };
   
 }

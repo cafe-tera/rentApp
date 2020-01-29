@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/pages/drawerMenu_pages/config_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/domiciliosFavoritos_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
@@ -53,6 +54,14 @@ class MenuWidget extends StatelessWidget {
             title: Text('Notificaciones'),
             onTap: (){
               Navigator.pushNamed(context, NotificacionesPage.routeName);
+            },
+          ),
+
+          ListTile(
+            leading: Icon( Icons.favorite, color: Color(colors.iconos)),
+            title: Text('Mis favoritos'),
+            onTap: (){
+              Navigator.pushNamed(context, MisDomiciliosFavoritosPage.routename);
             },
           ),
 

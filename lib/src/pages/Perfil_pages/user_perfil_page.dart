@@ -5,6 +5,7 @@ import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -57,9 +58,6 @@ class _PerfilPageState extends State<PerfilPage> {
 
 
   Widget _encabezado(var size) {
-    double ratingBarSize = 25.0;
-    int starCount = 5;
-    double rating = 3.5;
     return Container(
       child: Row(
         children: <Widget>[
@@ -67,7 +65,7 @@ class _PerfilPageState extends State<PerfilPage> {
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
-              _ratingBar(ratingBarSize,rating, starCount),
+              RatingBarWidget(ratingValue: 4.0,),
               SizedBox(height: 20,),
               _actionButtoms(),
             ],
@@ -116,36 +114,6 @@ class _PerfilPageState extends State<PerfilPage> {
             fadeInDuration: Duration(milliseconds: 200),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _ratingBar(double ratingBarSize, double rating, int starCount) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Center(
-            child: StarRating(
-              size: ratingBarSize,
-              rating: rating,
-              color: Colors.orange,
-              borderColor: Colors.grey,
-              starCount: starCount,
-              onRatingChanged: (rating) => setState(
-                () {
-                  rating = rating;
-                },
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              "Your rating is: $rating",
-              style: new TextStyle(fontSize: 10.0),
-            ),
-          ),
-        ],
       ),
     );
   }

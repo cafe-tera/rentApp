@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/providers/domicilios_provider.dart';
-import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';

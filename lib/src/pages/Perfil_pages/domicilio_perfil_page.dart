@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
@@ -13,7 +12,10 @@ class DomicilioPerfilPage extends StatefulWidget {
 
   final domiciliosData;
   
-  DomicilioPerfilPage({this.domiciliosData}); //To receive data from parent page
+  DomicilioPerfilPage({
+    Key key,
+    this.domiciliosData
+  }) : super(key: key); //To receive data from parent page
 
   @override
   _DomicilioPerfilPageState createState() => _DomicilioPerfilPageState();
@@ -75,7 +77,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
               ),
               SizedBox(height: 20,),
               Container(
-                child: RatingBarWidget(ratingValue: 1.5),
+                child: RatingBarWidget(ratingValue: 1.5, barSize: 25.0,),
               ),
               SizedBox(height: 20,),
           ],)

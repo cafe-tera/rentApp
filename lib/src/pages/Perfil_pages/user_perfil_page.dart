@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
@@ -10,10 +9,15 @@ import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class PerfilPage extends StatefulWidget {
+  static final String routeName = 'perfil';
+
+  final perfilData;
+
   const PerfilPage({
     Key key,
+    this.perfilData,
   }) : super(key: key);
-  static final String routeName = 'perfil';
+  
 
   @override
   _PerfilPageState createState() => _PerfilPageState();
@@ -23,49 +27,45 @@ class _PerfilPageState extends State<PerfilPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
-    
-
+ 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Perfil Page'),
-          backgroundColor: Color(colors.azulGeneral),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: (){},
-            )
-          ],
-        ),
-        body: Container(
-          height: size.height,
-          color: Colors.white,
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-
-                _encabezado(size),
-                SizedBox(height: 20,), //imagen de perfil, ratingbar, botones
-                _comentarios(size),
-                SizedBox(height: 20,),
-                _domicilios(size),
-
-              ],
-            ),
+      appBar: AppBar(
+        title: Text('Perfil Page'),
+        backgroundColor: Color(colors.azulGeneral),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: (){},
+          )
+        ],
+      ),
+      body: Container(
+        height: size.height,
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              _encabezado(size),
+              SizedBox(height: 20,), //imagen de perfil, ratingbar, botones
+              _comentarios(size),
+              SizedBox(height: 20,),
+              _domicilios(size),
+            ],
           ),
-        ));
+        ),
+      )
+    );
   }
-
 
   Widget _encabezado(var size) {
     return Container(
       child: Row(
         children: <Widget>[
-          _imagenPerfil(),
+          _imagenPerfil(widget.perfilData),
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
-              RatingBarWidget(ratingValue: 4.0,),
+              RatingBarWidget(ratingValue: widget.perfilData['Puntos'], barSize: 25.0,),
               SizedBox(height: 20,),
               _actionButtoms(),
             ],
@@ -89,7 +89,7 @@ class _PerfilPageState extends State<PerfilPage> {
     );
   }
 
-  Widget _imagenPerfil() {
+  Widget _imagenPerfil(perfilData) {
     return Container(
       margin: EdgeInsets.all(3.0),
       decoration: BoxDecoration(
@@ -107,7 +107,7 @@ class _PerfilPageState extends State<PerfilPage> {
             fit: BoxFit.cover,
             alignment: Alignment.center,
             image: NetworkImage(
-                'https://pbs.twimg.com/profile_images/626103802559492096/3r9JXu4X_400x400.jpg'),
+              perfilData['Imagen']),
             placeholder: AssetImage(
               'assets/Alternate-Preloader.gif',
             ),

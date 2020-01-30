@@ -98,6 +98,7 @@ class _MisDomiciliosFavoritosPageState extends State<MisDomiciliosFavoritosPage>
           ),
         ),
       );
+      
       domiciliosFavoritos..add(widgetTemp);
     });
 

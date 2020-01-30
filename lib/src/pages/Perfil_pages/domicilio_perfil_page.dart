@@ -61,23 +61,24 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     );
   }
 
-  Widget _encabezado(var size, domData){
+  Widget _encabezado(var size, item){
+    double rating = item['Puntos'];
     return Container(
       child: Row(
         children: <Widget>[
           SizedBox(width: 20,),
-          _imagenDomicilio(domData),
+          _imagenDomicilio(item),
           SizedBox(width: 40,),
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
               Text(
-                domData['Tipo'],
+                item['Tipo'],
                 style: TextStyle(fontSize: 14),
               ),
               SizedBox(height: 20,),
               Container(
-                child: RatingBarWidget(ratingValue: 1.5, barSize: 25.0,),
+                child: RatingBarWidget(ratingValue: rating, barSize: 25.0,),
               ),
               SizedBox(height: 20,),
           ],)

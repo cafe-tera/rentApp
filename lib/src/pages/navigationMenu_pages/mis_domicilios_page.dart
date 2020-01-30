@@ -35,7 +35,6 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
   }
 
   Widget _lista() {
-
     return FutureBuilder(
       future: domiciliosProvider.cargarData(),
       initialData: [],
@@ -57,47 +56,48 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
       final widgetTemp = Container(
         height: 75.0,
         child: Material(
-            child: Card(
-                elevation: 5.0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-
-                child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => DomicilioPerfilPage(
-                          domiciliosData: domicilio,
-                        )
-                      ),
-                    );
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
-                        flex: 20,
-                        child: ImagenDomicilioWidget(item: domicilio),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
-                        flex: 30,
-                        child: ContenidoDomicilioListaWidget(item: domicilio),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: EstadoDomicilioWidget(item: domicilio),
-                      ),
-                    ],
+          child: Card(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0)
+            ),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => DomicilioPerfilPage(
+                      domiciliosData: domicilio,
+                      )
+                    ),
+                  );
+              },
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
                   ),
-                )),
+                  Expanded(
+                    flex: 20,
+                    child: ImagenDomicilioWidget(item: domicilio),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 30,
+                    child: ContenidoDomicilioListaWidget(item: domicilio),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: EstadoDomicilioWidget(item: domicilio),
+                  ),
+                ],
+              ),
+            )
+          ),
         ),
       );
 

@@ -4,6 +4,7 @@
             "Texto": "Departamento vacio",
             "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
             "Estado": "red",
+            "Puntos": 4.0,
             "Favorito": true
         },
         {
@@ -11,6 +12,7 @@
             "Texto": "Casa amueblada, mas texto, mas texto, mas texto, mas texto, mas texto, mas texto, mas texto",
             "Imagen": "https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282",
             "Estado": "green",
+            "Puntos": 1.0,
             "Favorito": true
         },
         {
@@ -18,6 +20,7 @@
             "Texto": "ranchito pa relajarse",
             "Imagen": "https://q-cf.bstatic.com/images/hotel/max1024x768/114/114084793.jpg",
             "Estado": "green",
+            "Puntos": 5.0,
             "Favorito": true
         }
     ]

@@ -8,6 +8,7 @@ import 'package:rent_app/src/providers/domicilios_favoritos_provider.dart';
 import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -76,7 +77,7 @@ class _MisDomiciliosFavoritosPageState extends State<MisDomiciliosFavoritosPage>
                   ),
                   Expanded(
                     flex: 20,
-                    child: _imagenDomicilio(domicilio),
+                    child: ImagenDomicilioWidget(item: domicilio),
                   ),
                   Expanded(
                     flex: 1,
@@ -101,24 +102,6 @@ class _MisDomiciliosFavoritosPageState extends State<MisDomiciliosFavoritosPage>
 
     domiciliosFavoritos..add(Divider());
     return domiciliosFavoritos;
-  }
-
-  Widget _imagenDomicilio(item) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5.0),
-        child: FadeInImage(
-          fit: BoxFit.cover,
-          alignment: Alignment.center,
-          image: NetworkImage(
-            item['Imagen'],
-          ),
-          placeholder: AssetImage('assets/Alternate-Preloader.gif',),
-          fadeInDuration: Duration(milliseconds: 200),
-        ),
-      ),
-    );
   }
 
   Widget _estadoDomicilio(item) {

@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 import 'package:rent_app/src/pages/Perfil_pages/user_perfil_page.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/providers/contactos_provider.dart';
+import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -118,7 +118,7 @@ class _ContactosPageState extends State<ContactosPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              _perfilboton(),
+              _perfilboton(item),
               _mensajeBoton(),
             ],
           ),
@@ -129,8 +129,6 @@ class _ContactosPageState extends State<ContactosPage> {
   }
 
   Widget _encabezado(item) {
-    double ratingBarSize = 12.0;
-    int starCount = 5;
     double rating  = item['Puntos'];
 
     return Row(
@@ -142,40 +140,13 @@ class _ContactosPageState extends State<ContactosPage> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
 
-        _rattingBar(ratingBarSize, rating, starCount),
+        RatingBarWidget(ratingValue: rating, barSize: 12.0,)
 
       ],
     );
   }
 
-  Widget _rattingBar(double ratingBarSize, double rating, int starCount) {
-
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Center(
-            child: StarRating(
-              size: ratingBarSize,
-              rating: rating,
-              color: Colors.orange,
-              borderColor: Colors.grey,
-              starCount: starCount,
-              onRatingChanged: (rating) => setState(
-                () {
-                  rating = rating;
-                },
-              ),
-            ),
-          ),
-          
-        ],
-      ),
-    );
-
-  }
-
-  Widget _perfilboton() {
+  Widget _perfilboton(item) {
     return Container(
       height: 23,
       width: 75,
@@ -191,7 +162,14 @@ class _ContactosPageState extends State<ContactosPage> {
           ],
         ),
         onPressed: (){
-          Navigator.of(context).pushNamed(PerfilPage.routeName);
+          Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => PerfilPage(
+                perfilData: item,
+              )
+            ),
+          );
         },
       ),
     );

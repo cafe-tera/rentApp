@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "106812984072",
+    "firebase_url": "https://rentapp-a9a9d.firebaseio.com",
+    "project_id": "rentapp-a9a9d",
+    "storage_bucket": "rentapp-a9a9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106812984072:android:6d1ee25861c248624efabd",
+        "android_client_info": {
+          "package_name": "com.example.rent_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106812984072-vb6n1a8rinnphq41q2p7sf6n3ihsdrua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKDwytKal9calCJY7Wu_vQqWUMe0036cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106812984072-vb6n1a8rinnphq41q2p7sf6n3ihsdrua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,9 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
+import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,10 @@ class DomicilioPerfilPage extends StatefulWidget {
 
   final domiciliosData;
   
-  DomicilioPerfilPage({this.domiciliosData}); //To receive data from parent page
+  DomicilioPerfilPage({
+    Key key,
+    this.domiciliosData
+  }) : super(key: key); //To receive data from parent page
 
   @override
   _DomicilioPerfilPageState createState() => _DomicilioPerfilPageState();
@@ -58,22 +61,25 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
     );
   }
 
-  Widget _encabezado(var size, domData){
+  Widget _encabezado(var size, item){
+    double rating = item['Puntos'];
     return Container(
       child: Row(
         children: <Widget>[
           SizedBox(width: 20,),
-          _imagenDomicilio(domData),
+          _imagenDomicilio(item),
           SizedBox(width: 40,),
           Column(
             children: <Widget>[
               SizedBox(height: 20,),
               Text(
-                domData['Tipo'],
+                item['Tipo'],
                 style: TextStyle(fontSize: 14),
               ),
               SizedBox(height: 20,),
-              _rattingBar(),
+              Container(
+                child: RatingBarWidget(ratingValue: rating, barSize: 25.0,),
+              ),
               SizedBox(height: 20,),
           ],)
         ],
@@ -104,38 +110,6 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
             fadeInDuration: Duration(milliseconds: 200),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _rattingBar() {
-    final int starCount = 5;
-    double ratting = 3.5;
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Center(
-            child: StarRating(
-              size: 25.0,
-              rating: ratting,
-              color: Colors.orange,
-              borderColor: Colors.grey,
-              starCount: starCount,
-              onRatingChanged: (ratting) => setState(
-                () {
-                  ratting = ratting;
-                },
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              "Your rating is: $ratting",
-              style: new TextStyle(fontSize: 10.0),
-            ),
-          ),
-        ],
       ),
     );
   }

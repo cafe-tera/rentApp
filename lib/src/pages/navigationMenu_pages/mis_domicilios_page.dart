@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/providers/domicilios_provider.dart';
-import 'package:rent_app/src/utils/estados_util.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/estadoDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/contenidoDomicilioLista_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +35,6 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
   }
 
   Widget _lista() {
-
     return FutureBuilder(
       future: domiciliosProvider.cargarData(),
       initialData: [],
@@ -55,47 +56,48 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
       final widgetTemp = Container(
         height: 75.0,
         child: Material(
-            child: Card(
-                elevation: 5.0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-
-                child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) => DomicilioPerfilPage(
-                          domiciliosData: domicilio,
-                        )
-                      ),
-                    );
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
-                        flex: 20,
-                        child: _imagenDomicilio(domicilio),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox(),
-                      ),
-                      Expanded(
-                        flex: 30,
-                        child: _contenidoDomicilio(domicilio),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: _estadoDomicilio(domicilio),
-                      ),
-                    ],
+          child: Card(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0)
+            ),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => DomicilioPerfilPage(
+                      domiciliosData: domicilio,
+                      )
+                    ),
+                  );
+              },
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
                   ),
-                )),
+                  Expanded(
+                    flex: 20,
+                    child: ImagenDomicilioWidget(item: domicilio),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 30,
+                    child: ContenidoDomicilioListaWidget(item: domicilio),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: EstadoDomicilioWidget(item: domicilio),
+                  ),
+                ],
+              ),
+            )
+          ),
         ),
       );
 
@@ -106,84 +108,6 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
     domicilios..add(_agregarDomBoton());
     domicilios..add(Divider());
     return domicilios;
-  }
-
-  Widget _imagenDomicilio(item) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5.0),
-        child: FadeInImage(
-          fit: BoxFit.cover,
-          alignment: Alignment.center,
-          image: NetworkImage(
-            item['Imagen'],
-          ),
-          placeholder: AssetImage('assets/Alternate-Preloader.gif',),
-          fadeInDuration: Duration(milliseconds: 200),
-        ),
-      ),
-    );
-  }
-
-  Widget _estadoDomicilio(item) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2.0),
-        color: getEstado(item['Estado']),
-      ),
-    );
-  }
-
-  Widget _contenidoDomicilio(item) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 4,
-            child: Container(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  item['Tipo'],
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
-          ),
-          Expanded(
-            flex: 7,
-            child: Container(
-              alignment: Alignment.topLeft,
-              child: Text(
-                item['Texto'],
-                style: TextStyle(fontSize: 12, color: Color(colors.textoDomInfo)),
-              ),
-            ),
-          ),
-          // Expanded(
-          //   flex: 3,
-          //   child: Container(
-          //     width: 150,
-          //     child: RaisedButton(
-          //       color: Color(colors.azulGeneral),
-          //       child: Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //         children: <Widget>[
-
-          //           Icon(Icons.assistant_photo, color: Color(colors.botonVer), size: 10,),
-          //           Text('ver detalle', style: TextStyle(color: Color(colors.botonVer), fontSize: 10),),
-          //         ],
-          //       ),
-          //       onPressed: (){},
-          //     ),
-
-          //   ),
-          // ),
-          Expanded(
-            flex: 1,
-            child: Divider(),
-          ),
-        ],
-      ),
-    );
   }
 
   Widget _agregarDomBoton() {

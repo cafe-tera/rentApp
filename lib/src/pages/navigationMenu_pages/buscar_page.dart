@@ -20,9 +20,9 @@ class BuscarPage extends StatefulWidget {
 }
 
 class _BuscarPageState extends State<BuscarPage> {
+  
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppbarWidget(
         title: Text('Buscar'),
@@ -34,8 +34,6 @@ class _BuscarPageState extends State<BuscarPage> {
           _BuscarMateBoton(),
         ]
       ) 
-      
-
     );
   }
 

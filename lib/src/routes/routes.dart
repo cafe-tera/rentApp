@@ -19,6 +19,7 @@ import 'package:rent_app/src/pages/navigationMenu_pages/buscar_page.dart';
 
 import 'package:rent_app/src/pages/buscar_pages/buscar_domicilio_page.dart';
 import 'package:rent_app/src/pages/buscar_pages/buscar_roomate_page.dart';
+import 'package:rent_app/src/pages/FormSearchFilter/form_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -41,7 +42,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
 
         BuscarDomicilioPage.routeName    :   (BuildContext context) => BuscarDomicilioPage(),
         BuscarRoomatePage.routeName      :   (BuildContext context) => BuscarRoomatePage(),
-        
+        FormPage.routeName               :   (BuildContext context) => FormPage(),
   
   };
   

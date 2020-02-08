@@ -1,13 +1,72 @@
 {
     "filtros": [{
-            "id": 0,
-            "tipo": "o",
-            "nombre": "Región"
-        },
-        {
-            "id": 1,
-            "tipo": "o",
-            "nombre": "Ciudad"
-        }
-    ]
+        "id": 0,
+        "tipo": "o",
+        "nombre": "Región",
+        "data": [{
+                "id": 1,
+                "nombre": "Tarapacá"
+            },
+            {
+                "id": 2,
+                "nombre": "Antofagasta"
+            },
+            {
+                "id": 3,
+                "nombre": "Atacama"
+            },
+            {
+                "id": 4,
+                "nombre": "Coquimbo"
+            },
+            {
+                "id": 5,
+                "nombre": "Valparaiso"
+            },
+            {
+                "id": 6,
+                "nombre": "O´Higgins"
+            },
+            {
+                "id": 7,
+                "nombre": "Maule"
+            },
+            {
+                "id": 8,
+                "nombre": "Biobío"
+            },
+            {
+                "id": 9,
+                "nombre": "La Araucanía"
+            },
+            {
+                "id": 10,
+                "nombre": "Los Lagos"
+            },
+            {
+                "id": 11,
+                "nombre": "Aysén"
+            },
+            {
+                "id": 12,
+                "nombre": "Magallanes"
+            },
+            {
+                "id": 13,
+                "nombre": "Metropolitana"
+            },
+            {
+                "id": 14,
+                "nombre": "Los Ríos"
+            },
+            {
+                "id": 15,
+                "nombre": "Arica"
+            },
+            {
+                "id": 16,
+                "nombre": "Ñuble"
+            }
+        ]
+    }]
 }

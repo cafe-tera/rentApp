@@ -20,7 +20,8 @@ class RatingBarWidget extends StatelessWidget{
   Widget build(BuildContext context){
     return Container(
       color: Colors.white,
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
             child: StarRating(
@@ -31,11 +32,14 @@ class RatingBarWidget extends StatelessWidget{
               starCount: starCount,
             ),
           ),
+          SizedBox(
+            width: 10,
+          ),
           Center(
             child: Text(
-              "Your rating is: $ratingValue",
+              "$ratingValue",
               style: TextStyle(
-                fontSize: 10.0,
+                fontSize: barSize*0.8,
               ),
             ),
           ),

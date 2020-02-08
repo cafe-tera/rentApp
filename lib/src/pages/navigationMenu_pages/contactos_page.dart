@@ -27,6 +27,7 @@ class _ContactosPageState extends State<ContactosPage> {
       appBar: AppbarWidget(
         title: Text('Contactos Page'),
       ),
+      
       drawer: MenuWidget(),
       body: _lista(),
     );
@@ -109,90 +110,27 @@ class _ContactosPageState extends State<ContactosPage> {
   Widget _contenidoContacto(item) {
     return Container(
       padding: EdgeInsets.only(top: 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-
-          _encabezado(item),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _perfilboton(item),
-              _mensajeBoton(),
-            ],
-          ),
-
-        ],
-      ),
+      child: _encabezado(item),
     );
   }
 
   Widget _encabezado(item) {
     double rating  = item['Puntos'];
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
 
         Text(
           item['Nombres']+' '+item['Apellidos'],
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        
+        SizedBox(height: 5,),
 
-        RatingBarWidget(ratingValue: rating, barSize: 12.0,)
+        RatingBarWidget(ratingValue: rating, barSize: 15.0,)
 
       ],
-    );
-  }
-
-  Widget _perfilboton(item) {
-    return Container(
-      height: 23,
-      width: 75,
-      child: RaisedButton(
-        color: Color(colors.azulGeneral),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-
-            Icon(Icons.person_pin, size: 10,color: Color(colors.fondoBlanco),),
-            Text('Perfil', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 8),),
-
-          ],
-        ),
-        onPressed: (){
-          Navigator.push(
-            context, 
-            MaterialPageRoute(
-              builder: (context) => PerfilPage(
-                perfilData: item,
-              )
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _mensajeBoton() {
-    return Container(
-      height: 23,
-      width: 75,
-      child: RaisedButton(
-            
-        color: Color(colors.azulGeneral),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-
-            Icon(Icons.message, size: 10,color: Color(colors.fondoBlanco),),
-            Text('Mensaje', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 8),),
-
-          ],
-        ),
-        onPressed: (){},
-      ),
     );
   }
 }

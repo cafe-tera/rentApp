@@ -15,7 +15,7 @@ import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
-import 'package:rent_app/src/pages/navigationMenu_pages/buscar_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_page.dart';
 
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_domicilio_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_roomate_page.dart';

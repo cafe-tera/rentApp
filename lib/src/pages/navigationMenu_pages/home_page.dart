@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/pages/navigationMenu_pages/buscar_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/chat_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mapa_page.dart';

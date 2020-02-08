@@ -4,55 +4,51 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
-import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
-import 'package:rent_app/src/providers/domicilios_provider.dart';
+import 'package:rent_app/src/providers/domicilios_favoritos_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';
 import 'package:rent_app/src/widgets/estadoDomicilio_widget.dart';
 import 'package:rent_app/src/widgets/contenidoDomicilioLista_widget.dart';
-import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-class MisDomiciliosPage extends StatefulWidget {
-  const MisDomiciliosPage({Key key}) : super(key: key);
-  static final String routeName = 'misDomicilios';
+class MisDomiciliosFavoritosPage extends StatefulWidget{
+  const MisDomiciliosFavoritosPage({Key key}) : super(key: key);
+  static final String routename = 'misDomiciliosFavoritos';
 
   @override
-  _MisDomiciliosPageState createState() => _MisDomiciliosPageState();
+  _MisDomiciliosFavoritosPageState createState() => _MisDomiciliosFavoritosPageState();
 }
 
-class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
-  @override
-  Widget build(BuildContext context) {
+class _MisDomiciliosFavoritosPageState extends State<MisDomiciliosFavoritosPage> {
+  @override 
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Mis Domicilios'),
+        title: Text('Mis Domicilios Favoritos'),
       ),
-      drawer: MenuWidget(),
       body: _lista(),
     );
   }
 
-  Widget _lista() {
+  Widget _lista(){
     return FutureBuilder(
-      future: domiciliosProvider.cargarData(),
+      future: domiciliosFavoritosProvider.cargarData(),
       initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
         return Container(
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            children: _listaDomicilios(snapshot.data, context),
+            children: _listaDomiciliosFavoritos(snapshot.data, context),
           ),
         );
       },
     );
   }
 
-  List<Widget> _listaDomicilios(List<dynamic> data, BuildContext context) {
-    final List<Widget> domicilios = [];
+  List<Widget> _listaDomiciliosFavoritos(List<dynamic> data, BuildContext context){
+    final List<Widget> domiciliosFavoritos = [];
 
-    data.forEach((domicilio) {
+    data.forEach((domicilio){
       final widgetTemp = Container(
         height: 75.0,
         child: Material(
@@ -64,13 +60,13 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
             child: InkWell(
               onTap: (){
                 Navigator.push(
-                  context, 
+                  context,
                   MaterialPageRoute(
                     builder: (context) => DomicilioPerfilPage(
                       domiciliosData: domicilio,
-                      )
-                    ),
-                  );
+                    )
+                  ),
+                );
               },
               child: Row(
                 children: <Widget>[
@@ -93,45 +89,19 @@ class _MisDomiciliosPageState extends State<MisDomiciliosPage> {
                   Expanded(
                     flex: 2,
                     child: EstadoDomicilioWidget(item: domicilio),
-                  ),
+                  )
                 ],
               ),
-            )
+            ),
           ),
         ),
       );
-
-      domicilios..add(widgetTemp);
+      
+      domiciliosFavoritos..add(widgetTemp);
     });
 
-    domicilios..add(Divider());
-    domicilios..add(_agregarDomBoton());
-    domicilios..add(Divider());
-    return domicilios;
+    domiciliosFavoritos..add(Divider());
+    return domiciliosFavoritos;
   }
-
-  Widget _agregarDomBoton() {
-    return Container(
-        height: 45,
-        child: RaisedButton(
-          color: Color(colors.agregarDomicilio),
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-
-              Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
-              Text('Agregar Domicilio', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
-              Column()
-
-            ],
-          ),
-          onPressed: (){
-            Navigator.pushReplacementNamed(context, TiendaPage.routeName);
-          },
-        ),
-      );
-  }
+  
 }

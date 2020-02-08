@@ -1,0 +1,18 @@
+{
+    "notificaciones":[{
+            "Titulo":   "Publicación",
+            "Texto":    "Tu publicación está por vencer! Revisa si quieres renovarla",
+            "Timestamp":    "2012-04-23T18:25:43.511Z"
+        },
+        {
+            "Titulo":   "Arriendo",
+            "Texto":    "Alguien ha dejado un comentario en tu publicación!",
+            "Timestamp":    "2012-04-24T18:25:43.511Z"
+        },
+        {
+            "Titulo":   "Chat",
+            "Texto":    "Alguien te ha enviado un mensaje! Responde rápido para que no pierda el interés",
+            "Timestamp":    "2012-04-25T18:25:43.511Z"
+        }
+    ]
+}

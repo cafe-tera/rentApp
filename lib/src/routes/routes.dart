@@ -17,9 +17,12 @@ import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_page.dart';
 
-import 'package:rent_app/src/pages/buscar_pages/buscar_domicilio_page.dart';
-import 'package:rent_app/src/pages/buscar_pages/buscar_roomate_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_domicilio_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_roomate_page.dart';
 import 'package:rent_app/src/pages/FormSearchFilter/form_page.dart';
+
+import 'package:rent_app/src/pages/drawerMenu_pages/faq_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/domiciliosFavoritos_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -44,6 +47,8 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
         BuscarRoomatePage.routeName      :   (BuildContext context) => BuscarRoomatePage(),
         FormPage.routeName               :   (BuildContext context) => FormPage(),
   
+        FaqPage.routeName                :   (BuildContext context) => FaqPage(),
+        MisDomiciliosFavoritosPage.routename       :   (BuildContext context) => MisDomiciliosFavoritosPage(),
   };
   
 }

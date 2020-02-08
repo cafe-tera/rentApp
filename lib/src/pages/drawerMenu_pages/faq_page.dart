@@ -4,90 +4,83 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/notificaciones_provider.dart';
+import 'package:rent_app/src/providers/faq_provider.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-
-class NotificacionesPage extends StatefulWidget {
-  const NotificacionesPage({ Key key,}) : super(key: key);
-  static final String routeName = 'notificaciones';
+class FaqPage extends StatefulWidget{
+  const FaqPage({ Key key, }) : super(key: key);
+  static final String routeName = 'faq';
 
   @override
-  _NotificacionesPageState createState() => _NotificacionesPageState();
+  _FaqPageState createState() => _FaqPageState();
 }
 
-class _NotificacionesPageState extends State<NotificacionesPage>{
+class _FaqPageState extends State<FaqPage>{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Notificaciones Page'),
+        title: Text('FAQ'),
       ),
       body: _lista(),
     );
   }
 
   Widget _lista(){
-
     return FutureBuilder(
-      future: notificacionesProvider.cargarData(),
+      future: faqProvider.cargarData(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
         return Container(
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            children: _listaNotificaciones(snapshot.data, context),
+            children: _listaFaq(snapshot.data, context),
           ),
         );
-      } ,
+      },
     );
   }
 
-  List<Widget> _listaNotificaciones(List<dynamic> data, BuildContext context){
-    final List<Widget> notificaciones = [];
+  List<Widget> _listaFaq(List<dynamic> data, BuildContext context){
+    final List<Widget> faqList = [];
     var size = MediaQuery.of(context).size;
 
-    data.forEach((notificacion){
+    data.forEach((faq){
       final widgetTemp = Container(
-        height: 100.0,
+        height: 150.0,
         child: Material(
           child: Card(
             elevation: 5.0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(5.0)
             ),
-            child:  Column(
+            child: Column(
               children: <Widget>[
                 Expanded(
                   flex: size.width.toInt(),
-                  child: _headerNotificacion(notificacion),
+                  child: _textoFaq(faq),
                 ),
-                Expanded(
-                  flex: size.width.toInt(),
-                  child: _textoNotificacion(notificacion),
-                )
               ],
             ),
           ),
         ),
       );
-
-      notificaciones..add(widgetTemp);
+      faqList..add(widgetTemp);
     });
 
-    return notificaciones;
+    return faqList;
   }
 
-  Widget _headerNotificacion(item){
+  Widget _textoFaq(item){
     return Container(
-      child: Row(
+      child: Column(
         children: <Widget>[
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 10.0, top: 10.0),
+              padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
               alignment: Alignment.topLeft,
               child: Text(
-                item['Titulo'],
+                item['Pregunta'],
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -97,25 +90,14 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(right:10.0, top: 10.0),
-              alignment: Alignment.topRight,
+              padding: EdgeInsets.only(left:10.0, right: 10.0),
               child: Text(
-                item['Timestamp'],
+                item['Respuesta'],
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _textoNotificacion(item){
-    return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0),
-      child: 
-        Text(
-          item['Texto'],
-        ),
     );
   }
 }

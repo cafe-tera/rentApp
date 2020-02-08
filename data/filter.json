@@ -1,0 +1,13 @@
+{
+    "filtros": [{
+            "id": 0,
+            "tipo": "o",
+            "nombre": "Región"
+        },
+        {
+            "id": 1,
+            "tipo": "o",
+            "nombre": "Ciudad"
+        }
+    ]
+}

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
-import 'package:rent_app/src/pages/buscar_pages/buscar_domicilio_page.dart';
-import 'package:rent_app/src/pages/buscar_pages/buscar_roomate_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_domicilio_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_roomate_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 

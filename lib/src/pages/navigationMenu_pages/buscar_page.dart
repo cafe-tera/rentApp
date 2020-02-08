@@ -8,10 +8,47 @@ import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_domicilio_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_roomate_page.dart';
+
+import '../../widgets/menuDrawer_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
+class BuscarPage extends StatelessWidget {
+  const BuscarPage({ Key key}) : super(key: key);
+  static final String routeName = 'buscar';
 
-class BuscarPage extends StatefulWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Color(colors.azulGeneral),
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.home)),
+                Tab(icon: Icon(Icons.people)),
+              ],
+            ),
+            title: Text('Tabs Demo'),
+          ),
+          drawer: MenuWidget(),
+          body: TabBarView(
+            children: <Widget> [
+              BuscarDomicilioPage(),
+              BuscarRoomatePage(),
+              //Icon(Icons.home),
+              //Icon(Icons.people),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*class BuscarPage extends StatefulWidget {
   const BuscarPage({ Key key}) : super(key: key);
   static final String routeName = 'buscar';
 
@@ -93,4 +130,4 @@ class _BuscarPageState extends State<BuscarPage> {
         );
     }
   
-}
+}*/

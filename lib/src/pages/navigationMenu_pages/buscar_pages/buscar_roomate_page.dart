@@ -15,9 +15,9 @@ class BuscarRoomatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(
+      /*appBar: AppbarWidget(
         title: Text('Buscar Roomate'),
-      ),
+      ),*/
     );
   }
   

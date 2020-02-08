@@ -19,9 +19,9 @@ class _BuscarDomicilioPageState extends State<BuscarDomicilioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(
+      /*appBar: AppbarWidget(
         title: Text('Buscar Domicilio'),
-      ),
+      ),*/
       body: _FilterBoton(),
     );
   }

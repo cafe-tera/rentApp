@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/pages/FormSearchFilter/CantidadDePiezasField.dart';
-import 'package:rent_app/src/pages/FormSearchFilter/CantidadDeBanosField.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/FormSearchFilter/CantidadDeBanosField.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/FormSearchFilter/CantidadDePiezasField.dart';
 //import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 

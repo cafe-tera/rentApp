@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
-import 'package:rent_app/src/pages/FormSearchFilter/form_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/FormSearchFilter/form_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class BuscarDomicilioPage extends StatefulWidget {

@@ -25,7 +25,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
   
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,75 +42,142 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
           )
         ],
       ),  
-      body: Container(
-        height: size.height,
-        color:  Colors.white,
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              _encabezado(size, widget.domiciliosData),
-              SizedBox(height: 20,),
-              _cuerpo(size, widget.domiciliosData),
-              SizedBox(height: 20,),
-              _comentarios(size)
-            ],
-          ),
-          
-        ),
-      )
+
+      body: _contenido(size, widget.domiciliosData)
     );
   }
 
-  Widget _encabezado(var size, item){
-    double rating = item['Puntos'];
+  Widget _contenido(Size size, item){
     return Container(
-      child: Row(
-        children: <Widget>[
-          SizedBox(width: 20,),
-          _imagenDomicilio(item),
-          SizedBox(width: 40,),
-          Column(
-            children: <Widget>[
-              SizedBox(height: 20,),
-              Text(
-                item['Tipo'],
-                style: TextStyle(fontSize: 14),
-              ),
-              SizedBox(height: 20,),
-              Container(
-                child: RatingBarWidget(ratingValue: rating, barSize: 25.0,),
-              ),
-              SizedBox(height: 20,),
-          ],)
-        ],
+      height: size.height,
+      color:  Colors.white,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            _encabezado(size, item),
+            Divider(),
+            _cuerpo(size, item),
+            Divider(),
+            _comentarios(size)
+          ],
+        ),
+        
       ),
+    );
+  }
+
+  Widget _encabezado(Size size, item){
+    double rating = item['Puntos'];
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+
+        //portada, con una ubicacion aproximada del domicilio
+        _region(size, item),
+
+        Column(
+          children: <Widget>[
+            
+            SizedBox(height: 100,),
+
+            // imagen + puntuacion del perfil
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+
+                _imagenDomicilio(item),
+                Column(
+                  children: <Widget>[
+                    SizedBox(height: 50,),
+                    RatingBarWidget(ratingValue: rating, barSize: 15.0,),
+                  ],
+                ),
+                    
+              ],
+            ),
+
+            // icons buttons
+            _acciones(size, item)
+          ],
+        ),
+
+
+      ]
+    );
+  }
+
+  Widget _region(Size size, item) {
+    return Container(
+      height: 165,
+      // color: Colors.red,
+      child: Image.asset(
+        'assets/profile/ubicacion.PNG',
+      ),
+    );
+  }
+
+  Widget _acciones(Size size, item) {
+    return Row(
+      children: <Widget>[
+
+        RawMaterialButton(
+          onPressed: (){},
+          child: Icon(Icons.map, color: Colors.white,),
+          shape: CircleBorder(),
+          elevation: 5.0,
+          fillColor: Colors.lightBlue,
+        ),
+
+        RawMaterialButton(
+          onPressed: (){},
+          child: Icon(Icons.person_pin, color: Colors.white,),
+          shape: CircleBorder(),
+          elevation: 5.0,
+          fillColor: Colors.lightBlue,
+        ),
+
+      ],
     );
   }
 
   Widget _imagenDomicilio(domData) {
-    return Container(
-      margin: EdgeInsets.all(3.0),
-      decoration: BoxDecoration(
-        color: Color(colors.azulGeneral),
-        borderRadius: BorderRadius.circular(15.0)
-      ),
-      padding:  EdgeInsets.all(0.1),
-      child: Container(
-        padding: EdgeInsets.all(2.5),
-        width: 150,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15.0),
-          child: FadeInImage(
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-            image: NetworkImage(
-              domData['Imagen']
+    return Column(
+      children: <Widget>[
+
+        // imagen
+        Container(
+          margin: EdgeInsets.all(3.0),
+          decoration: BoxDecoration(
+            color: Color(colors.azulGeneral),
+            borderRadius: BorderRadius.circular(15.0)
+          ),
+          padding:  EdgeInsets.all(0.1),
+          child: Container(
+            padding: EdgeInsets.all(2.5),
+            width: 150,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: FadeInImage(
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+                image: NetworkImage(
+                  domData['Imagen']
+                ),
+                placeholder: AssetImage('assets/Alternate-Preloader.gif',),
+                fadeInDuration: Duration(milliseconds: 200),
+              ),
             ),
-            placeholder: AssetImage('assets/Alternate-Preloader.gif',),
-            fadeInDuration: Duration(milliseconds: 200),
           ),
         ),
-      ),
+
+        //tipo domicilio
+        Text(
+          domData['Tipo'],
+          style: TextStyle(fontSize: 14),
+        ),
+
+      ],
     );
   }
 
@@ -273,4 +340,6 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       _liked = true;
     }
   }
+
+
 }

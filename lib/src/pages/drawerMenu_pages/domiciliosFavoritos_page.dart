@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/providers/domicilios_favoritos_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';
-import 'package:rent_app/src/widgets/estadoDomicilio_widget.dart';
-import 'package:rent_app/src/widgets/contenidoDomicilioLista_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/estadoDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/contenidoDomicilioLista_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class MisDomiciliosFavoritosPage extends StatefulWidget{

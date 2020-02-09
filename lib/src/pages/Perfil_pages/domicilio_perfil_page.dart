@@ -1,14 +1,16 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
+import 'package:rent_app/src/models/domicilio_model.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class DomicilioPerfilPage extends StatefulWidget {
-  static final String routeName = 'perfildomicilio';
+  static final String routeName = 'perfilcomentario';
 
   final domiciliosData;
   
@@ -59,7 +61,15 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
             Divider(),
             _cuerpo(size, item),
             Divider(),
-            _comentarios(size)
+
+            // Comentarios
+            _tituloConBoton(size, item, 'Comentarios', 'ver más'),
+            SizedBox(height: 10,),
+            _comentarios(size, item),
+
+            // para que haya espacio al final
+            SizedBox(height: 20,)
+
           ],
         ),
         
@@ -73,13 +83,13 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       alignment: Alignment.topCenter,
       children: <Widget>[
 
-        //portada, con una ubicacion aproximada del domicilio
+        //portada, con una ubicacion aproximada del comentario
         _region(size, item),
 
         Column(
           children: <Widget>[
             
-            SizedBox(height: 100,),
+            SizedBox(height: size.height*0.2,),
 
             // imagen + puntuacion del perfil
             Row(
@@ -89,7 +99,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
                 _imagenDomicilio(item),
                 Column(
                   children: <Widget>[
-                    SizedBox(height: 50,),
+                    SizedBox(height: size.height*0.08,),
                     RatingBarWidget(ratingValue: rating, barSize: 15.0,),
                   ],
                 ),
@@ -109,10 +119,12 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
 
   Widget _region(Size size, item) {
     return Container(
-      height: 165,
-      // color: Colors.red,
-      child: Image.asset(
-        'assets/profile/ubicacion.PNG',
+      height: size.height*0.28,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/profile/ubicacion.PNG',),
+          fit: BoxFit.cover
+        )
       ),
     );
   }
@@ -146,13 +158,12 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       children: <Widget>[
 
         // imagen
-        Container(
+        Card(
           margin: EdgeInsets.all(3.0),
-          decoration: BoxDecoration(
-            color: Color(colors.azulGeneral),
-            borderRadius: BorderRadius.circular(15.0)
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12)
           ),
-          padding:  EdgeInsets.all(0.1),
           child: Container(
             padding: EdgeInsets.all(2.5),
             width: 150,
@@ -171,152 +182,86 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
           ),
         ),
 
-        //tipo domicilio
+        SizedBox(height: 7,),
+
+        //tipo comentario
         Text(
           domData['Tipo'],
-          style: TextStyle(fontSize: 14),
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold
+          ),
         ),
 
       ],
     );
   }
 
-  Widget _cuerpo(var size, domData){
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          _informacion(size, domData),
-          SizedBox(height: 20,),
-          _btnAlbumMapa(size, domData),
-          SizedBox(height: 20,),
-        ],
-      )
-    );
-  }
-
-  Widget _informacion(var size, domData){
-    return Container(
-      height: size.height * 0.2,
-      width: size.width * 0.9,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 2.0,
-            spreadRadius: 2.5)
-        ]
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Text(domData['Texto'])
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _btnAlbumMapa(var size, domData){
-    return Row(
+  Widget _cuerpo(Size size, domData){
+    return Column(
       children: <Widget>[
-        SizedBox(
-          width: size.width * 0.075,
+
+        // informacion
+        _tituloElementos(size, domData, 'Información'),
+        SizedBox(height: 10,),   
+        Text(
+          domData["Texto"],
+          textWidthBasis: TextWidthBasis.longestLine,
         ),
-        Container(
-          width: size.width * 0.4,
-          height: 30,
-          child: RaisedButton(
-            color: Color(colors.azulGeneral),
-            child: Text(
-              'Album',
-              style: TextStyle(
-                color: Colors.white, 
-                fontSize: 11
-              )
-            ),
-            onPressed: (){},
-          ),
-        ),
-        SizedBox(
-          width: size.width * 0.05,
-        ),
-        Container(
-          width: size.width * 0.4,
-          height: 30,
-          child: RaisedButton(
-            color: Color(colors.azulGeneral),
-            child: Text(
-              'Ver en Mapa',
-              style: TextStyle(
-                color: Colors.white, 
-                fontSize: 11
-              )
-            ),
-            onPressed: (){},
-          ),
-        )
+
+        Divider(),
+
+        // fotos
+        _tituloElementos(size, domData, 'Fotos'),
+        SizedBox(height: 10,),
+        _photosCarouselSlider(context, size, domData),
+
       ],
     );
   }
 
-  Widget _comentarios(var size) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
 
-          _cajaComentarios(size),
-          _btnAgregarComentario(size),
+  Widget _comentarios(Size size, domData) {
+    final List<Widget> comentarios = [];
+    int indice = 0;
+    print(domData["Comentarios"][indice]['Imagen']);
 
-        ],
-      ),
-    );
-  }
-
-  Widget _cajaComentarios(var size) {
-    return Container(
-      height: size.height * 0.2,
-      width: size.width * 0.9,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 2.0,
-                spreadRadius: 2.5,
-              )
-        ]
-      
-      ),
-      child: SingleChildScrollView(
-        child:Column(
-          children: <Widget>[
-
-          Text('Soy un comentario mal hecho')
-
-          ],
-        )
-
-      ),
-    );
-  }
-
-  Widget _btnAgregarComentario(var size) {
-    return Container(
-      width: size.width * 0.9,
-      child: RaisedButton(
-        color: Color(colors.azulGeneral),
-        child: Text(
-          'Agregar Comentario',
-          style: TextStyle(color: Colors.white, fontSize: 11),
+    domData["Comentarios"].forEach((comentario) {
+      final widgetTemp = Container(
+        height: 75.0,
+        child: Material(
+          child: Card(
+            elevation: 1.0,
+            child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 20,
+                    child: Text('foto'),
+                    // child: _imagenComentario(size, domData["Comentarios"], indice),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 30,
+                    child: Text('item: comentario)'),
+                  ),
+                ],
+              ),
+            )
         ),
-        onPressed: (){},
-      ),
-    );
+      );
+
+      comentarios..add(widgetTemp);
+      indice += 1;
+    });
+
+    return Column(children: comentarios);
   }
 
   Icon _favoritedIconDefault = new Icon(
@@ -340,6 +285,107 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage>{
       _liked = true;
     }
   }
+
+  _tituloElementos(Size size, domData, String titulo) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+              
+          SizedBox(width: size.width*0.07,),
+
+          Text(
+            titulo,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+
+        ],
+      )
+    );
+  }
+
+  _photosCarouselSlider(BuildContext context, Size size, domData) {
+    return CarouselSlider(
+      height: size.height*0.3,
+      items: [1,2,3,4,5].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 5.0),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/no-image.jpg',),
+                  fit: BoxFit.cover
+                )
+              ),
+            );
+          },
+        );
+      }).toList(),
+    );
+  }
+
+  _tituloConBoton(Size size, item, String titulo, String texto_boton) {
+
+    int numeroComentarios = 21;
+
+    return Container(
+      alignment: Alignment.centerLeft,
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+              
+          SizedBox(width: size.width*0.07,),
+
+          Text(
+            titulo,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+
+          Expanded(child: Container()),
+
+          FlatButton(
+            onPressed: (){},
+            child: Text(
+              texto_boton + ' (${numeroComentarios})',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.lightBlue,
+                fontWeight: FontWeight.w300
+              ),
+            ),
+          ),
+
+        ],
+      )
+    );
+  }
+
+  // Widget _imagenComentario(Size size, domData, int indice) {
+  //   return Container(
+  //     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+  //     child: ClipRRect(
+  //       borderRadius: BorderRadius.circular(5.0),
+  //       child: FadeInImage(
+  //         fit: BoxFit.cover,
+  //         alignment: Alignment.center,
+  //         image: NetworkImage(
+  //           domData["Comentarios"][indice]['Imagen'],
+  //         ),
+  //         placeholder: AssetImage('assets/Alternate-Preloader.gif',),
+  //         fadeInDuration: Duration(milliseconds: 200),
+  //       ),
+  //     ),
+  //   );
+  // }
 
 
 }

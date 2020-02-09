@@ -8,9 +8,9 @@ import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/providers/filter_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
-import 'package:rent_app/src/widgets/imagenDomicilio_widget.dart';
-import 'package:rent_app/src/widgets/estadoDomicilio_widget.dart';
-import 'package:rent_app/src/widgets/contenidoDomicilioLista_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/estadoDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/contenidoDomicilioLista_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 

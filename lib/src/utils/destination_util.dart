@@ -17,9 +17,8 @@ class Destination {
 }
 
 const List<Destination> allDestinations = <Destination>[
-  Destination(0, 'Contactos', Icons.contacts),
-  Destination(1, 'Chat', Icons.message),
-  Destination(2, 'Mis Domicilios', Icons.home),
-  Destination(3, 'Buscar', Icons.find_in_page),
-  Destination(4, 'Mapa', Icons.location_on)
+  Destination(0, 'Chat', Icons.message),
+  Destination(1, 'Mis Domicilios', Icons.home),
+  Destination(2, 'Buscar', Icons.find_in_page),
+  Destination(3, 'Mapa', Icons.location_on)
 ];

@@ -1,14 +1,12 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/src/pages/Perfil_pages/user_perfil_page.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/providers/contactos_provider.dart';
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
-import 'package:rent_app/resources/colors.dart' as colors;
+//import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -28,7 +26,6 @@ class _ContactosPageState extends State<ContactosPage> {
         title: Text('Contactos Page'),
       ),
       
-      drawer: MenuWidget(),
       body: _lista(),
     );
   }

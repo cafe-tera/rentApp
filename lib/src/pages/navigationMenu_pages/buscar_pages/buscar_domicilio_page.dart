@@ -11,9 +11,10 @@ class BuscarDomicilioPage extends StatefulWidget {
   const BuscarDomicilioPage({ Key key}) : super(key: key);
   static final String routeName = 'buscar_domicilio';
 
-@override
+  @override
   _BuscarDomicilioPageState createState() => _BuscarDomicilioPageState();
 }
+
 class _BuscarDomicilioPageState extends State<BuscarDomicilioPage> {
   @override
   Widget build(BuildContext context) {
@@ -21,33 +22,35 @@ class _BuscarDomicilioPageState extends State<BuscarDomicilioPage> {
       /*appBar: AppbarWidget(
         title: Text('Buscar Domicilio'),
       ),*/
-      body: _FilterBoton(),
+      body: _filterBoton(),
     );
   }
 
-  Widget _FilterBoton() {
-      return Container(
-          height: 45,
-          child: RaisedButton(
-            color: Color(colors.buscarDomicilio),
-            shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+  Widget _filterBoton() {
+    return Container(
+      height: 45,
+      child: RaisedButton(
+        color: Color(colors.buscarDomicilio),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
+            Text('Filtros de Busqueda', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
+            Column(),
+          ],
+        ),
+        onPressed: (){
+          Navigator.push(
+            context, 
+            new MaterialPageRoute(
+              builder: (context) => new FormPage()
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-
-                Icon(Icons.add, color: Color(colors.iconBlanco), size: 22,),
-                Text('Filtros de Busqueda', style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),),
-                Column()
-
-              ],
-            ),
-            onPressed: (){
-              Navigator.pushNamed(context, FormPage.routeName);
-            },
-          ),
-        );
-        
-    }
+          );
+        },
+      ),
+    );
+  }
 }

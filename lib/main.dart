@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: LogInUpPage.routeName,
       routes: getApplicationRoutes(),
-      
     );
   }
 }

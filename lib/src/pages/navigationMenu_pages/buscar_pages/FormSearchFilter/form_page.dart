@@ -10,10 +10,10 @@ import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/FormSearchF
 //--------------------------------------------------------------------------------------------------------------------
 
 class FormPage extends StatefulWidget {
-  const FormPage({ Key key}) : super(key: key);
+  const FormPage({Key key}) : super(key: key);
   static final String routeName = 'formulario';
 
-@override
+  @override
   _FormPageState createState() => _FormPageState();
 }
 
@@ -25,42 +25,42 @@ class _FormPageState extends State<FormPage> {
         title: Text('Buscar Domicilio'),
       ),
       body: Padding(
-    padding: const EdgeInsets.all(50.0),
-    child: Form(
-      child: ListView(
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: 'Region'
-            ),
+        padding: const EdgeInsets.all(50.0),
+        child: Form(
+          child: ListView(
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Region'
+                ),
+              ),
+              SizedBox(height: 16.0,),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Ciudad'
+                ),
+              ),
+              SizedBox(height: 16.0,),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Sector'
+                ),
+              ),
+              SizedBox(height: 16.0,),
+              CantidadDePiezasField(),
+              SizedBox(height: 16.0,),
+              CantidadDeBanosField(),
+              SizedBox(height: 16.0,),
+              RaisedButton(
+                child: Text('SUBMIT'),
+                onPressed: () {
+                  // submit the form
+                },
+              )
+            ],
           ),
-          SizedBox(height: 16.0,),
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: 'Ciudad'
-            ),
-          ),
-          SizedBox(height: 16.0,),
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: 'Sector'
-            ),
-          ),
-          SizedBox(height: 16.0,),
-          CantidadDePiezasField(),
-          SizedBox(height: 16.0,),
-          CantidadDeBanosField(),
-          SizedBox(height: 16.0,),
-          RaisedButton(
-            child: Text('SUBMIT'),
-            onPressed: () {
-              // submit the form
-            },
-          )
-        ],
+        ),
       ),
-    ),
-  ),
     );
   }
 

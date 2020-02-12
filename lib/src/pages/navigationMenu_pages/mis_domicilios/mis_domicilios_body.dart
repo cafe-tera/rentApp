@@ -1,0 +1,138 @@
+//--------------------------------------------------------------------------------------------------------------------
+// flutter imports
+import 'package:flutter/material.dart';
+import 'package:rent_app/src/bloc/mis_domicilios_bloc/mis_domicilios_bloc.dart';
+import 'package:rent_app/src/bloc/provider.dart';
+
+// local imports
+import 'package:rent_app/src/models/domicilio_model.dart';
+import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
+import 'package:rent_app/src/widgets/appbar_widget.dart';
+import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/estadoDomicilio_widget.dart';
+import 'package:rent_app/src/widgets/domicilio_card/contenidoDomicilioLista_widget.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
+//--------------------------------------------------------------------------------------------------------------------
+
+class BodyMisDomiciliosPage extends StatefulWidget {
+  const BodyMisDomiciliosPage({Key key}) : super(key: key);
+
+  @override
+  _BodyMisDomiciliosPageState createState() => _BodyMisDomiciliosPageState();
+}
+
+class _BodyMisDomiciliosPageState extends State<BodyMisDomiciliosPage> {
+  @override
+  Widget build(BuildContext context) {
+    MisDomiciliosBloc _bloc = Provider.of<MisDomiciliosBloc>(context);
+    _bloc.cargarMisDomicilios();
+    List<Domicilio> domicilios = _bloc.domicilios;
+
+    return Scaffold(
+      appBar: AppbarWidget(
+        title: Text('Mis Domicilios'),
+      ),
+      drawer: MenuWidget(),
+      body: _lista(domicilios),
+    );
+  }
+
+  Widget _lista(List<Domicilio> domicilios) {
+    return Container(
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        children: _listaDomicilios(domicilios, context),
+      ),
+    );
+  }
+
+  List<Widget> _listaDomicilios(List<Domicilio> data, BuildContext context) {
+    final List<Widget> domicilios = [];
+
+    data.forEach((domicilio) {
+      final widgetTemp = Container(
+        height: 75.0,
+        child: Material(
+          child: Card(
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DomicilioPerfilPage(
+                              domiciliosData: domicilio,
+                            )),
+                  );
+                },
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                      flex: 20,
+                      child: ImagenDomicilioWidget(item: domicilio),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                      flex: 30,
+                      child: ContenidoDomicilioListaWidget(item: domicilio),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: EstadoDomicilioWidget(item: domicilio),
+                    ),
+                  ],
+                ),
+              )),
+        ),
+      );
+
+      domicilios..add(widgetTemp);
+    });
+
+    domicilios..add(Divider());
+    domicilios..add(_agregarDomBoton(context));
+    domicilios..add(Divider());
+    return domicilios;
+  }
+
+  Widget _agregarDomBoton(BuildContext context) {
+    return Container(
+      height: 45,
+      child: RaisedButton(
+        color: Color(colors.agregarDomicilio),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Icon(
+              Icons.add,
+              color: Color(colors.iconBlanco),
+              size: 22,
+            ),
+            Text(
+              'Agregar Domicilio',
+              style: TextStyle(color: Color(colors.textoBlanco), fontSize: 16),
+            ),
+            Column()
+          ],
+        ),
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+        },
+      ),
+    );
+  }
+}

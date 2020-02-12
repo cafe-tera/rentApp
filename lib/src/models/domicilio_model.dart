@@ -14,7 +14,7 @@ class Domicilio {
     String texto;
     String imagen;
     String estado;
-    int puntos;
+    double puntos;
     bool favorito;
     List<Comentario> comentarios;
 
@@ -35,7 +35,7 @@ class Domicilio {
         texto: json["Texto"],
         imagen: json["Imagen"],
         estado: json["Estado"],
-        puntos: json["Puntos"],
+        puntos: json["Puntos"].toDouble(),
         favorito: json["Favorito"],
         comentarios: List<Comentario>.from(json["Comentarios"].map((x) => Comentario.fromJson(x))),
     );

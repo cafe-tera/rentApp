@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/resources/colors.dart' as colors;
+import 'package:rent_app/src/models/domicilio_model.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
 class ContenidoDomicilioListaWidget extends StatelessWidget{
 
-  final dynamic item;
+  final Domicilio item;
 
   ContenidoDomicilioListaWidget({
     Key key,
@@ -26,7 +27,7 @@ class ContenidoDomicilioListaWidget extends StatelessWidget{
             child: Container(
               alignment: Alignment.topLeft,
               child: Text(
-                item['Tipo'],
+                item.tipo,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )
@@ -38,7 +39,7 @@ class ContenidoDomicilioListaWidget extends StatelessWidget{
             child: Container(
               alignment: Alignment.topLeft,
               child: Text(
-                item['Texto'],
+                item.texto,
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(

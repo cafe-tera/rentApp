@@ -9,6 +9,7 @@ Domicilio domicilioFromJson(String str) => Domicilio.fromJson(json.decode(str));
 String domicilioToJson(Domicilio data) => json.encode(data.toJson());
 
 class Domicilio {
+    int id;
     String tipo;
     String texto;
     String imagen;
@@ -18,6 +19,7 @@ class Domicilio {
     List<Comentario> comentarios;
 
     Domicilio({
+        this.id,
         this.tipo,
         this.texto,
         this.imagen,
@@ -28,6 +30,7 @@ class Domicilio {
     });
 
     factory Domicilio.fromJson(Map<String, dynamic> json) => Domicilio(
+        id: json["id"],
         tipo: json["Tipo"],
         texto: json["Texto"],
         imagen: json["Imagen"],
@@ -38,6 +41,7 @@ class Domicilio {
     );
 
     Map<String, dynamic> toJson() => {
+        "id": id,
         "Tipo": tipo,
         "Texto": texto,
         "Imagen": imagen,

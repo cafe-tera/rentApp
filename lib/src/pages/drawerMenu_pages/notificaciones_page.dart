@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/notificaciones_provider.dart';
+import 'package:rent_app/src/providers/Resource/notificaciones_provider.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 

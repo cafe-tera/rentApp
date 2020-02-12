@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 // local imports
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
-import 'package:rent_app/src/providers/domicilios_provider.dart';
+import 'package:rent_app/src/providers/Resource/domicilios_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';

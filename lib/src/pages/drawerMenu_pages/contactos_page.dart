@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/contactos_provider.dart';
+import 'package:rent_app/src/providers/Resource/contactos_provider.dart';
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 //import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------

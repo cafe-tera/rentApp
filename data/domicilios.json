@@ -1,4 +1,5 @@
 {
+    "status": 200,
     "domicilios": [{
             "id": 1,
             "Tipo": "Casa",

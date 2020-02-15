@@ -16,35 +16,39 @@ import 'package:rent_app/src/widgets/domicilio_card/contenidoDomicilioLista_widg
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-class BodyMisDomiciliosPage extends StatefulWidget {
-  const BodyMisDomiciliosPage({Key key}) : super(key: key);
-
-  @override
-  _BodyMisDomiciliosPageState createState() => _BodyMisDomiciliosPageState();
-}
-
-class _BodyMisDomiciliosPageState extends State<BodyMisDomiciliosPage> {
+class BodyMisDomiciliosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MisDomiciliosBloc _bloc = Provider.of<MisDomiciliosBloc>(context);
     _bloc.cargarMisDomicilios();
-    List<Domicilio> domicilios = _bloc.domicilios;
 
     return Scaffold(
       appBar: AppbarWidget(
         title: Text('Mis Domicilios'),
       ),
       drawer: MenuWidget(),
-      body: _lista(domicilios),
+      body: _disernir(_bloc, context),
     );
   }
 
-  Widget _lista(List<Domicilio> domicilios) {
+  // Evalua el status y decide que mostrar.
+  Widget _disernir(MisDomiciliosBloc _bloc, BuildContext context) {
     return Container(
-      child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        children: _listaDomicilios(domicilios, context),
-      ),
+      child: StreamBuilder(
+          stream: _bloc.stream,
+          builder: (BuildContext context,
+              AsyncSnapshot<Map<String, dynamic>> snapshot) {
+                
+            // Si todo sale bien, entonces retorna la lista
+            return _lista(_bloc.domicilios, context);
+          }),
+    );
+  }
+
+  Widget _lista(List<Domicilio> domicilios, BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      children: _listaDomicilios(domicilios, context),
     );
   }
 

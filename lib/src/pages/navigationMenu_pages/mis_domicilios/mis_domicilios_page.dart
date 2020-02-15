@@ -16,7 +16,7 @@ class MisDomiciliosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<MisDomiciliosBloc>(
       bloc: misDomiciliosBloc,
       child: BodyMisDomiciliosPage(),
       onDispose: (_,bloc)=>bloc.dispose(),

@@ -1,47 +1,46 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/src/bloc/contactos_bloc/contactos_bloc.dart';
+import 'package:rent_app/src/bloc/provider.dart';
 
 // local imports
+import 'package:rent_app/src/models/contacto_model.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/Resource/contactos_provider.dart';
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
-//import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
-
-class ContactosPage extends StatefulWidget {
-  const ContactosPage({ Key key,}) : super(key: key);
-  static final String routeName = 'contactos';
-
+class BodyContactosPage extends StatelessWidget{
   @override
-  _ContactosPageState createState() => _ContactosPageState();
-}
+  Widget build(BuildContext context){
+    ContactosBloc _bloc = Provider.of<ContactosBloc>(context);
+    _bloc.cargarFaq();
 
-class _ContactosPageState extends State<ContactosPage> {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(
         title: Text('Contactos Page'),
       ),
-      
-      body: _lista(),
+      body: _disernir(_bloc, context),
     );
   }
 
-  Widget _lista() {
-    return FutureBuilder(
-      future: contactosProvider.cargarData(),
-      initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        return Container(
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            children: _listaContactos(snapshot.data, context),
-          ),
-        );
-      },
+  Widget _disernir(ContactosBloc _bloc, BuildContext context){
+    return Container(
+      child: StreamBuilder(
+        stream: _bloc.stream,
+        builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot){
+          return _lista(_bloc.contactos, context);
+        },
+      ),
+    );
+  }
+
+  Widget _lista(List<Contacto> contactos, BuildContext context){
+    return Container(
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        children: _listaContactos(contactos, context),
+      ),
     );
   }
 
@@ -95,7 +94,7 @@ class _ContactosPageState extends State<ContactosPage> {
           fit: BoxFit.cover,
           alignment: Alignment.center,
           image: NetworkImage(
-            item['Imagen'],
+            item.imagen,
           ),
           placeholder: AssetImage('assets/Alternate-Preloader.gif',),
           fadeInDuration: Duration(milliseconds: 200),
@@ -112,14 +111,14 @@ class _ContactosPageState extends State<ContactosPage> {
   }
 
   Widget _encabezado(item) {
-    double rating  = item['Puntos'];
+    double rating  = item.puntos;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
 
         Text(
-          item['Nombres']+' '+item['Apellidos'],
+          item.nombres +' '+item.apellidos,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         
@@ -130,4 +129,5 @@ class _ContactosPageState extends State<ContactosPage> {
       ],
     );
   }
+
 }

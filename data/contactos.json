@@ -2,12 +2,14 @@
     "contactos": [{
             "Nombres": "bojack",
             "Apellidos": "horseman",
+            "id": 1,
             "Imagen": "https://www.lavanguardia.com/r/GODO/LV/p4/WebSite/2017/09/08/Recortada/img_psola_20170908-123711_imagenes_lv_terceros_bojack-kb0E-U431125980296EZF-992x558@LaVanguardia-Web.jpg",
             "Puntos": 3.0
         },
         {
             "Nombres": "Homer",
             "Apellidos": "Simpson",
+            "id": 2,
             "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
             "Puntos": 4.0
         }

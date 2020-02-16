@@ -1,49 +1,49 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/src/bloc/notificaciones_bloc/notificaciones_bloc.dart';
+import 'package:rent_app/src/bloc/provider.dart';
 
 // local imports
+import 'package:rent_app/src/models/notificaciones_model.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
-import 'package:rent_app/src/providers/Resource/notificaciones_provider.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-
-class NotificacionesPage extends StatefulWidget {
-  const NotificacionesPage({ Key key,}) : super(key: key);
-  static final String routeName = 'notificaciones';
-
+class BodyNotificacionesPage extends StatelessWidget{
   @override
-  _NotificacionesPageState createState() => _NotificacionesPageState();
-}
+  Widget build(BuildContext context){
+    NotificacionesBloc _bloc = Provider.of<NotificacionesBloc>(context);
+    _bloc.cargarNotificacion();
 
-class _NotificacionesPageState extends State<NotificacionesPage>{
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Notificaciones Page'),
+        title: Text('Notificaciones'),
       ),
-      body: _lista(),
+      body: _disernir(_bloc, context),
     );
   }
 
-  Widget _lista(){
-
-    return FutureBuilder(
-      future: notificacionesProvider.cargarData(),
-      initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
-        return Container(
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            children: _listaNotificaciones(snapshot.data, context),
-          ),
-        );
-      } ,
+  Widget _disernir(NotificacionesBloc _bloc, BuildContext context){
+    return Container(
+      child: StreamBuilder(
+        stream: _bloc.stream,
+        builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot){
+          return _lista(_bloc.notificaciones, context);
+        },
+      ),
     );
   }
 
-  List<Widget> _listaNotificaciones(List<dynamic> data, BuildContext context){
+  Widget _lista(List<Notificacion> notificaciones, BuildContext context){
+    return Container(
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        children: _listaNotificaciones(notificaciones, context),
+      ),
+    );
+  }
+
+  List<Widget> _listaNotificaciones(List<Notificacion> data, BuildContext context){
     final List<Widget> notificaciones = [];
     var size = MediaQuery.of(context).size;
 
@@ -87,7 +87,7 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
               padding: EdgeInsets.only(left: 10.0, top: 10.0),
               alignment: Alignment.topLeft,
               child: Text(
-                item['Titulo'],
+                item.titulo,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -100,7 +100,7 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
               padding: EdgeInsets.only(right:10.0, top: 10.0),
               alignment: Alignment.topRight,
               child: Text(
-                item['Timestamp'],
+                item.timestamp,
               ),
             ),
           ),
@@ -114,8 +114,9 @@ class _NotificacionesPageState extends State<NotificacionesPage>{
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
       child: 
         Text(
-          item['Texto'],
+          item.texto,
         ),
     );
   }
+
 }

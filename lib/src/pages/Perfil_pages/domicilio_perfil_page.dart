@@ -516,7 +516,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
 
                               Container(
                                 child: RatingBarWidget(
-                                  ratingValue: domicilio.puntos,
+                                  ratingValue: comentario.puntos,
                                   barSize: 15.0,
                                 ),
                               )
@@ -529,7 +529,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
                           height: 10,
                         ),
                         Text(
-                          domicilio.comentarios[indice].comentario,
+                          comentario.comentario,
                           style: TextStyle(
                             fontSize: 17,
                           ),

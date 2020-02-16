@@ -44,6 +44,7 @@
                 "Nombres": "Homer",
                 "Apellidos": "Simpson",
                 "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                "Puntos": 5.0,
                 "Comentario": "muy linda casa uwu"
             }]
         },
@@ -91,42 +92,49 @@
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 4.5,
                     "Comentario": "muy linda casa uwu"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 2.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 }
             ]
@@ -175,42 +183,49 @@
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 5.0,
                     "Comentario": "muy linda casa uwu"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 1.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Puntos": 3.0,
                     "Comentario": "muy fea casa owo"
                 }
             ]

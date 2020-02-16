@@ -64,12 +64,14 @@ class Comentario {
     String nombres;
     String apellidos;
     String imagen;
+    double puntos;
     String comentario;
 
     Comentario({
         this.nombres,
         this.apellidos,
         this.imagen,
+        this.puntos,
         this.comentario,
     });
 
@@ -77,6 +79,7 @@ class Comentario {
         nombres: json["Nombres"],
         apellidos: json["Apellidos"],
         imagen: json["Imagen"],
+        puntos: json["Puntos"],
         comentario: json["Comentario"],
     );
 
@@ -84,6 +87,7 @@ class Comentario {
         "Nombres": nombres,
         "Apellidos": apellidos,
         "Imagen": imagen,
+        "Puntos": puntos,
         "Comentario": comentario,
     };
 }

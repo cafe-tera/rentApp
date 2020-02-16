@@ -72,9 +72,9 @@ class ComentariosPerfil extends StatelessWidget {
                                   height: 10,
                                 ),
                                 Text(
-                                  domicilio.comentarios[indice].nombres +
+                                  comentario.nombres +
                                       ' ' +
-                                      domicilio.comentarios[indice].apellidos,
+                                      comentario.apellidos,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class ComentariosPerfil extends StatelessWidget {
 
                               Container(
                                 child: RatingBarWidget(
-                                  ratingValue: domicilio.puntos,
+                                  ratingValue: comentario.puntos,
                                   barSize: 15.0,
                                 ),
                               )
@@ -106,7 +106,7 @@ class ComentariosPerfil extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        domicilio.comentarios[indice].comentario,
+                        comentario.comentario,
                         style: TextStyle(
                           fontSize: 17,
                         ),

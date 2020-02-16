@@ -84,11 +84,15 @@ class MisDomiciliosBloc {
     }
 
     // habiendo llegado a este punto, sabemos que la consulta ha salido bien
-    for (var item in domiciliosMap['domicilios']) {
-      Domicilio domicilio = Domicilio.fromJson(item);
-      domicilios.add(domicilio);
+    if(domicilios.isEmpty){
+      for (var item in domiciliosMap['domicilios']) {
+        Domicilio domicilio = Domicilio.fromJson(item);
+        domicilios.add(domicilio);
+      }
+      _viewStateCtrl.sink.add(utils.TabState.Showing);
+    } else{
+      _viewStateCtrl.sink.add(utils.TabState.Showing);
     }
-    _viewStateCtrl.sink.add(utils.TabState.Showing);
   }
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina

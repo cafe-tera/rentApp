@@ -87,7 +87,18 @@ class ComentariosPerfil extends StatelessWidget {
                                   ),
                                 ),
                               ],
-                            ))
+                            )),
+
+                              SizedBox(
+                                width: 25,
+                              ),
+
+                              Container(
+                                child: RatingBarWidget(
+                                  ratingValue: domicilio.puntos,
+                                  barSize: 15.0,
+                                ),
+                              )
                           ],
                         ),
                       ),

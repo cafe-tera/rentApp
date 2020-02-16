@@ -65,7 +65,7 @@ class MisDomiciliosBloc {
     final resp = await rootBundle.loadString('data/domicilios.json');
     domiciliosMap = json.decode(resp);
 
-    _viewStateCtrl.sink.add(utils.TabState.Loading);
+    // _viewStateCtrl.sink.add(utils.TabState.Loading);
     
     // checkeamos si el usuario tiene internet
     // Si no tiene internet se envia status 0 
@@ -75,7 +75,7 @@ class MisDomiciliosBloc {
       return;
     }
 
-    _viewStateCtrl.sink.add(utils.TabState.Loading);
+    // _viewStateCtrl.sink.add(utils.TabState.Loading);
 
     // Si hay un status diferente a 200 es porque ha habido un error de consulta
     if (domiciliosMap['status'] != 200) {

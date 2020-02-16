@@ -16,6 +16,7 @@ class Domicilio {
     String estado;
     double puntos;
     bool favorito;
+    List<Informacion> informacion;
     List<String> fotos;
     List<Comentario> comentarios;
 
@@ -27,6 +28,7 @@ class Domicilio {
         this.estado,
         this.puntos,
         this.favorito,
+        this.informacion,
         this.fotos,
         this.comentarios,
     });
@@ -39,6 +41,7 @@ class Domicilio {
         estado: json["Estado"],
         puntos: json["Puntos"],
         favorito: json["Favorito"],
+        informacion: List<Informacion>.from(json["Informacion"].map((x) => Informacion.fromJson(x))),
         fotos: List<String>.from(json["Fotos"].map((x) => x)),
         comentarios: List<Comentario>.from(json["Comentarios"].map((x) => Comentario.fromJson(x))),
     );
@@ -51,6 +54,7 @@ class Domicilio {
         "Estado": estado,
         "Puntos": puntos,
         "Favorito": favorito,
+        "Informacion": List<dynamic>.from(informacion.map((x) => x.toJson())),
         "Fotos": List<dynamic>.from(fotos.map((x) => x)),
         "Comentarios": List<dynamic>.from(comentarios.map((x) => x.toJson())),
     };
@@ -81,5 +85,25 @@ class Comentario {
         "Apellidos": apellidos,
         "Imagen": imagen,
         "Comentario": comentario,
+    };
+}
+
+class Informacion {
+    String nombre;
+    dynamic data;
+
+    Informacion({
+        this.nombre,
+        this.data,
+    });
+
+    factory Informacion.fromJson(Map<String, dynamic> json) => Informacion(
+        nombre: json["nombre"],
+        data: json["data"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "nombre": nombre,
+        "data": data,
     };
 }

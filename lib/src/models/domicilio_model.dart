@@ -16,6 +16,7 @@ class Domicilio {
     String estado;
     double puntos;
     bool favorito;
+    List<String> fotos;
     List<Comentario> comentarios;
 
     Domicilio({
@@ -26,6 +27,7 @@ class Domicilio {
         this.estado,
         this.puntos,
         this.favorito,
+        this.fotos,
         this.comentarios,
     });
 
@@ -35,8 +37,9 @@ class Domicilio {
         texto: json["Texto"],
         imagen: json["Imagen"],
         estado: json["Estado"],
-        puntos: json["Puntos"].toDouble(),
+        puntos: json["Puntos"],
         favorito: json["Favorito"],
+        fotos: List<String>.from(json["Fotos"].map((x) => x)),
         comentarios: List<Comentario>.from(json["Comentarios"].map((x) => Comentario.fromJson(x))),
     );
 
@@ -48,6 +51,7 @@ class Domicilio {
         "Estado": estado,
         "Puntos": puntos,
         "Favorito": favorito,
+        "Fotos": List<dynamic>.from(fotos.map((x) => x)),
         "Comentarios": List<dynamic>.from(comentarios.map((x) => x.toJson())),
     };
 }

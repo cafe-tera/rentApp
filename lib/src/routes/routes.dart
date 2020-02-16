@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 // local imports
+import 'package:rent_app/src/pages/Perfil_pages/comentarios_perfil_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/config_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/contactos_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/domiciliosFavoritos_page.dart';
@@ -49,5 +50,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     FormPage.routeName                     :   (BuildContext context) => FormPage(),
     FaqPage.routeName                      :   (BuildContext context) => FaqPage(),
     MisDomiciliosFavoritosPage.routename   :   (BuildContext context) => MisDomiciliosFavoritosPage(),
+    ComentariosPerfil.routeName            :   (BuildContext context) => ComentariosPerfil(),
   };
 }

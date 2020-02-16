@@ -8,6 +8,43 @@
             "Estado": "green",
             "Puntos": 3.0,
             "Favorito": false,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
+            "Comentarios": [{
+                "Nombres": "Homer",
+                "Apellidos": "Simpson",
+                "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                "Comentario": "muy linda casa uwu"
+            }]
+        },
+        {
+            "id": 2,
+            "Tipo": "Departamento",
+            "Texto": "Departamento vacio",
+            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
+            "Estado": "red",
+            "Puntos": 4.0,
+            "Favorito": true,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
             "Comentarios": [{
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
@@ -19,22 +56,30 @@
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
                     "Comentario": "muy fea casa owo"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "Tipo": "Departamento",
-            "Texto": "Departamento vacio",
-            "Imagen": "http://www.ciudaris.com/blog/wp-content/uploads/ventajas-vivir-departamento-03.jpg",
-            "Estado": "red",
-            "Puntos": 4.0,
-            "Favorito": true,
-            "Comentarios": [{
+                },
+                {
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
-                    "Comentario": "muy linda casa uwu"
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
@@ -52,11 +97,52 @@
             "Estado": "yellow",
             "Puntos": 2.0,
             "Favorito": false,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
             "Comentarios": [{
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
                     "Comentario": "muy linda casa uwu"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
@@ -74,11 +160,64 @@
             "Estado": "green",
             "Puntos": 1.0,
             "Favorito": true,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
             "Comentarios": [{
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
                     "Comentario": "muy linda casa uwu"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
@@ -96,11 +235,64 @@
             "Estado": "yellow",
             "Puntos": 1.5,
             "Favorito": false,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
             "Comentarios": [{
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
                     "Comentario": "muy linda casa uwu"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",
@@ -118,11 +310,64 @@
             "Estado": "green",
             "Puntos": 5.0,
             "Favorito": true,
+            "Fotos": [
+                "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/hogartotal/C/Como-decorar-cocinas-pequenas-1.jpg",
+                "https://checkout.hites.com/wcsstore/HitesCAS/images/catalog/1000x1000/MUEBLES/784512001_4v2.jpg",
+                "https://lh3.googleusercontent.com/proxy/LllmvA1Rt69iXWHtp86fpqFn_4QVT2aW0tfM1DT-_GA4BvKnRgeUlmTT5OgXgZCQ6XDccTJS2PpX01bnoo10hfw7QhtLx7s4Rqli94JZ6NET20Dym7s2XBOiWWc04j5Tjcr2m505Sg",
+                "https://www.balmoral.com.uy/files-sbbasic/sr_balmoral_com_uy/balmoral-habitacion-individual3.jpg",
+                "https://ep01.epimg.net/ccaa/imagenes/2019/06/30/catalunya/1561917962_462135_1561918043_noticia_normal.jpg",
+                "https://www.easy.cl/sitios/img/no-bano/wc-sanitarios.jpg",
+                "https://www.tesa.com/es-es/files/images/201805/2/accesorios-para-el-bano,717442_crop2x1_12.jpg",
+                "https://lh3.googleusercontent.com/proxy/wN5j_cRDsTrMuwZRcq5diSdkkcLBUEWGwLV-6PHuTIZkIvLjbOT-LcY71GyPpFx1eX98wCGDtpXEXgEwcaFcLIAHiCBGHuniUj6N9DkYD0JBfCOuW6csKxUcLh6V27psyuu1MlBSC9P6g_sQrw"
+
+            ],
             "Comentarios": [{
                     "Nombres": "Homer",
                     "Apellidos": "Simpson",
                     "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
                     "Comentario": "muy linda casa uwu"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
+                },
+                {
+                    "Nombres": "Homer",
+                    "Apellidos": "Simpson",
+                    "Imagen": "https://static.13.cl/7/sites/default/files/espectaculos/field-imagen/2_112.jpg",
+                    "Comentario": "muy fea casa owo"
                 },
                 {
                     "Nombres": "Homer",

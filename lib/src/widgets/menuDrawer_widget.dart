@@ -92,6 +92,14 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
+            leading: Icon(Icons.help, color: Color(colors.iconos),),
+            title: Text('Help and Feedback'),
+            onTap: (){
+              Navigator.pushNamed(context, FaqPage.routeName);
+            },
+          ),
+          
+          ListTile(
             leading: Icon( Icons.exit_to_app, color: Color(colors.iconos),),
             title: Text('Cerrar Sesión'),
             onTap: (){
@@ -99,13 +107,6 @@ class MenuWidget extends StatelessWidget {
             },
           ),
           
-          ListTile(
-            leading: Icon(Icons.help, color: Color(colors.iconos),),
-            title: Text('Help and Feedback'),
-            onTap: (){
-              Navigator.pushNamed(context, FaqPage.routeName);
-            },
-          ),
               
      
 

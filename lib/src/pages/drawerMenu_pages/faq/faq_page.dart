@@ -3,24 +3,24 @@
 import 'package:flutter/material.dart';
 
 // local imports
-import 'package:rent_app/src/bloc/provider.dart';
-import 'package:rent_app/src/bloc/faq_bloc/faq_bloq.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/faq/faq_body.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
-class FaqPage extends StatelessWidget{
+class FaqPage extends StatefulWidget{
 
   static final String routeName = 'faq';
-  final FaqBloc faqBloc = FaqBloc();
-  
+  const FaqPage({ Key key,}) : super(key: key);
+
+  @override
+  _FaqPageState createState() => _FaqPageState();
+}
+
+class _FaqPageState extends State<FaqPage> {
   @override
   Widget build(BuildContext context){
-    return BlocProvider<FaqBloc>(
-      bloc: faqBloc,
-      child: BodyFaqPage(),
-      onDispose: (_,bloc)=>bloc.dispose(),
+    return Scaffold(
+      body: BodyFaqPage(),
     );
   }
-
 }

@@ -71,7 +71,9 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   }
 
   Widget _encabezado(Size size, Domicilio domicilio) {
-    double rating = domicilio.puntos;
+
+    double rating = _obtenerPuntos(domicilio.comentarios);
+
     return Stack(alignment: Alignment.topCenter, children: <Widget>[
       //portada, con una ubicacion aproximada del comentario
       _region(size, domicilio),
@@ -572,6 +574,17 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
       );
       _liked = true;
     }
+  }
+
+  double _obtenerPuntos(List<Comentario> comentarios) {
+    double puntos = 0.0;
+
+    comentarios.forEach((c){
+      puntos += c.puntos;
+    });
+
+    puntos/=comentarios.length;
+    return double.parse(puntos.toStringAsFixed(1));
   }
 
 }

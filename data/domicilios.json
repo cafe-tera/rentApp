@@ -8,6 +8,10 @@
             "Estado": "green",
             "Puntos": 3.0,
             "Favorito": false,
+            "Ubicacion": {
+                "lat": -33.282158,
+                "lng": -70.382323
+            },
             "Informacion": [{
                     "nombre": "descripcion",
                     "data": "bello lugar para vivir, el precio es conversable"
@@ -56,6 +60,10 @@
             "Estado": "red",
             "Puntos": 4.0,
             "Favorito": true,
+            "Ubicacion": {
+                "lat": -33.0,
+                "lng": -70.0
+            },
             "Informacion": [{
                     "nombre": "descripcion",
                     "data": "bello lugar para vivir, el precio es conversable"
@@ -147,6 +155,10 @@
             "Estado": "yellow",
             "Puntos": 2.0,
             "Favorito": false,
+            "Ubicacion": {
+                "lat": -32.282158,
+                "lng": -71.382323
+            },
             "Informacion": [{
                     "nombre": "descripcion",
                     "data": "bello lugar para vivir, el precio es conversable"

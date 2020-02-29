@@ -16,6 +16,7 @@ class Domicilio {
     String estado;
     double puntos;
     bool favorito;
+    Ubicacion ubicacion;
     List<Informacion> informacion;
     List<String> fotos;
     List<Comentario> comentarios;
@@ -28,6 +29,7 @@ class Domicilio {
         this.estado,
         this.puntos,
         this.favorito,
+        this.ubicacion,
         this.informacion,
         this.fotos,
         this.comentarios,
@@ -41,6 +43,7 @@ class Domicilio {
         estado: json["Estado"],
         puntos: json["Puntos"],
         favorito: json["Favorito"],
+        ubicacion: Ubicacion.fromJson(json["Ubicacion"]),
         informacion: List<Informacion>.from(json["Informacion"].map((x) => Informacion.fromJson(x))),
         fotos: List<String>.from(json["Fotos"].map((x) => x)),
         comentarios: List<Comentario>.from(json["Comentarios"].map((x) => Comentario.fromJson(x))),
@@ -54,6 +57,7 @@ class Domicilio {
         "Estado": estado,
         "Puntos": puntos,
         "Favorito": favorito,
+        "Ubicacion": ubicacion.toJson(),
         "Informacion": List<dynamic>.from(informacion.map((x) => x.toJson())),
         "Fotos": List<dynamic>.from(fotos.map((x) => x)),
         "Comentarios": List<dynamic>.from(comentarios.map((x) => x.toJson())),
@@ -109,5 +113,25 @@ class Informacion {
     Map<String, dynamic> toJson() => {
         "nombre": nombre,
         "data": data,
+    };
+}
+
+class Ubicacion {
+    double lat;
+    double lng;
+
+    Ubicacion({
+        this.lat,
+        this.lng,
+    });
+
+    factory Ubicacion.fromJson(Map<String, dynamic> json) => Ubicacion(
+        lat: json["lat"].toDouble(),
+        lng: json["lng"].toDouble(),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "lat": lat,
+        "lng": lng,
     };
 }

@@ -1,49 +1,46 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/src/bloc/faq_bloc/faq_bloq.dart';
-import 'package:rent_app/src/bloc/provider.dart';
 
 // local imports
-import 'package:rent_app/src/models/faq_model.dart';
+import 'package:rent_app/src/providers/faq_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-class BodyFaqPage extends StatelessWidget{
+class BodyFaqPage extends StatefulWidget{
+
+  @override
+  _BodyFaqPageState createState() => _BodyFaqPageState();
+}
+
+class _BodyFaqPageState extends State<BodyFaqPage> {
+
   @override
   Widget build(BuildContext context){
-    FaqBloc _bloc = Provider.of<FaqBloc>(context);
-    _bloc.cargarFaq();
-
     return Scaffold(
       appBar: AppbarWidget(
         title: Text('FAQ'),
       ),
-      body: _disernir(_bloc, context),
+      body: _lista(),
     );
   }
 
-  Widget _disernir(FaqBloc _bloc, BuildContext context){
-    return Container(
-      child: StreamBuilder(
-        stream: _bloc.stream,
-        builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot){
-          return _lista(_bloc.faqs, context);
-        },
-      ),
+  Widget _lista(){
+    return FutureBuilder(
+      future: faqProvider.cargarData(),
+      initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
+        return Container(
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            children: _listaFaq(snapshot.data, context),
+          ),
+        );
+      }
     );
   }
 
-  Widget _lista(List<Faq> faqs, BuildContext context){
-    return Container(
-      child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        children: _listaFaq(faqs, context),
-      ),
-    );
-  }
-
-  List<Widget> _listaFaq(List<Faq> data, BuildContext context){
+  List<Widget> _listaFaq(List<dynamic> data, BuildContext context){
     final List<Widget> faqList = [];
     var size = MediaQuery.of(context).size;
 

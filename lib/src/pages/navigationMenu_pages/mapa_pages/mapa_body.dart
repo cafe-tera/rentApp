@@ -1,68 +1,98 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rent_app/src/bloc/mapa_bloc/mapa_bloc.dart';
-import 'package:rent_app/src/bloc/provider.dart';
+
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
+import 'package:rent_app/src/models/domicilio_model.dart';
+import 'package:rent_app/src/bloc/mapa_bloc/marker_details_bloc.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-
 class MapaBody extends StatefulWidget {
-  const MapaBody({ Key key,}) : super(key: key);
-  static final String routeName = 'mapa';
+  const MapaBody({Key key, this.domicilios}) : super(key: key);
+
+  final List<Domicilio> domicilios;
 
   @override
   _MapaBodyState createState() => _MapaBodyState();
 }
 
 class _MapaBodyState extends State<MapaBody> {
+  GoogleMapController mapController;
+  Completer<GoogleMapController> _controller = Completer();
 
-  
+  void _onMapCreated(GoogleMapController controller) {
+    _addMarkers();
+    mapController = controller;
+    _controller.complete(controller);
+  }
 
-  final LatLng _center = const LatLng(-33.282158, -70.382323);
+  @override
+  void didUpdateWidget(MapaBody oldWidget) {
+    _markers.clear();
+    _addMarkers();
+    super.didUpdateWidget(oldWidget);
+  }
+
+//-----------------------------------------------
+//    Maps Varibles
+//-----------------------------------------------
+  LocationData userLocation;
+
+  MarkerDetailsBloc markerBloc;
+  final Set<Marker> _markers = Set();
+
+  CameraPosition _initialPosition = CameraPosition(
+    target: LatLng(-33.282158, -70.382323), //Santiago: -33.282158, -70.382323
+    zoom: 7.0,
+  );
+//-----------------------------------------------
 
   @override
   Widget build(BuildContext context) {
-  MapaBloc _bloc = Provider.of<MapaBloc>(context);
-  _bloc.cargarDomicilios();
 
+//-----------------------------------------------
+//    Vista ewe
+//-----------------------------------------------
     return Scaffold(
       appBar: AppbarWidget(
         title: Text('Mapa Page'),
       ),
       drawer: MenuWidget(),
-      body: _disernir(_bloc, context),
+      body: _googleMap(),
     );
   }
 
-  // Evalua el status y decide que mostrar.
-  Widget _disernir(MapaBloc _bloc, BuildContext context) {
-    return Container(
-      child: StreamBuilder(
-          stream: _bloc.stream,
-          builder: (BuildContext context,
-              AsyncSnapshot<Map<String, dynamic>> snapshot) {
-                
-            // Si todo sale bien, entonces retorna la lista
-            return _googleMap(_bloc, context);
-          }),
-    );
-  }
-
-  // Nuestra vista
-  Widget _googleMap(MapaBloc bloc, BuildContext context) {
+// Nuestra vista
+  Widget _googleMap() {
     return GoogleMap(
-          onMapCreated: bloc.onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 7.0,
-          ),  
-          myLocationEnabled: true,
-          markers: bloc.getMarkers(bloc.domicilios),
-      );
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: _initialPosition,
+        myLocationEnabled: true,
+        markers: _markers);
   }
 
+  void _addMarkers() {
+    if (widget.domicilios != null) {
+      widget.domicilios.forEach((Domicilio dom) {
+        setState(() {
+          _markers.add(Marker(
+              icon: BitmapDescriptor.defaultMarkerWithHue(
+                  BitmapDescriptor.hueBlue),
+              position: LatLng(dom.ubicacion.lat, dom.ubicacion.lng),
+              markerId: MarkerId('${dom.id}'),
+              infoWindow: InfoWindow(title: '${dom.tipo}'),
+              onTap: () {
+                markerBloc.hideDetail();
+                markerBloc.showDetail(dom);
+              }
+              ));
+        });
+      });
+    }
+  }
 }

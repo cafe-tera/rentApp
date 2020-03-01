@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // local imports
 import 'package:rent_app/src/models/domicilio_model.dart';
@@ -14,14 +13,12 @@ import 'package:rent_app/src/utils/bloc_util.dart' as utils;
 
 class MapaBloc {
 
-  GoogleMapController mapController;
-  Completer<GoogleMapController> _controller = Completer();
-
   BehaviorSubject<utils.TabState> _viewStateCtrl =
-      BehaviorSubject<utils.TabState>.seeded(utils.TabState.Loading);
+  BehaviorSubject<utils.TabState>.seeded(utils.TabState.Loading);
 
+  bool isInitialized = false;
   Map<String, dynamic> domiciliosMap;
-  List<Domicilio> domicilios = List();
+  List<Domicilio> domicilios = List<Domicilio>();
 
 
   // Manejo de los estados del BLOC, dependiendo de cual lancemos, será lo que la pagina deba mostrar
@@ -58,8 +55,10 @@ class MapaBloc {
         }
       }));
 
+
+
   // Obtiene el json con la lista de domicilios y llena la Lista de domicilios (List<Domicilio> domicilios)
-  void cargarDomicilios() async {
+  void loadData() async {
 
     final resp = await rootBundle.loadString('data/domicilios.json');
     domiciliosMap = json.decode(resp);
@@ -69,7 +68,7 @@ class MapaBloc {
     // checkeamos si el usuario tiene internet
     // Si no tiene internet se envia status 0 
     if (await utils.internetDisabled()) { 
-      domiciliosMap = {'status': 0, 'encuestas': List()};
+      domiciliosMap = {'status': 0, 'domicilios': List<Domicilio>()};
       _viewStateCtrl.sink.add(utils.TabState.NoNet);
       return;
     }
@@ -89,31 +88,10 @@ class MapaBloc {
         domicilios.add(domicilio);
       }
       _viewStateCtrl.sink.add(utils.TabState.Showing);
+      isInitialized = true;
     } else{
       _viewStateCtrl.sink.add(utils.TabState.Showing);
     }
-  }
-
-  void onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-    _controller.complete(controller);
-  }
-
-  Set<Marker> getMarkers(List<Domicilio> domicilios){
-    var tmp = Set<Marker>();
-
-    domicilios.forEach((dom){
-
-      tmp.add(
-        Marker(
-          markerId: MarkerId('${dom.id}'),
-          position: LatLng(dom.ubicacion.lat, dom.ubicacion.lng),
-        )
-      );
-
-    });
-
-    return tmp;
   }
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina

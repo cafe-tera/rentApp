@@ -21,12 +21,12 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
 
-  int _currentIndex = 3;
+  int _currentIndex = 0;
   final List<Widget> _children = [
-    ChatPage(),
+    MapaPage(),
     MisDomiciliosPage(),
     BuscarPage(),
-    MapaPage(),
+    ChatPage(),
   ];
 
   @override

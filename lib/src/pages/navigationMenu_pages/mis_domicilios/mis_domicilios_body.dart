@@ -1,13 +1,13 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
-import 'package:rent_app/src/bloc/mis_domicilios_bloc/mis_domicilios_bloc.dart';
-import 'package:rent_app/src/bloc/provider.dart';
 
 // local imports
+import 'package:rent_app/src/bloc/provider.dart';
+import 'package:rent_app/src/bloc/mis_domicilios_bloc/mis_domicilios_bloc.dart';
 import 'package:rent_app/src/models/domicilio_model.dart';
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
-import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios/agregar_domicilio_page.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';
@@ -134,7 +134,7 @@ class BodyMisDomiciliosPage extends StatelessWidget {
           ],
         ),
         onPressed: () {
-          Navigator.pushReplacementNamed(context, TiendaPage.routeName);
+          Navigator.pushNamed(context, AgregarDomicilioPage.routeName);
         },
       ),
     );

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "106812984072",
-    "firebase_url": "https://rentapp-a9a9d.firebaseio.com",
-    "project_id": "rentapp-a9a9d",
-    "storage_bucket": "rentapp-a9a9d.appspot.com"
+    "project_number": "1034864461202",
+    "firebase_url": "https://rentapp-c12ed.firebaseio.com",
+    "project_id": "rentapp-c12ed",
+    "storage_bucket": "rentapp-c12ed.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:106812984072:android:6d1ee25861c248624efabd",
+        "mobilesdk_app_id": "1:1034864461202:android:b7e2902ec699d9bc69ad4b",
         "android_client_info": {
           "package_name": "com.example.rent_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "106812984072-vb6n1a8rinnphq41q2p7sf6n3ihsdrua.apps.googleusercontent.com",
+          "client_id": "1034864461202-mcl5l0il24hg82p486og25qj5ji9s994.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDKDwytKal9calCJY7Wu_vQqWUMe0036cg"
+          "current_key": "AIzaSyDzEseeVrHYXdthR9sxgCbvvYTkyrr3w74"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "106812984072-vb6n1a8rinnphq41q2p7sf6n3ihsdrua.apps.googleusercontent.com",
+              "client_id": "1034864461202-mcl5l0il24hg82p486og25qj5ji9s994.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

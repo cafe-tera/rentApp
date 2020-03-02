@@ -63,17 +63,18 @@ class DomicilioDetails extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           '${item.tipo}',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 16),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
+
                         Container(
                           child: RatingBarWidget(
                             ratingValue: item.puntos,
                             barSize: 14.0,
                           ),
                         ),
+
+                        
+
                         SizedBox(
                           height: 25,
                         ),
@@ -91,9 +92,9 @@ class DomicilioDetails extends StatelessWidget {
                             },
                             color: Color(colors.azulGeneral),
                             child: Text(
-                              'Ver Perfil',
+                              'Ver Detalle',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: Colors.white
                               ),
                               

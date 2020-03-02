@@ -1,9 +1,12 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // local imports
-import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -17,6 +20,10 @@ class LogInUpPage extends StatefulWidget {
 
 class _LogInUpPageState extends State<LogInUpPage> {
   bool isLogin = true;
+  final _auth = FirebaseAuth.instance;
+  bool showProgress = false;
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +189,10 @@ class _LogInUpPageState extends State<LogInUpPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
         keyboardType: TextInputType.emailAddress,
+        textAlign: TextAlign.center,
+        onChanged: (value){
+          email = value;
+        },
         decoration: InputDecoration(
           icon: Icon(Icons.alternate_email, color: Color(colors.azulGeneral)),
           hintText: 'ejemplo@ejemplo.cl',
@@ -197,6 +208,10 @@ class _LogInUpPageState extends State<LogInUpPage> {
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: TextField(
           obscureText: true,
+          textAlign: TextAlign.center,
+          onChanged: (value){
+            password = value;
+          },
           decoration: InputDecoration(
               icon: Icon(Icons.lock_outline, color: Color(colors.azulGeneral)),
               labelText: 'Contraseña'),
@@ -209,12 +224,20 @@ class _LogInUpPageState extends State<LogInUpPage> {
           children: <Widget>[
             TextField(
               obscureText: true,
+              textAlign: TextAlign.center,
+              onChanged: (value){
+                password = value;
+              },
               decoration: InputDecoration(
                   icon: Icon(Icons.lock_outline, color: Color(colors.azulGeneral)),
                   labelText: 'Contraseña'),
             ),
             TextField(
               obscureText: true,
+              textAlign: TextAlign.center,
+              // onChanged: (value){
+              //   email = value;
+              // },
               decoration: InputDecoration(
                   icon: Icon(Icons.lock, color: Color(colors.azulGeneral)),
                   labelText: 'Confirmar contraseña'),
@@ -248,22 +271,60 @@ class _LogInUpPageState extends State<LogInUpPage> {
   }
 
   Widget _crearBotonIngresar(BuildContext context) {
-    return RaisedButton(
-      child: Container(
+    return Container(
+      child: RaisedButton(
+        color: Color(colors.azulGeneral),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
         padding: EdgeInsets.symmetric(horizontal: 20.0),
+        onPressed: () async {
+          setState(() {
+            isLogin = true;
+            showProgress = true;
+          });
+
+          try{
+            final newUser = await _auth.signInWithEmailAndPassword(
+              email: email,
+              password: password
+            );
+
+            print(newUser.toString());
+
+            if(newUser != null){
+              Fluttertoast.showToast(
+                msg: "Login exitoso",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIos: 3,
+                backgroundColor: Colors.blueAccent,
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );
+              setState((){
+                Navigator.pushNamed(context, HomePage.routeName);
+                showProgress = false;
+              });
+            } else {
+              Fluttertoast.showToast(
+                msg: "Verifica los datos de inicio",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIos: 3,
+                backgroundColor: Colors.blueAccent,
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );
+            }
+
+          } catch(e){}
+        },
         child: Text(
           'Ingresar',
-        ),
+          ),
+        textColor: Colors.white,
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
-      ),
-      elevation: 0.0,
-      color: Color(colors.azulGeneral),
-      textColor: Colors.white,
-      onPressed: () {
-        Navigator.pushNamed(context, HomePage.routeName);
-      },
     );
   }
 
@@ -279,7 +340,7 @@ class _LogInUpPageState extends State<LogInUpPage> {
       elevation: 0.0,
       color: Color(colors.azulGeneral),
       textColor: Colors.white,
-      onPressed: () {
+      onPressed: (){
         setState(() {
           isLogin = false;
         });
@@ -311,21 +372,44 @@ class _LogInUpPageState extends State<LogInUpPage> {
 
   Widget _crearBotonConfirmar(BuildContext context) {
     return RaisedButton(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Text(
-          'Confirmar',
-        ),
-      ),
+      elevation: 0.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
-      elevation: 0.0,
       color: Color(colors.azulGeneral),
-      textColor: Colors.white,
-      onPressed: () {
-        Navigator.pushNamed(context, HomePage.routeName);
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      onPressed: () async{
+        setState(() {
+          isLogin = false;
+          showProgress = true;
+        });
+        try {
+          final newUser = await _auth.createUserWithEmailAndPassword(
+            email: email,
+            password: password
+          );
+          if(newUser != null){
+            Fluttertoast.showToast(
+              msg: "¡Registro exitoso! \n Inicia sesión para continuar",
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIos: 5,
+              backgroundColor: Colors.blueAccent,
+              textColor: Colors.white,
+              fontSize: 16.0,
+            );
+            //Navigator.pushNamed(context, HomePage.routeName);
+            setState(() {
+              showProgress = false;
+              isLogin = true;
+            });
+          }
+        } catch(e){}
       },
+      textColor: Colors.white,
+      child: Container(
+        child: Text('Confirmar Registro'),
+      ),
     );
   }
 

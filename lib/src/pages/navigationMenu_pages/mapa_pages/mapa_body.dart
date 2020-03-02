@@ -68,11 +68,19 @@ class _MapaBodyState extends State<MapaBody> {
 
 // Nuestra vista
   Widget _googleMap() {
-    return GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: _initialPosition,
-        myLocationEnabled: true,
-        markers: _markers);
+    return Stack(
+      children: <Widget>[
+        GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: _initialPosition,
+            myLocationEnabled: true,
+            markers: _markers),
+        if (widget.domicilios == null )
+          LinearProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(Colors.orange),
+          ),
+      ],
+    );
   }
 
   void _addMarkers() {

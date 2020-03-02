@@ -23,7 +23,7 @@ class MapaTab extends StatelessWidget {
     child: StreamBuilder(
         stream: bloc.stream,
         builder: (BuildContext context,
-            AsyncSnapshot<Map<String, dynamic>> snapshot) {
+            AsyncSnapshot<Map<String, dynamic>> snapshot){
 
           // Si todo sale bien, entonces retorna la lista
           List<Domicilio> domicilios = List<Domicilio>();
@@ -31,7 +31,7 @@ class MapaTab extends StatelessWidget {
             Domicilio domicilio = Domicilio.fromJson(item);
             domicilios.add(domicilio);
           }
-          
+
           return MapaBody(domicilios: domicilios);
         }),
     );

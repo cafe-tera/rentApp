@@ -4,12 +4,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mapa_pages/details_domicilio.dart';
 
 // local imports
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/menuDrawer_widget.dart';
 import 'package:rent_app/src/models/domicilio_model.dart';
-import 'package:rent_app/src/bloc/mapa_bloc/marker_details_bloc.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class MapaBody extends StatefulWidget {
@@ -43,7 +43,6 @@ class _MapaBodyState extends State<MapaBody> {
 //-----------------------------------------------
   LocationData userLocation;
 
-  MarkerDetailsBloc markerBloc;
   final Set<Marker> _markers = Set();
 
   CameraPosition _initialPosition = CameraPosition(
@@ -87,12 +86,22 @@ class _MapaBodyState extends State<MapaBody> {
               markerId: MarkerId('${dom.id}'),
               infoWindow: InfoWindow(title: '${dom.tipo}'),
               onTap: () {
-                markerBloc.hideDetail();
-                markerBloc.showDetail(dom);
+                _showModal(dom);
               }
               ));
         });
       });
     }
   }
+
+  void _showModal(Domicilio dom) {
+    Future<void> future = showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return DomicilioDetails(item: dom);
+      },
+    );
+  future.then((void value) => _closeModal(value));
+}
+void _closeModal(void value) {}
 }

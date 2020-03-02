@@ -8,6 +8,7 @@ import 'package:rent_app/src/bloc/provider.dart';
 import 'package:rent_app/src/models/contacto_model.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class BodyContactosPage extends StatelessWidget{
@@ -20,7 +21,19 @@ class BodyContactosPage extends StatelessWidget{
       appBar: AppbarWidget(
         title: Text('Contactos Page'),
       ),
-      body: _disernir(_bloc, context),
+      body: Container(
+        color: Color(colors.azulGeneral),
+        child: Center(
+          child: Text(
+            'Esta vista aun no ha sido implementada :C',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 

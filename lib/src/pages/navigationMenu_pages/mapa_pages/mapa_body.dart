@@ -57,8 +57,6 @@ class _MapaBodyState extends State<MapaBody> {
   @override
   Widget build(BuildContext context) {
 
-  const kGoogleApiKey = "AIzaSyBVbroPQvPRrPI53zz0Tz_qOsotFGSun44";
-
 //-----------------------------------------------
 //    Vista ewe
 //-----------------------------------------------
@@ -67,13 +65,13 @@ class _MapaBodyState extends State<MapaBody> {
         title: Text('¿Buscas Arriendo?'),
       ),
       drawer: MenuWidget(),
-      body: _googleMap(kGoogleApiKey),
+      body: _googleMap(),
     );
   }
     String searchAddr;
 
 // Nuestra vista
-  Widget _googleMap(String kGoogleApiKey) {
+  Widget _googleMap() {
 
 
     return Stack(

@@ -406,6 +406,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   }
 
   _photosCarouselSlider(BuildContext context, Size size, Domicilio domicilio) {
+    if (domicilio.fotos.isEmpty==false){
     return CarouselSlider(
       height: size.height * 0.3,
       viewportFraction: 0.65,
@@ -431,8 +432,17 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         );
       }).toList(),
     );
+    }
+    else{
+      return Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                child: Center(
+                  child: Text("No data"),
+                ),
+              );
+    }
   }
-
   Widget _imagenComentario(Size size, Comentario comentario) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),

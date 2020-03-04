@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -95,12 +96,13 @@ class _MapaBodyState extends State<MapaBody> {
   void _addMarkers() {
     if (widget.domicilios != null) {
       widget.domicilios.forEach((Domicilio dom) {
+        print('desde mapa markers: ${dom.ubicacion.lng}');
         setState(() {
           _markers.add(Marker(
               icon: BitmapDescriptor.defaultMarkerWithHue(
                   BitmapDescriptor.hueBlue),
               position: LatLng(dom.ubicacion.lat, dom.ubicacion.lng),
-              markerId: MarkerId('${dom.id}'),
+              markerId: MarkerId(Random().toString()),
               infoWindow: InfoWindow(title: '${dom.tipo}'),
               onTap: () {
                 _showModal(dom);

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
-import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 

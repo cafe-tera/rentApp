@@ -1,12 +1,13 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 // local imports
 import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
+import 'package:rent_app/src/models/user_model.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -24,6 +25,10 @@ class _LogInUpPageState extends State<LogInUpPage> {
   bool showProgress = false;
   String email = "";
   String password = "";
+  String nombre = "";
+  String apellido = "";
+  String celular = "";
+  String uid = "";
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +156,9 @@ class _LogInUpPageState extends State<LogInUpPage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        onChanged: (value){
+          nombre = value;
+        },
         decoration: InputDecoration(
           icon: Icon(Icons.accessibility, color: Color(colors.azulGeneral)),
           labelText: 'Nombres',
@@ -163,6 +171,9 @@ class _LogInUpPageState extends State<LogInUpPage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        onChanged: (value){
+          apellido = value;
+        },
         decoration: InputDecoration(
           icon: Icon(Icons.local_library, color: Color(colors.azulGeneral)),
           labelText: 'Apellidos',
@@ -175,6 +186,9 @@ class _LogInUpPageState extends State<LogInUpPage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        onChanged: (value){
+          celular = value;
+        },
         decoration: InputDecoration(
           icon: Icon(Icons.phone, color: Color(colors.azulGeneral)),
           hintText: '+56 9 58379397',
@@ -389,6 +403,20 @@ class _LogInUpPageState extends State<LogInUpPage> {
             password: password
           );
           if(newUser != null){
+            final FirebaseUser user = await _auth.currentUser();
+            uid = user.uid;
+
+            final newUser = User(
+              id: this.uid,
+              nombre: this.nombre,
+              apellido: this.apellido,
+              celular: this.celular,
+              puntos: null,
+              imagen: null
+            );
+
+            insertData(newUser.toJson());
+
             Fluttertoast.showToast(
               msg: "¡Registro exitoso! \n Inicia sesión para continuar",
               toastLength: Toast.LENGTH_LONG,
@@ -418,5 +446,12 @@ class _LogInUpPageState extends State<LogInUpPage> {
       child: Text('¿Olvidó su contraseña?'),
       onPressed: (){},
     );
+  }
+
+  Future<void> insertData(final user) async {
+    Firestore firestore = Firestore.instance;
+    firestore.collection("users").add(user).catchError((e){
+      print(e);
+    });
   }
 }

@@ -50,8 +50,9 @@ class _LogInUpPageState extends State<LogInUpPage> {
         backgroundColor: Colors.transparent,
         flexibleSpace: SafeArea(
           child: Container(
-              height: size.height * 0.23,
-              child: Image.asset('assets/rentApp.png')),
+            height: size.height * 0.23,
+            child: Image.asset('assets/rentApp.png')
+          ),
         ),
       ),
     );

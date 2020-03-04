@@ -26,12 +26,10 @@ class MapaTab extends StatelessWidget {
           if(!snapshot.hasData)
             return MapaBody();
             
+
+          bloc.cargarData();
           // Si todo sale bien, entonces retorna la lista
-          List<Domicilio> domicilios = List<Domicilio>();
-          for (var item in snapshot.data['domicilios']) {
-            Domicilio domicilio = Domicilio.fromJson(item);
-            domicilios.add(domicilio);
-          }
+          List<Domicilio> domicilios = bloc.domicilios;
 
           return MapaBody(domicilios: domicilios);
         }),

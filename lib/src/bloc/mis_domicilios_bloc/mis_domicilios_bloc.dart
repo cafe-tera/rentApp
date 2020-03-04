@@ -103,8 +103,8 @@ class MisDomiciliosBloc {
   // Esta funcion se ejecuta al cerrar o cambiar de pagina
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos
 
-  void getData() {
-    databaseReference
+  void getData() async {
+    await databaseReference
         .collection("domicilios")
         .getDocuments()
         .then((QuerySnapshot snapshot) {

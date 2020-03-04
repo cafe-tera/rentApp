@@ -53,6 +53,7 @@ class AgregarDomicilioPage extends StatelessWidget {
           onChanged: (value) {
             lng = value;
           },
+          keyboardType: TextInputType.number,
           decoration: InputDecoration(
             icon: Icon(Icons.place, color: Color(colors.azulGeneral)),
             labelText: 'Coordenada longitudinal',
@@ -67,6 +68,7 @@ class AgregarDomicilioPage extends StatelessWidget {
           onChanged: (value) {
             lat = value;
           },
+          keyboardType: TextInputType.number,
           decoration: InputDecoration(
             icon: Icon(Icons.place, color: Color(colors.azulGeneral)),
             labelText: 'Coordenada Latitudinal',

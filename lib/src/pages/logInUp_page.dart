@@ -303,10 +303,11 @@ class _LogInUpPageState extends State<LogInUpPage> {
               email: email,
               password: password
             );
-
-            print(newUser.toString());
-
             if(newUser != null){
+              setState((){
+                Navigator.pushNamed(context, HomePage.routeName);
+                showProgress = false;
+              });
               Fluttertoast.showToast(
                 msg: "Login exitoso",
                 toastLength: Toast.LENGTH_SHORT,
@@ -316,10 +317,6 @@ class _LogInUpPageState extends State<LogInUpPage> {
                 textColor: Colors.white,
                 fontSize: 16.0,
               );
-              setState((){
-                Navigator.pushNamed(context, HomePage.routeName);
-                showProgress = false;
-              });
             } else {
               Fluttertoast.showToast(
                 msg: "Verifica los datos de inicio",

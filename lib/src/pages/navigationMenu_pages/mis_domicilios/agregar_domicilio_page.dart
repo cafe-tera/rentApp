@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 // local imports
 import 'package:rent_app/src/bloc/mis_domicilios_bloc/agregar_domicilios_bloc.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios/mis_domicilios_page.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
@@ -174,7 +175,7 @@ class _AgregarDomicilioPageState extends State<AgregarDomicilioPage> {
           );
 
           setState(() {
-            Navigator.pushNamed(context, MisDomiciliosPage.routeName);
+            // Navigator.pushNamed(context, HomePage.routeName);
           });
         } catch(e){
           print(e);

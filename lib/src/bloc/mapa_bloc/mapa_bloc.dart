@@ -2,6 +2,7 @@
 // flutter imports
 import 'dart:async';
 import 'dart:convert';
+import 'package:rent_app/src/bloc/mis_domicilios_bloc/mis_domicilios_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/services.dart';
 
@@ -19,6 +20,8 @@ class MapaBloc {
   bool isInitialized = false;
   Map<String, dynamic> domiciliosMap;
   List<Domicilio> domicilios = List<Domicilio>();
+
+  MisDomiciliosBloc misDomiciliosBloc = MisDomiciliosBloc();
 
 
   // Manejo de los estados del BLOC, dependiendo de cual lancemos, será lo que la pagina deba mostrar
@@ -92,6 +95,11 @@ class MapaBloc {
     } else{
       _viewStateCtrl.sink.add(utils.TabState.Showing);
     }
+  }
+
+  void cargarData(){
+    misDomiciliosBloc.getData();
+    domicilios = misDomiciliosBloc.domicilios;
   }
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina

@@ -104,6 +104,7 @@ class MisDomiciliosBloc {
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos
   dispose() {
     _viewStateCtrl.close(); 
+    
   }
 
   void getData() {
@@ -111,13 +112,45 @@ class MisDomiciliosBloc {
         .collection("domicilios")
         .getDocuments()
         .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
+      // snapshot.documents.forEach((f) => print('${f.data}}'));
 
       for (var item in snapshot.documents) {
-        Domicilio domicilio;
-        domicilio.estado = item['estado'];
-        print('${domicilio.estado}');
-        domicilios.add(domicilio);
+
+        String tipo = item.data['Tipo']!=null?item.data['Tipo'].toString():item.data['Tipo'.toLowerCase()].toString();
+        String texto = item.data['Texto']!=null?item.data['Texto'].toString():item.data['Texto'.toLowerCase()].toString();
+        String imagen = item.data['Imagen']!=null?item.data['Imagen'].toString():item.data['Imagen'.toLowerCase()].toString();
+        String estado = item.data['Estado']!=null?item.data['Estado'].toString():item.data['Estado'.toLowerCase()].toString();
+
+        double lat = item.data['Ubicacion']!=null?(item.data['Ubicacion']['lat'].toDouble()):item.data['Ubicacion'.toLowerCase()]['lat'].toDouble();
+        double lng = item.data['Ubicacion']!=null?item.data['Ubicacion']['lng'].toDouble():item.data['Ubicacion'.toLowerCase()]['lng'].toDouble();
+
+        double puntos = item.data['Puntos']!=null?item.data['Puntos'].toDouble():item.data['Puntos'.toLowerCase()].toDouble();
+        bool favorito = item.data['Favorito']!=null?item.data['Favorito']:item.data['Favorito'.toLowerCase()];
+
+        List<Informacion> informacion = [];
+
+
+        // domicilios.add(domicilio);
+        // print(item.data['Estado']!=null?item.data['Estado']:item.data['Estado'.toLowerCase()]);
+
+        Ubicacion ubicacion = new Ubicacion(
+          lat: lat,
+          lng: lng
+        );
+
+        Domicilio domicilio = new Domicilio(
+          tipo: tipo,
+          texto: texto,
+          imagen: imagen,
+          estado: estado,
+          puntos: puntos,
+          favorito: favorito,
+          ubicacion: ubicacion,
+          informacion: informacion,
+          fotos: [],
+          comentarios:[]
+        );
+      domicilios.add(domicilio);
       }
       _viewStateCtrl.sink.add(utils.TabState.Showing);
 

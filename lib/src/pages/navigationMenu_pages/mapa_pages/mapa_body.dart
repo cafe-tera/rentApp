@@ -95,6 +95,7 @@ class _MapaBodyState extends State<MapaBody> {
   void _addMarkers() {
     if (widget.domicilios != null) {
       widget.domicilios.forEach((Domicilio dom) {
+        if(dom.ubicacion.lat != null && dom.ubicacion.lng != null && '${dom.ubicacion.lat}' !='' && '${dom.ubicacion.lng}' != ''){
         setState(() {
           _markers.add(Marker(
               icon: BitmapDescriptor.defaultMarkerWithHue(
@@ -107,6 +108,7 @@ class _MapaBodyState extends State<MapaBody> {
               }
               ));
         });
+        }
       });
     }
   }

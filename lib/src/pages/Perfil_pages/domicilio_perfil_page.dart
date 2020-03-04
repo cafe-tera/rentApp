@@ -71,7 +71,6 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   }
 
   Widget _encabezado(Size size, Domicilio domicilio) {
-
     double rating = _obtenerPuntos(domicilio.comentarios);
 
     return Stack(alignment: Alignment.topCenter, children: <Widget>[
@@ -150,6 +149,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   }
 
   Widget _imagenDomicilio(Domicilio domicilio) {
+
+    if(domicilio.imagen != null && '${domicilio.imagen}' != ''){
     return Column(
       children: <Widget>[
         // imagen
@@ -187,6 +188,9 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         ),
       ],
     );
+    } else {
+      return Container();
+    }
   }
 
   Widget _cuerpo(Size size, Domicilio domicilio) {
@@ -217,7 +221,9 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
             _tituloElementos(size, domicilio, 'Numero de baños: ', 18),
             Expanded(child: Container()),
             _infoElementosText(size, domicilio.informacion, 18.0, 'num_baños'),
-            SizedBox(width: 80,)
+            SizedBox(
+              width: 80,
+            )
           ],
         ),
         Divider(),
@@ -226,8 +232,11 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
           children: <Widget>[
             _tituloElementos(size, domicilio, 'Numero de habitaciones: ', 18),
             Expanded(child: Container()),
-            _infoElementosText(size, domicilio.informacion, 18.0, 'num_habitaciones'),
-            SizedBox(width: 80,)
+            _infoElementosText(
+                size, domicilio.informacion, 18.0, 'num_habitaciones'),
+            SizedBox(
+              width: 80,
+            )
           ],
         ),
         Divider(),
@@ -236,12 +245,15 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
           children: <Widget>[
             _tituloElementos(size, domicilio, 'Numero de cocinas: ', 18),
             Expanded(child: Container()),
-            _infoElementosText(size, domicilio.informacion, 18.0, 'num_cocinas'),
-            SizedBox(width: 80,)
+            _infoElementosText(
+                size, domicilio.informacion, 18.0, 'num_cocinas'),
+            SizedBox(
+              width: 80,
+            )
           ],
         ),
         Divider(),
-        
+
         SizedBox(
           height: 30,
         ),
@@ -259,19 +271,17 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
           height: 60,
         ),
 
-         //-----------------------------------------------------------
-         //    COMENTARIOS
-         //-----------------------------------------------------------
-         _tituloConBoton(size, domicilio, 'Comentarios', 'ver más', 25),
-         SizedBox(
-           height: 10,
-         ),
-         _comentarios(size, domicilio),
-
+        //-----------------------------------------------------------
+        //    COMENTARIOS
+        //-----------------------------------------------------------
+        _tituloConBoton(size, domicilio, 'Comentarios', 'ver más', 25),
+        SizedBox(
+          height: 10,
+        ),
+        _comentarios(size, domicilio),
       ],
     );
   }
-
 
   _tituloElementos(Size size, domicilio, String titulo, double fontsize) {
     return Container(
@@ -290,26 +300,25 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         ));
   }
 
-  Widget _infoElementosText(Size size, List<Informacion> informacion, double d, String s) {
+  Widget _infoElementosText(
+      Size size, List<Informacion> informacion, double d, String s) {
     String data;
-
-    informacion.forEach((info){
-      if('${info.nombre}' == s){
+    if(informacion.isNotEmpty && informacion !=null ){
+    informacion.forEach((info) {
+      if ('${info.nombre}' != null && '${info.nombre}' == s) {
         data = '${info.data}';
       }
     });
-    if(data != null) {
-
+    }
+    if (data != null) {
       return Container(
         alignment: Alignment.centerLeft,
         color: Colors.white,
         child: Row(
           children: <Widget>[
-            
             SizedBox(
               width: size.width * 0.07,
             ),
-
             Text(data)
           ],
         ),
@@ -319,27 +328,26 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     }
   }
 
-  Widget _textoPrecio(Size size, List<Informacion> informacion, double d, String s) {
+  Widget _textoPrecio(
+      Size size, List<Informacion> informacion, double d, String s) {
     int data;
-
-    informacion.forEach((info){
-      if('${info.nombre}' == s){
+    if(informacion.isNotEmpty && informacion !=null ){
+    informacion.forEach((info) {
+      if ('${info.nombre}' != null && '${info.nombre}' == s) {
         data = info.data;
       }
     });
-    if(data != null) {
-
+    }
+    if (data != null) {
       return Container(
         alignment: Alignment.centerLeft,
         color: Colors.white,
         child: Row(
           children: <Widget>[
-            
             SizedBox(
               width: size.width * 0.07,
             ),
-
-            Text(NumberFormat.simpleCurrency(name: 'CLP' ).format(data))
+            Text(NumberFormat.simpleCurrency(name: 'CLP').format(data))
           ],
         ),
       );
@@ -348,10 +356,12 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     }
   }
 
-  Widget _tituloConBoton(
-      Size size, Domicilio domicilio, String titulo, String texto_boton, double fontsize) {
+  Widget _tituloConBoton(Size size, Domicilio domicilio, String titulo,
+      String texto_boton, double fontsize) {
     int numeroComentarios = domicilio.comentarios.length;
-    if (domicilio.comentarios.length > 3) {
+    if (domicilio.comentarios.isNotEmpty != null &&
+        domicilio.comentarios.isNotEmpty &&
+        domicilio.comentarios.length > 3) {
       return Container(
           alignment: Alignment.centerLeft,
           color: Colors.white,
@@ -362,7 +372,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
               ),
               Text(
                 titulo,
-                style: TextStyle(fontSize: fontsize, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontSize: fontsize, fontWeight: FontWeight.bold),
               ),
               Expanded(child: Container()),
               FlatButton(
@@ -406,31 +417,35 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   }
 
   _photosCarouselSlider(BuildContext context, Size size, Domicilio domicilio) {
-    return CarouselSlider(
-      height: size.height * 0.3,
-      viewportFraction: 0.65,
-      enlargeCenterPage: true,
-      items: domicilio.fotos.map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                child: FadeInImage(
-                  placeholder: AssetImage(
-                    'assets/no-image.jpg',
+    if (domicilio.fotos != null && domicilio.fotos.isNotEmpty) {
+      return CarouselSlider(
+        height: size.height * 0.3,
+        viewportFraction: 0.65,
+        enlargeCenterPage: true,
+        items: domicilio.fotos.map((i) {
+          return Builder(
+            builder: (BuildContext context) {
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  child: FadeInImage(
+                    placeholder: AssetImage(
+                      'assets/no-image.jpg',
+                    ),
+                    image: NetworkImage(i),
+                    fit: BoxFit.cover,
                   ),
-                  image: NetworkImage(i),
-                  fit: BoxFit.cover,
                 ),
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
+              );
+            },
+          );
+        }).toList(),
+      );
+    } else {
+      return Container();
+    }
   }
 
   Widget _imagenComentario(Size size, Comentario comentario) {
@@ -457,9 +472,8 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     final List<Widget> comentarios = [];
     int indice = 0;
 
-    if (comentarios != null) {
+    if (comentarios != null && comentarios.isNotEmpty) {
       domicilio.comentarios.forEach((comentario) {
-
         // Sólo muestra los 3 primeros comentarios
         if (indice < 3) {
           final widgetTemp = Container(
@@ -482,8 +496,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
                               Container(
                                   height: 60,
                                   width: 70,
-                                  child: _imagenComentario(
-                                      size, comentario)),
+                                  child: _imagenComentario(size, comentario)),
                               SizedBox(
                                 width: 10,
                               ),
@@ -511,21 +524,17 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
                                   ),
                                 ],
                               )),
-
                               SizedBox(
                                 width: 25,
                               ),
-
                               Container(
                                 child: RatingBarWidget(
                                   ratingValue: comentario.puntos,
                                   barSize: 15.0,
                                 ),
                               )
-
                             ],
                           ),
-
                         ),
                         SizedBox(
                           height: 10,
@@ -558,7 +567,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     }
   }
 
-    Icon _favoritedIconDefault;
+  Icon _favoritedIconDefault;
 
   _favoriteStateChange(_liked) {
     if (_liked) {
@@ -579,12 +588,11 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
   double _obtenerPuntos(List<Comentario> comentarios) {
     double puntos = 0.0;
 
-    comentarios.forEach((c){
+    comentarios.forEach((c) {
       puntos += c.puntos;
     });
 
-    puntos/=comentarios.length;
+    puntos /= comentarios.length;
     return double.parse(puntos.toStringAsFixed(1));
   }
-
 }

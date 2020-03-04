@@ -19,6 +19,14 @@ class ContenidoDomicilioListaWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
+
+    String tipo;
+    if(item.tipo != null && item.imagen != ''){
+      tipo = item.tipo;
+    }else{
+      tipo = 'Casa';
+    }
+
     return Container(
       child: Column(
         children: <Widget>[
@@ -27,7 +35,7 @@ class ContenidoDomicilioListaWidget extends StatelessWidget{
             child: Container(
               alignment: Alignment.topLeft,
               child: Text(
-                item.tipo,
+                tipo,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 )
@@ -39,7 +47,7 @@ class ContenidoDomicilioListaWidget extends StatelessWidget{
             child: Container(
               alignment: Alignment.topLeft,
               child: Text(
-                item.texto,
+                item.texto != null? item.texto:'',
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(

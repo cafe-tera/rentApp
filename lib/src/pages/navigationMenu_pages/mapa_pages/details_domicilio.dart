@@ -19,6 +19,18 @@ class DomicilioDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String img;
+    if(item.imagen != null && item.imagen != ''){
+      img = item.imagen;
+    }else{
+      img = 'https://images.vexels.com/media/users/3/78633/preview2/5497463229c36ae24bc58a495d1081d6-dibujo-de-casa-de-dos-pisos.jpg';
+    }
+    String tipo;
+    if(item.tipo != null && item.imagen != ''){
+      tipo = item.tipo;
+    }else{
+      tipo = 'Casa';
+    }
     return Wrap(
       children: <Widget>[
         Center(
@@ -48,7 +60,7 @@ class DomicilioDetails extends StatelessWidget {
                       fit: BoxFit.cover,
                       alignment: Alignment.center,
                       image: NetworkImage(
-                        item.imagen,
+                        img,
                       ),
                       placeholder: AssetImage(
                         'assets/Alternate-Preloader.gif',
@@ -62,13 +74,13 @@ class DomicilioDetails extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          '${item.tipo}',
+                          tipo,
                           style: TextStyle(fontSize: 16),
                         ),
 
                         Container(
                           child: RatingBarWidget(
-                            ratingValue: item.puntos,
+                            ratingValue: item.puntos !=null? item.puntos:4.0,
                             barSize: 14.0,
                           ),
                         ),

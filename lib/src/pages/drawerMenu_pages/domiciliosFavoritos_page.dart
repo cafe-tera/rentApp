@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
-import 'package:rent_app/src/providers/Resource/domicilios_favoritos_provider.dart';
+import 'package:rent_app/src/providers/domicilios_favoritos_provider.dart';
 import 'package:rent_app/src/widgets/appbar_widget.dart';
 import 'package:rent_app/src/widgets/domicilio_card/imagenDomicilio_widget.dart';
 import 'package:rent_app/src/widgets/domicilio_card/estadoDomicilio_widget.dart';
 import 'package:rent_app/src/widgets/domicilio_card/contenidoDomicilioLista_widget.dart';
+import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
 class MisDomiciliosFavoritosPage extends StatefulWidget{
@@ -26,7 +27,19 @@ class _MisDomiciliosFavoritosPageState extends State<MisDomiciliosFavoritosPage>
       appBar: AppbarWidget(
         title: Text('Mis Domicilios Favoritos'),
       ),
-      body: _lista(),
+      body: Container(
+        color: Color(colors.azulGeneral),
+        child: Center(
+          child: Text(
+            'Esta vista aun no ha sido implementada :C',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 

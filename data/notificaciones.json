@@ -1,4 +1,5 @@
 {
+    "status": 200,
     "notificaciones":[{
             "Titulo":   "Publicación",
             "Texto":    "Tu publicación está por vencer! Revisa si quieres renovarla",

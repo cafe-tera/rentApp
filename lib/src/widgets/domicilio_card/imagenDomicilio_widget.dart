@@ -1,11 +1,12 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/src/models/domicilio_model.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class ImagenDomicilioWidget extends StatelessWidget{
 
-  final dynamic item;
+  final Domicilio item;
 
   ImagenDomicilioWidget({
     Key key,
@@ -22,7 +23,7 @@ class ImagenDomicilioWidget extends StatelessWidget{
           fit: BoxFit.cover,
           alignment: Alignment.center,
           image: NetworkImage(
-            item['Imagen'],
+            item.imagen,
           ),
           placeholder: AssetImage('assets/Alternate-Preloader.gif',),
           fadeInDuration: Duration(milliseconds: 200),

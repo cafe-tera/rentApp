@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 
 // local imports
-import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 //--------------------------------------------------------------------------------------------------------------------
 
@@ -34,6 +34,19 @@ class _MiPerfilPageState extends State<MiPerfilPage> {
             )
           ],
         ),
+        body: Container(
+        color: Color(colors.azulGeneral),
+        child: Center(
+          child: Text(
+            'Esta vista aun no ha sido implementada :C',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 

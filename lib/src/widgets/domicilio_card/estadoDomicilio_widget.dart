@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
 import 'package:flutter/material.dart';
+import 'package:rent_app/src/models/domicilio_model.dart';
 
 // local imports
 import 'package:rent_app/src/utils/estados_util.dart';
@@ -9,7 +10,7 @@ import 'package:rent_app/src/utils/estados_util.dart';
 
 class EstadoDomicilioWidget extends StatelessWidget{
 
-  final dynamic item;
+  final Domicilio item;
 
   EstadoDomicilioWidget({
     Key key,
@@ -21,7 +22,7 @@ class EstadoDomicilioWidget extends StatelessWidget{
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2.0),
-        color: getEstado(item['Estado']),
+        color: getEstado(item.estado),
       ),
     );
   }

@@ -33,14 +33,27 @@ class BuscarPage extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: MenuWidget(),
-          body: TabBarView(
-            children: <Widget> [
-              BuscarDomicilioPage(),
-              BuscarRoomatePage(),
-              //Icon(Icons.home),
-              //Icon(Icons.people),
-            ],
+          body: Container(
+        color: Color(colors.azulGeneral),
+        child: Center(
+          child: Text(
+            'Esta vista aun no ha sido implementada :C',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30
+            ),
+            textAlign: TextAlign.center,
           ),
+        ),
+      ),
+          // body: TabBarView(
+          //   children: <Widget> [
+          //     BuscarDomicilioPage(),
+          //     BuscarRoomatePage(),
+          //     //Icon(Icons.home),
+          //     //Icon(Icons.people),
+          //   ],
+          // ),
         ),
       ),
     );

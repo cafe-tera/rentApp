@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 // local imports
 import 'package:rent_app/src/pages/drawerMenu_pages/config_page.dart';
-import 'package:rent_app/src/pages/drawerMenu_pages/contactos_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/contactos/contactos_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/domiciliosFavoritos_page.dart';
-import 'package:rent_app/src/pages/drawerMenu_pages/faq_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/faq/faq_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/miPerfil_page.dart';
-import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones_page.dart';
+import 'package:rent_app/src/pages/drawerMenu_pages/notificaciones/notificaciones_page.dart';
 import 'package:rent_app/src/pages/drawerMenu_pages/tienda_page.dart';
 import 'package:rent_app/src/pages/logInUp_page.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
@@ -92,6 +92,14 @@ class MenuWidget extends StatelessWidget {
           ),
 
           ListTile(
+            leading: Icon(Icons.help, color: Color(colors.iconos),),
+            title: Text('Help and Feedback'),
+            onTap: (){
+              Navigator.pushNamed(context, FaqPage.routeName);
+            },
+          ),
+          
+          ListTile(
             leading: Icon( Icons.exit_to_app, color: Color(colors.iconos),),
             title: Text('Cerrar Sesión'),
             onTap: (){
@@ -99,13 +107,6 @@ class MenuWidget extends StatelessWidget {
             },
           ),
           
-          ListTile(
-            leading: Icon(Icons.help, color: Color(colors.iconos),),
-            title: Text('Help and Feedback'),
-            onTap: (){
-              Navigator.pushNamed(context, FaqPage.routeName);
-            },
-          ),
               
      
 

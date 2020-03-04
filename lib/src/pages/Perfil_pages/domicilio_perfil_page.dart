@@ -1,5 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 // flutter imports
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -7,15 +8,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rent_app/src/widgets/ratingBar_widget.dart';
 import 'package:rent_app/resources/colors.dart' as colors;
 import 'package:rent_app/src/models/domicilio_model.dart';
+import 'package:rent_app/src/pages/Perfil_pages/comentarios_perfil_page.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 class DomicilioPerfilPage extends StatefulWidget {
   static final String routeName = 'perfilcomentario';
 
-  final domiciliosData;
+  final Domicilio domiciliosData;
 
-  DomicilioPerfilPage({Key key, this.domiciliosData})
-      : super(key: key); //To receive data from parent page
+  // Recibe el domicilio a mostrar
+  DomicilioPerfilPage({Key key, this.domiciliosData}) : super(key: key);
 
   @override
   _DomicilioPerfilPageState createState() => _DomicilioPerfilPageState();
@@ -34,10 +36,10 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  _favoriteStateChange(widget.domiciliosData['Favorito']);
+                  _favoriteStateChange(widget.domiciliosData.favorito);
                 });
               },
-              icon: Icon((widget.domiciliosData['Favorito'])
+              icon: Icon((widget.domiciliosData.favorito)
                   ? Icons.favorite
                   : Icons.favorite_border), //_favoritedIconDefault
             )
@@ -46,7 +48,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         body: _contenido(size, widget.domiciliosData));
   }
 
-  Widget _contenido(Size size, item) {
+  Widget _contenido(Size size, Domicilio domicilio) {
     return Container(
       height: size.height,
       color: Colors.white,
@@ -54,17 +56,9 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            _encabezado(size, item),
+            _encabezado(size, domicilio),
             Divider(),
-            _cuerpo(size, item),
-            Divider(),
-
-            // Comentarios
-            _tituloConBoton(size, item, 'Comentarios', 'ver más'),
-            SizedBox(
-              height: 10,
-            ),
-            _comentarios(size, item),
+            _cuerpo(size, domicilio),
 
             // para que haya espacio al final
             SizedBox(
@@ -76,11 +70,13 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     );
   }
 
-  Widget _encabezado(Size size, item) {
-    double rating = item['Puntos'];
+  Widget _encabezado(Size size, Domicilio domicilio) {
+
+    double rating = _obtenerPuntos(domicilio.comentarios);
+
     return Stack(alignment: Alignment.topCenter, children: <Widget>[
       //portada, con una ubicacion aproximada del comentario
-      _region(size, item),
+      _region(size, domicilio),
 
       Column(
         children: <Widget>[
@@ -92,7 +88,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              _imagenDomicilio(item),
+              _imagenDomicilio(domicilio),
               Column(
                 children: <Widget>[
                   SizedBox(
@@ -108,13 +104,13 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
           ),
 
           // icons buttons
-          _acciones(size, item)
+          _acciones(size, domicilio)
         ],
       ),
     ]);
   }
 
-  Widget _region(Size size, item) {
+  Widget _region(Size size, Domicilio domicilio) {
     return Container(
       height: size.height * 0.28,
       decoration: BoxDecoration(
@@ -126,7 +122,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     );
   }
 
-  Widget _acciones(Size size, item) {
+  Widget _acciones(Size size, Domicilio domicilio) {
     return Row(
       children: <Widget>[
         RawMaterialButton(
@@ -153,7 +149,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     );
   }
 
-  Widget _imagenDomicilio(domData) {
+  Widget _imagenDomicilio(Domicilio domicilio) {
     return Column(
       children: <Widget>[
         // imagen
@@ -170,7 +166,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
               child: FadeInImage(
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
-                image: NetworkImage(domData['Imagen']),
+                image: NetworkImage(domicilio.imagen),
                 placeholder: AssetImage(
                   'assets/Alternate-Preloader.gif',
                 ),
@@ -186,76 +182,374 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
 
         //tipo comentario
         Text(
-          domData['Tipo'],
+          domicilio.tipo,
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
       ],
     );
   }
 
-  Widget _cuerpo(Size size, domData) {
+  Widget _cuerpo(Size size, Domicilio domicilio) {
     return Column(
       children: <Widget>[
-        // informacion
-        _tituloElementos(size, domData, 'Información'),
+        //-----------------------------------------------------------
+        //    INFORMACION
+        //-----------------------------------------------------------
+        _tituloElementos(size, domicilio, 'Información', 25),
         SizedBox(
           height: 10,
         ),
-        Text(
-          domData["Texto"],
-          textWidthBasis: TextWidthBasis.longestLine,
-        ),
 
+        Row(
+          children: <Widget>[
+            _tituloElementos(size, domicilio, 'Precio: ', 18),
+            _textoPrecio(size, domicilio.informacion, 18.0, 'precio'),
+          ],
+        ),
         Divider(),
 
-        // fotos
-        _tituloElementos(size, domData, 'Fotos'),
+        _tituloElementos(size, domicilio, 'Descripcion', 18),
+        _infoElementosText(size, domicilio.informacion, 15.0, 'descripcion'),
+        Divider(),
+
+        Row(
+          children: <Widget>[
+            _tituloElementos(size, domicilio, 'Numero de baños: ', 18),
+            Expanded(child: Container()),
+            _infoElementosText(size, domicilio.informacion, 18.0, 'num_baños'),
+            SizedBox(width: 80,)
+          ],
+        ),
+        Divider(),
+
+        Row(
+          children: <Widget>[
+            _tituloElementos(size, domicilio, 'Numero de habitaciones: ', 18),
+            Expanded(child: Container()),
+            _infoElementosText(size, domicilio.informacion, 18.0, 'num_habitaciones'),
+            SizedBox(width: 80,)
+          ],
+        ),
+        Divider(),
+
+        Row(
+          children: <Widget>[
+            _tituloElementos(size, domicilio, 'Numero de cocinas: ', 18),
+            Expanded(child: Container()),
+            _infoElementosText(size, domicilio.informacion, 18.0, 'num_cocinas'),
+            SizedBox(width: 80,)
+          ],
+        ),
+        Divider(),
+        
+        SizedBox(
+          height: 30,
+        ),
+
+        //-----------------------------------------------------------
+        //    FOTOS
+        //-----------------------------------------------------------
+        _tituloElementos(size, domicilio, 'Fotos', 25),
         SizedBox(
           height: 10,
         ),
-        _photosCarouselSlider(context, size, domData),
+        _photosCarouselSlider(context, size, domicilio),
+
+        SizedBox(
+          height: 60,
+        ),
+
+         //-----------------------------------------------------------
+         //    COMENTARIOS
+         //-----------------------------------------------------------
+         _tituloConBoton(size, domicilio, 'Comentarios', 'ver más', 25),
+         SizedBox(
+           height: 10,
+         ),
+         _comentarios(size, domicilio),
+
       ],
     );
   }
 
-  Widget _comentarios(Size size, domData) {
+
+  _tituloElementos(Size size, domicilio, String titulo, double fontsize) {
+    return Container(
+        alignment: Alignment.centerLeft,
+        color: Colors.white,
+        child: Row(
+          children: <Widget>[
+            SizedBox(
+              width: size.width * 0.07,
+            ),
+            Text(
+              titulo,
+              style: TextStyle(fontSize: fontsize, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ));
+  }
+
+  Widget _infoElementosText(Size size, List<Informacion> informacion, double d, String s) {
+    String data;
+
+    informacion.forEach((info){
+      if('${info.nombre}' == s){
+        data = '${info.data}';
+      }
+    });
+    if(data != null) {
+
+      return Container(
+        alignment: Alignment.centerLeft,
+        color: Colors.white,
+        child: Row(
+          children: <Widget>[
+            
+            SizedBox(
+              width: size.width * 0.07,
+            ),
+
+            Text(data)
+          ],
+        ),
+      );
+    } else {
+      return Text('data no encontrada :c');
+    }
+  }
+
+  Widget _textoPrecio(Size size, List<Informacion> informacion, double d, String s) {
+    int data;
+
+    informacion.forEach((info){
+      if('${info.nombre}' == s){
+        data = info.data;
+      }
+    });
+    if(data != null) {
+
+      return Container(
+        alignment: Alignment.centerLeft,
+        color: Colors.white,
+        child: Row(
+          children: <Widget>[
+            
+            SizedBox(
+              width: size.width * 0.07,
+            ),
+
+            Text(NumberFormat.simpleCurrency(name: 'CLP' ).format(data))
+          ],
+        ),
+      );
+    } else {
+      return Text('data no encontrada :c');
+    }
+  }
+
+  Widget _tituloConBoton(
+      Size size, Domicilio domicilio, String titulo, String texto_boton, double fontsize) {
+    int numeroComentarios = domicilio.comentarios.length;
+    if (domicilio.comentarios.length > 3) {
+      return Container(
+          alignment: Alignment.centerLeft,
+          color: Colors.white,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: size.width * 0.07,
+              ),
+              Text(
+                titulo,
+                style: TextStyle(fontSize: fontsize, fontWeight: FontWeight.bold),
+              ),
+              Expanded(child: Container()),
+              FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ComentariosPerfil(
+                              domiciliosData: domicilio,
+                            )),
+                  );
+                },
+                child: Text(
+                  texto_boton + ' (${numeroComentarios})',
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.lightBlue,
+                      fontWeight: FontWeight.w300),
+                ),
+              ),
+            ],
+          ));
+    } else {
+      return Container(
+          alignment: Alignment.centerLeft,
+          color: Colors.white,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: size.width * 0.07,
+              ),
+              Text(
+                titulo,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              Expanded(child: Container()),
+              Container()
+            ],
+          ));
+    }
+  }
+
+  _photosCarouselSlider(BuildContext context, Size size, Domicilio domicilio) {
+    return CarouselSlider(
+      height: size.height * 0.3,
+      viewportFraction: 0.65,
+      enlargeCenterPage: true,
+      items: domicilio.fotos.map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                child: FadeInImage(
+                  placeholder: AssetImage(
+                    'assets/no-image.jpg',
+                  ),
+                  image: NetworkImage(i),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _imagenComentario(Size size, Comentario comentario) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: FadeInImage(
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+          image: NetworkImage(
+            comentario.imagen,
+          ),
+          placeholder: AssetImage(
+            'assets/Alternate-Preloader.gif',
+          ),
+          fadeInDuration: Duration(milliseconds: 200),
+        ),
+      ),
+    );
+  }
+
+  Widget _comentarios(Size size, Domicilio domicilio) {
     final List<Widget> comentarios = [];
     int indice = 0;
-    // print(domData["Comentarios"][indice]['Imagen']);
 
     if (comentarios != null) {
-      domData["Comentarios"].forEach((comentario) {
-        final widgetTemp = Container(
-          height: 75.0,
-          child: Material(
-              child: Card(
-            elevation: 1.0,
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                Expanded(
-                  flex: 20,
-                  child: Text('foto'),
-                  // child: _imagenComentario(size, domData["Comentarios"], indice),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                Expanded(
-                  flex: 30,
-                  child: Text('item: comentario)'),
-                ),
-              ],
-            ),
-          )),
-        );
+      domicilio.comentarios.forEach((comentario) {
 
-        comentarios..add(widgetTemp);
-        indice += 1;
+        // Sólo muestra los 3 primeros comentarios
+        if (indice < 3) {
+          final widgetTemp = Container(
+            child: InkWell(
+              onTap: () {},
+              child: Card(
+                elevation: 0.0,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  height: 60,
+                                  width: 70,
+                                  child: _imagenComentario(
+                                      size, comentario)),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    comentario.nombres +
+                                        ' ' +
+                                        comentario.apellidos,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'fecha uwu',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              )),
+
+                              SizedBox(
+                                width: 25,
+                              ),
+
+                              Container(
+                                child: RatingBarWidget(
+                                  ratingValue: comentario.puntos,
+                                  barSize: 15.0,
+                                ),
+                              )
+
+                            ],
+                          ),
+
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          comentario.comentario,
+                          style: TextStyle(
+                            fontSize: 17,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+
+          comentarios..add(Divider());
+          comentarios..add(widgetTemp);
+          indice += 1;
+        } else {
+          return Column(children: comentarios);
+        }
       });
 
       return Column(children: comentarios);
@@ -264,10 +558,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     }
   }
 
-  Icon _favoritedIconDefault = new Icon(
-    Icons.favorite_border,
-    color: Colors.white,
-  );
+    Icon _favoritedIconDefault;
 
   _favoriteStateChange(_liked) {
     if (_liked) {
@@ -285,91 +576,15 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
     }
   }
 
-  _tituloElementos(Size size, domData, String titulo) {
-    return Container(
-        alignment: Alignment.centerLeft,
-        color: Colors.white,
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: size.width * 0.07,
-            ),
-            Text(
-              titulo,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ));
+  double _obtenerPuntos(List<Comentario> comentarios) {
+    double puntos = 0.0;
+
+    comentarios.forEach((c){
+      puntos += c.puntos;
+    });
+
+    puntos/=comentarios.length;
+    return double.parse(puntos.toStringAsFixed(1));
   }
-
-  _photosCarouselSlider(BuildContext context, Size size, domData) {
-    return CarouselSlider(
-      height: size.height * 0.3,
-      items: [1, 2, 3, 4, 5].map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 5.0),
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        'assets/no-image.jpg',
-                      ),
-                      fit: BoxFit.cover)),
-            );
-          },
-        );
-      }).toList(),
-    );
-  }
-
-  _tituloConBoton(Size size, item, String titulo, String texto_boton) {
-    int numeroComentarios = 21;
-
-    return Container(
-        alignment: Alignment.centerLeft,
-        color: Colors.white,
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: size.width * 0.07,
-            ),
-            Text(
-              titulo,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            Expanded(child: Container()),
-            FlatButton(
-              onPressed: () {},
-              child: Text(
-                texto_boton + ' (${numeroComentarios})',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.lightBlue,
-                    fontWeight: FontWeight.w300),
-              ),
-            ),
-          ],
-        ));
-  }
-
-  // Widget _imagenComentario(Size size, domData, int indice) {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-  //     child: ClipRRect(
-  //       borderRadius: BorderRadius.circular(5.0),
-  //       child: FadeInImage(
-  //         fit: BoxFit.cover,
-  //         alignment: Alignment.center,
-  //         image: NetworkImage(
-  //           domData["Comentarios"][indice]['Imagen'],
-  //         ),
-  //         placeholder: AssetImage('assets/Alternate-Preloader.gif',),
-  //         fadeInDuration: Duration(milliseconds: 200),
-  //       ),
-  //     ),
-  //   );
-  // }
 
 }

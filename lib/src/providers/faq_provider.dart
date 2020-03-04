@@ -2,13 +2,17 @@
 // flutter imports
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+
+// local import
+import 'package:rent_app/src/models/faq_model.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
-class _FaqProvider{
+class FaqProvider{
 
-  List<dynamic> items = [];
+  // Lista de faqs
+  List<Faq> faqs = List();
 
-  _FaqProvider(){
+  FaqProvider(){
     // cargarData();
   }
 
@@ -16,11 +20,18 @@ class _FaqProvider{
 
     final resp = await rootBundle.loadString('data/faq.json');
 
-    Map dataMap = json.decode(resp);
-    items = dataMap['faq'];
+    Map<String, dynamic> faqsMap;
+    faqsMap = json.decode(resp);
 
-    return items;
+    if(faqs.isEmpty){
+      for(var item in faqsMap['faq']){
+        Faq faq = Faq.fromJson(item);
+        faqs.add(faq);
+      }
+    }
+
+    return faqs;
   }
 }
 
-final faqProvider = new _FaqProvider();
+final faqProvider = new FaqProvider();

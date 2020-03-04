@@ -208,7 +208,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         ),
         Divider(),
 
-        _tituloElementos(size, domicilio, 'Descripcion', 18),
+        _tituloElementos(size, domicilio, 'Descripcion:', 18),
         _infoElementosText(size, domicilio.informacion, 15.0, 'descripcion'),
         Divider(),
 
@@ -315,7 +315,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         ),
       );
     } else {
-      return Text('data no encontrada :c');
+      return Text('no data');
     }
   }
 
@@ -344,7 +344,7 @@ class _DomicilioPerfilPageState extends State<DomicilioPerfilPage> {
         ),
       );
     } else {
-      return Text('data no encontrada :c');
+      return Text('no data');
     }
   }
 

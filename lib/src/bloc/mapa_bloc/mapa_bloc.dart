@@ -21,8 +21,6 @@ class MapaBloc {
   Map<String, dynamic> domiciliosMap;
   List<Domicilio> domicilios = List<Domicilio>();
 
-  MisDomiciliosBloc misDomiciliosBloc = MisDomiciliosBloc();
-
 
   // Manejo de los estados del BLOC, dependiendo de cual lancemos, será lo que la pagina deba mostrar
   // De esta forma seremos capaces de controlar varios de los problemas cotidianos de un usuario.
@@ -97,10 +95,10 @@ class MapaBloc {
     }
   }
 
-  void cargarData(){
-    misDomiciliosBloc.getData();
-    domicilios = misDomiciliosBloc.domicilios;
-  }
+  // void cargarData(){
+  //   misDomiciliosBloc.getData();
+  //   domicilios = misDomiciliosBloc.domicilios;
+  // }
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos

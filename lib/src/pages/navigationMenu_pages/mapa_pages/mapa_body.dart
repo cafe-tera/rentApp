@@ -89,6 +89,8 @@ class _MapaBodyState extends State<MapaBody> {
           LinearProgressIndicator(
             valueColor: AlwaysStoppedAnimation(Colors.orange),
           ),
+        
+        // Container()
       ],
     );
   }
@@ -96,13 +98,12 @@ class _MapaBodyState extends State<MapaBody> {
   void _addMarkers() {
     if (widget.domicilios != null) {
       widget.domicilios.forEach((Domicilio dom) {
-        print('desde mapa markers: ${dom.ubicacion.lng}');
         setState(() {
           _markers.add(Marker(
               icon: BitmapDescriptor.defaultMarkerWithHue(
                   BitmapDescriptor.hueBlue),
               position: LatLng(dom.ubicacion.lat, dom.ubicacion.lng),
-              markerId: MarkerId(Random().toString()),
+              markerId: MarkerId('${dom.id}'),
               infoWindow: InfoWindow(title: '${dom.tipo}'),
               onTap: () {
                 _showModal(dom);

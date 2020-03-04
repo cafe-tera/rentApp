@@ -19,10 +19,10 @@ import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_domi
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_roomate_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/buscar_pages/buscar_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/chat_page.dart';
-import 'package:rent_app/src/pages/navigationMenu_pages/home_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/home_page/home_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mapa_pages/mapa_page.dart';
-import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios/agregar_domicilio_page.dart';
 import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios/mis_domicilios_page.dart';
+import 'package:rent_app/src/pages/navigationMenu_pages/mis_domicilios/agregar_domicilio_page.dart';
 
 import 'package:rent_app/src/pages/Perfil_pages/domicilio_perfil_page.dart';
 import 'package:rent_app/src/pages/Perfil_pages/user_perfil_page.dart';
@@ -52,6 +52,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     FaqPage.routeName                      :   (BuildContext context) => FaqPage(),
     MisDomiciliosFavoritosPage.routename   :   (BuildContext context) => MisDomiciliosFavoritosPage(),
     ComentariosPerfil.routeName            :   (BuildContext context) => ComentariosPerfil(),
-    AgregarDomicilioPage.routeName            :   (BuildContext context) => AgregarDomicilioPage(),
+    AgregarDomicilioPage.routeName         :   (BuildContext context) => AgregarDomicilioPage(),
   };
 }

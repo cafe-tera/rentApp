@@ -22,6 +22,7 @@ class MapaBody extends StatefulWidget {
 }
 
 class _MapaBodyState extends State<MapaBody> {
+
   GoogleMapController mapController;
   Completer<GoogleMapController> _controller = Completer();
 
@@ -43,12 +44,14 @@ class _MapaBodyState extends State<MapaBody> {
 //-----------------------------------------------
   LocationData userLocation;
 
+
   final Set<Marker> _markers = Set();
 
   CameraPosition _initialPosition = CameraPosition(
     target: LatLng(-33.282158, -70.382323), //Santiago: -33.282158, -70.382323
     zoom: 7.0,
   );
+
 //-----------------------------------------------
 
   @override
@@ -59,22 +62,28 @@ class _MapaBodyState extends State<MapaBody> {
 //-----------------------------------------------
     return Scaffold(
       appBar: AppbarWidget(
-        title: Text('Mapa Page'),
+        title: Text('¿Buscas Arriendo?'),
       ),
       drawer: MenuWidget(),
       body: _googleMap(),
     );
   }
+    String searchAddr;
 
 // Nuestra vista
   Widget _googleMap() {
+
+
     return Stack(
+      alignment: Alignment.topCenter,
       children: <Widget>[
         GoogleMap(
             onMapCreated: _onMapCreated,
             initialCameraPosition: _initialPosition,
             myLocationEnabled: true,
             markers: _markers),
+
+
         if (widget.domicilios == null )
           LinearProgressIndicator(
             valueColor: AlwaysStoppedAnimation(Colors.orange),
@@ -112,4 +121,5 @@ class _MapaBodyState extends State<MapaBody> {
   future.then((void value) => _closeModal(value));
 }
 void _closeModal(void value) {}
+
 }

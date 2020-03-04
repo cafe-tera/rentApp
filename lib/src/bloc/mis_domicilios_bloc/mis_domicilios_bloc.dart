@@ -8,10 +8,15 @@ import 'package:flutter/services.dart';
 // local imports
 import 'package:rent_app/src/models/domicilio_model.dart';
 import 'package:rent_app/src/utils/bloc_util.dart' as utils; 
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
 class MisDomiciliosBloc {
+
+  final databaseReference = Firestore.instance;
+
   // un streamController utilizado para el envio de datos, errores y eventos.
   BehaviorSubject<utils.TabState> _viewStateCtrl =
       BehaviorSubject<utils.TabState>.seeded(utils.TabState.Loading);
@@ -100,4 +105,23 @@ class MisDomiciliosBloc {
   dispose() {
     _viewStateCtrl.close(); 
   }
+
+  void getData() {
+    databaseReference
+        .collection("domicilios")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => print('${f.data}}'));
+
+      for (var item in snapshot.documents) {
+        Domicilio domicilio;
+        domicilio.estado = item['estado'];
+        print('${domicilio.estado}');
+        domicilios.add(domicilio);
+      }
+      _viewStateCtrl.sink.add(utils.TabState.Showing);
+
+  });
+}
+
 }

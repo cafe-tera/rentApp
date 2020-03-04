@@ -20,6 +20,7 @@ class BodyMisDomiciliosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MisDomiciliosBloc _bloc = Provider.of<MisDomiciliosBloc>(context);
+    _bloc.getData();
     _bloc.cargarMisDomicilios();
 
     return Scaffold(

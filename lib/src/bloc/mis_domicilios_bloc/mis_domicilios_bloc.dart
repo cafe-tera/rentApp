@@ -102,10 +102,6 @@ class MisDomiciliosBloc {
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos
-  dispose() {
-    _viewStateCtrl.close(); 
-    
-  }
 
   void getData() {
     databaseReference
@@ -156,5 +152,10 @@ class MisDomiciliosBloc {
 
   });
 }
+  dispose() {
+    _viewStateCtrl.close();
+
+    // domicilios = List();
+  }
 
 }

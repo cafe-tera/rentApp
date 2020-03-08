@@ -2,6 +2,7 @@
 // flutter imports
 import 'dart:async';
 import 'dart:convert';
+import 'package:rent_app/src/bloc/mis_domicilios_bloc/mis_domicilios_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/services.dart';
 
@@ -93,6 +94,11 @@ class MapaBloc {
       _viewStateCtrl.sink.add(utils.TabState.Showing);
     }
   }
+
+  // void cargarData(){
+  //   misDomiciliosBloc.getData();
+  //   domicilios = misDomiciliosBloc.domicilios;
+  // }
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos

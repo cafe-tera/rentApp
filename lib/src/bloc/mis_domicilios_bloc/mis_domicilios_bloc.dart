@@ -8,10 +8,15 @@ import 'package:flutter/services.dart';
 // local imports
 import 'package:rent_app/src/models/domicilio_model.dart';
 import 'package:rent_app/src/utils/bloc_util.dart' as utils; 
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 //--------------------------------------------------------------------------------------------------------------------
 
 
 class MisDomiciliosBloc {
+
+  final databaseReference = Firestore.instance;
+
   // un streamController utilizado para el envio de datos, errores y eventos.
   BehaviorSubject<utils.TabState> _viewStateCtrl =
       BehaviorSubject<utils.TabState>.seeded(utils.TabState.Loading);
@@ -97,7 +102,60 @@ class MisDomiciliosBloc {
 
   // Esta funcion se ejecuta al cerrar o cambiar de pagina
   // De esta forma evitamos duplicidad (al dejar streams abiertos) de informacion y malgasto de recursos
+
+  void getData() async {
+    await databaseReference
+        .collection("domicilios")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      // snapshot.documents.forEach((f) => print('${f.data}}'));
+
+      for (var item in snapshot.documents) {
+
+        String tipo = item.data['Tipo']!=null?item.data['Tipo'].toString():item.data['Tipo'.toLowerCase()].toString();
+        String texto = item.data['Texto']!=null?item.data['Texto'].toString():item.data['Texto'.toLowerCase()].toString();
+        String imagen = item.data['Imagen']!=null?item.data['Imagen'].toString():item.data['Imagen'.toLowerCase()].toString();
+        String estado = item.data['Estado']!=null?item.data['Estado'].toString():item.data['Estado'.toLowerCase()].toString();
+
+        double lat = item.data['Ubicacion']!=null?(item.data['Ubicacion']['lat'].toDouble()):item.data['Ubicacion'.toLowerCase()]['lat'].toDouble();
+        double lng = item.data['Ubicacion']!=null?item.data['Ubicacion']['lng'].toDouble():item.data['Ubicacion'.toLowerCase()]['lng'].toDouble();
+
+        double puntos = item.data['Puntos']!=null?item.data['Puntos'].toDouble():item.data['Puntos'.toLowerCase()].toDouble();
+        bool favorito = item.data['Favorito']!=null?item.data['Favorito']:item.data['Favorito'.toLowerCase()];
+
+        List<Informacion> informacion = [];
+
+
+        // domicilios.add(domicilio);
+        // print(item.data['Estado']!=null?item.data['Estado']:item.data['Estado'.toLowerCase()]);
+
+        Ubicacion ubicacion = new Ubicacion(
+          lat: lat,
+          lng: lng
+        );
+
+        Domicilio domicilio = new Domicilio(
+          tipo: tipo,
+          texto: texto,
+          imagen: imagen,
+          estado: estado,
+          puntos: puntos,
+          favorito: favorito,
+          ubicacion: ubicacion,
+          informacion: informacion,
+          fotos: [],
+          comentarios:[]
+        );
+      domicilios.add(domicilio);
+      }
+      _viewStateCtrl.sink.add(utils.TabState.Showing);
+
+  });
+}
   dispose() {
-    _viewStateCtrl.close(); 
+    _viewStateCtrl.close();
+
+    // domicilios = List();
   }
+
 }
